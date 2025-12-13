@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
     <style>
+        header {
+            height: 100vh; /* Full screen height */
+            display: flex;
+            align-items: center; /* Vertical center */
+            justify-content: center; /* Horizontal center */
+            background: transparent; /* Let the body gradient show fully */
+            padding: 0;
+            box-shadow: none;
+            }
         header::after {
         content: '';
         position: absolute;
@@ -17,13 +26,6 @@
         height: 200px; /* How tall the fade is */
         background: linear-gradient(to bottom, rgba(248,248,248,0.8) 0%, transparent 100%);
         pointer-events: none; /* Doesn't block clicks */
-        height: 100vh; /* Full screen height */
-        display: flex;
-        align-items: center; /* Vertical center */
-        justify-content: center; /* Horizontal center */
-        background: transparent; /* Let the body gradient show fully */
-        padding: 0;
-        box-shadow: none;
         }
         .hero-content {
             text-align: center;
