@@ -16,9 +16,10 @@
             min-height: 100vh;
             color: #e8ba66;
             position: relative;
+            font-size: 15px; /* Base font size for everything = same as email */
         }
 
-        /* Gentle full-page soft white tint — no hard edges */
+        /* Gentle full-page soft white tint — seamless */
         body::before {
             content: '';
             position: absolute;
@@ -26,7 +27,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.35); /* Adjust 0.35: lower = less white, higher = more */
+            background: rgba(255, 255, 255, 0.35);
             pointer-events: none;
             z-index: 0;
         }
@@ -49,12 +50,12 @@
         }
 
         header h1 {
-            font-size: 90px;
-            margin-bottom: 60px;
+            font-size: 15px; /* Same as email */
+            margin-bottom: 40px;
             font-family: 'Square Peg', cursive;
             color: #e8ba66;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.6); /* Stronger shadow for readability */
-            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
         }
 
         nav ul {
@@ -65,24 +66,17 @@
 
         nav ul li {
             display: inline;
-            margin: 0 30px;
+            margin: 0 20px;
         }
 
         nav ul li a {
-            font-size: 28px;
+            font-size: 15px; /* Same as email */
             text-decoration: none;
             color: #e8ba66;
             font-weight: bold;
         }
 
-        .language-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 10;
-        }
-
-        /* Contact section — fully transparent, sits on the background */
+        /* Contact section */
         #contact {
             text-align: center;
             margin-top: -100px;
@@ -94,17 +88,25 @@
             z-index: 1;
         }
 
+        #contact p {
+            margin: 0;
+        }
+
+        #contact p:first-child {
+            margin-bottom: 20px;
+            font-size: 15px; /* Same as email */
+        }
+
         /* Mobile improvements */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 60px;
-                letter-spacing: 3px;
+                font-size: 15px;
             }
 
             nav ul {
                 display: flex;
                 flex-direction: column;
-                gap: 20px;
+                gap: 15px;
             }
 
             nav ul li {
@@ -112,15 +114,15 @@
             }
 
             nav ul li a {
-                font-size: 24px;
+                font-size: 15px;
             }
 
             #contact p:first-child {
-                font-size: 32px;
+                font-size: 15px;
             }
 
             #contact a {
-                font-size: 20px;
+                font-size: 15px;
             }
         }
     </style>
@@ -143,13 +145,13 @@
 
     <section id="contact">
         <div class="lang-content lang-en">
-            <p style="font-family: 'Square Peg', cursive; font-size: 28px; color: #e8ba66; margin: 0;">
+            <p style="font-family: 'Square Peg', cursive; color: #e8ba66;">
                 For more information please contact us
             </p>
 
-            <p style="margin-top: 30px;">
+            <p>
                 <a href="mailto:info@endometriosis-life.com"
-                   style="font-family: Arial, sans-serif; font-size: 15px; color: #e8ba66; text-decoration: underline;">
+                   style="font-family: Arial, sans-serif; color: #e8ba66; text-decoration: underline;">
                     info@endometriosis-life.com
                 </a>
             </p>
