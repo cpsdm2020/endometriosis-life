@@ -16,7 +16,7 @@
             min-height: 100vh;
             color: #e8ba66;
             position: relative;
-            font-size: 15px; /* Base font size for everything = same as email */
+            font-size: 15px;
         }
 
         /* Gentle full-page soft white tint — seamless */
@@ -36,7 +36,7 @@
         header {
             height: 100vh;
             display: flex;
-            align-items: center;
+            align-items: center; /* Vertical center by default */
             justify-content: center;
             padding: 0;
             position: relative;
@@ -50,7 +50,7 @@
         }
 
         header h1 {    /* TITLE WEBSITE */
-            font-size: 105px; /* Same as email */
+            font-size: 105px;
             margin-bottom: 40px;
             font-family: 'Square Peg', cursive;
             color: #e8ba66;
@@ -70,7 +70,7 @@
         }
 
         nav ul li a {  /* SUB-TITLE WEBSITE */
-            font-size: 35px; 
+            font-size: 35px;
             text-decoration: none;
             color: #e8ba66;
             font-weight: bold;
@@ -86,7 +86,6 @@
             box-shadow: none;
             position: relative;
             z-index: 1;
-            font-size: 10px;
         }
 
         #contact p {
@@ -95,13 +94,19 @@
 
         #contact p:first-child {
             margin-bottom: 20px;
-            font-size: 25px; /* Same as email */
+            font-size: 25px;
         }
 
         /* Mobile improvements */
         @media (max-width: 768px) {
+            header {
+                align-items: flex-start; /* Push content toward the top */
+                padding-top: 15vh; /* Start title/menu about 15% down from top */
+            }
+
             header h1 {
-                font-size: 80px; /* TITLE WEBSITE */
+                font-size: 80px;
+                margin-bottom: 30px;
             }
 
             nav ul {
@@ -115,15 +120,15 @@
             }
 
             nav ul li a {
-                font-size: 35px; /* SUB-TITLE WEBSITE */
+                font-size: 35px;
             }
 
             #contact p:first-child {
-                font-size: 25px; 
+                font-size: 25px;
             }
 
             #contact a {
-                font-size: 10px;
+                font-size: 18px;
             }
         }
     </style>
