@@ -5,18 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
     <style>
+        header {
+            height: 100vh; /* Full screen height */
+            display: flex;
+            align-items: center; /* Vertical center */
+            justify-content: center; /* Horizontal center */
+            background: rgba(255, 255, 255, 0.8); /* Slightly see-through white */
+            padding: 0;
+            box-shadow: none;
+        }
+        .hero-content {
+            text-align: center;
+        }
+        header h1 {
+            font-size: 60px; /* Much bigger title */
+            margin-bottom: 40px;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 30px; /* More space between menus */
+        }
+        nav ul li a {
+            font-size: 28px; /* Bigger menu text */
+        }
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: linear-gradient(to bottom, #f8f8f8 0%, #ffffff 50%, #f0f0f0 100%);
             min-height: 100vh;
             color: #E0BFB8; /* soft pink gold menus*/
-        }
-        header {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         nav ul {
             list-style: none;
@@ -73,17 +90,18 @@
     </div>
 
     <header>
+    <div class="hero-content">
         <h1>Endometriosis Life</h1>
         <nav>
+
             <ul>
                 <li><a href="#about">About Me</a></li>
                 <li><a href="#diary">Diary</a></li>
                 <li><a href="#lifestyle">Lifestyle</a></li>
                 <li><a href="#merch">Merchandise</a></li>
-            </ul>
-        </nav>
+          </nav>
+      </div>
     </header>
-
     <section id="about">
         <div class="lang-content lang-en">
             <h2>About Me</h2>
