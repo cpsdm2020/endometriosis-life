@@ -8,42 +8,44 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
     <style>
-        /* Background image for the whole page */
+        /* Full-page background image */
         body {
             margin: 0;
             font-family: 'Square Peg', cursive;
             background: url('back.jpeg') center/cover no-repeat fixed;
             min-height: 100vh;
             color: #e8ba66;
-        }
-
-        /* Header full screen with overlay for text readability */
-        header {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            box-shadow: none;
-            background: url('back.jpeg') center/cover no-repeat fixed;
             position: relative;
         }
 
-        header::before {
+        /* Gentle full-page soft white tint — no hard edges */
+        body::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.4); /* Soft white overlay — adjust 0.4 if too strong/weak */
+            background: rgba(255, 255, 255, 0.35); /* Adjust 0.35: lower = less white, higher = more */
             pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Header full screen */
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content {
             text-align: center;
             position: relative;
-            z-index: 1; /* Keeps text above overlay */
+            z-index: 2;
         }
 
         header h1 {
@@ -51,7 +53,7 @@
             margin-bottom: 60px;
             font-family: 'Square Peg', cursive;
             color: #e8ba66;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.6); /* Stronger shadow for readability */
             letter-spacing: 3px;
         }
 
@@ -80,13 +82,16 @@
             z-index: 10;
         }
 
-        /* Contact section - transparent so background shows through */
+        /* Contact section — fully transparent, sits on the background */
         #contact {
             text-align: center;
             margin-top: -100px;
             padding-top: 100px;
+            padding-bottom: 100px;
             background: transparent;
             box-shadow: none;
+            position: relative;
+            z-index: 1;
         }
 
         /* Mobile improvements */
