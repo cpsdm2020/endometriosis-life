@@ -54,7 +54,7 @@
         }
         nav ul li a {
             text-decoration: none;
-            color: #DDB263; /* soft gold subheaders*/
+            color: #e8ba66; /*#DDB263 soft gold subheaders*/
             font-weight: bold; 
         }
         .language-switcher {
@@ -78,6 +78,35 @@
             display: none;
         }
         .lang-en { display: block; } /* Default to English */
+        /* Mobile improvements */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 60px; /* Smaller title on phones */
+        letter-spacing: 3px;
+    }
+    
+    nav ul {
+        display: flex;
+        flex-direction: column; /* Menu items stack vertically */
+        gap: 20px; /* Space between each menu link */
+    }
+    
+    nav ul li {
+        margin: 0; /* Remove side margins */
+    }
+    
+    nav ul li a {
+        font-size: 24px; /* Slightly smaller menu text */
+    }
+    
+    .contact p:first-child {
+        font-size: 32px; /* Smaller contact text on mobile */
+    }
+    
+    .contact a {
+        font-size: 20px;
+    }
+}
     </style>
 </head>
 <body>
