@@ -8,12 +8,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
     <style>
+        header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 200px; /* How tall the fade is */
+        background: linear-gradient(to bottom, rgba(248,248,248,0.8) 0%, transparent 100%);
+        pointer-events: none; /* Doesn't block clicks */
+        }
         header {
             height: 100vh; /* Full screen height */
             display: flex;
             align-items: center; /* Vertical center */
             justify-content: center; /* Horizontal center */
-            background: rgba(255, 255, 255, 0.8); /* Slightly see-through white */
+            background: transparent; /* Let the body gradient show fully */
             padding: 0;
             box-shadow: none;
         }
@@ -54,17 +64,14 @@
         nav ul li a {
             text-decoration: none;
             color: #DDB263; /* soft gold subheaders*/
-            font-weight: italic; 
+            font-weight: bold; 
         }
         .language-switcher {
             position: absolute;
             top: 20px;
             right: 20px;
         }
-        .language-switcher select {
-            padding: 8px;
-            font-size: 16px;
-        }
+
         section {
             max-width: 800px;
             margin: 40px auto;
