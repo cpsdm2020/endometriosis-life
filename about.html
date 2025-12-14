@@ -36,6 +36,10 @@
             font-size: 60px;
             margin-bottom: 60px;
         }
+        h1 a {
+            color: #e8ba66;
+            text-decoration: none;
+        }
         /* Paragraphs with your story — Roboto font, same gold color */
         .body-text {
             font-family: 'Roboto', sans-serif;
@@ -46,10 +50,10 @@
             font-weight: 400;
             color: #e8ba66;
         }
-        /* Tight signature — minimal space */
+        /* Tight signature — minimal space, but increased bottom margin for more space below */
         .signature {
             font-size: 36px;
-            margin: 50px 0 10px 0;
+            margin: 50px 0 80px 0; /* Increased bottom margin for more vertical space */
             line-height: 1.1; /* Very tight line spacing */
         }
         a.back {
@@ -57,11 +61,14 @@
             color: #e8ba66;
             text-decoration: underline;
         }
+        .back-wrapper {
+            margin-top: 40px; /* Extra space before the back link */
+        }
     </style>
 </head>
 <body>
     <div class="content">
-        <h1>About Me</h1>
+        <h1><a href="index.html">About Me</a></h1>
 
         <p class="body-text">
             For as long as I can remember, I always felt pain! Long before I was diagnosed, I lived with the sharp, exhausting pain that doctors sometimes dismissed, friends didn’t understand, and I learned to hide from myself. Feeling pain is "normal", "it is part of being a women", or so I was told.
@@ -88,7 +95,7 @@
             Sophie
         </div>
 
-        <p><a href="index.html" class="back">← Back to home</a></p>
+        <p class="back-wrapper"><a href="index.html" class="back">← Back to home</a></p>
     </div>
 </body>
 </html>
