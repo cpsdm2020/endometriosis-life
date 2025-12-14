@@ -46,15 +46,11 @@
             font-weight: 400;
             color: #e8ba66;
         }
-        /* Signature — closer together */
+        /* Tight signature — minimal space */
         .signature {
             font-size: 36px;
-            margin: 40px 0 5px 0; /* Reduced bottom margin on "With Love," */
-            line-height: 1.2;     /* Brings "Sophie" closer */
-        }
-        .signature:last-child {
-            margin-top: 0;        /* No extra space above "Sophie" */
-            margin-bottom: 40px;
+            margin: 50px 0 10px 0;
+            line-height: 1.1; /* Very tight line spacing */
         }
         a.back {
             font-size: 24px;
@@ -87,8 +83,10 @@
             I also write this for the women who feel unseen, unheard, or isolated. For the ones who lie awake at night wondering if anyone understands. For the ones who want to take back control of their health. If my story can give even one person hope, or remind them that they are not alone, then sharing it is worth everything.
         </p>
 
-        <p class="signature">With Love,</p>
-        <p class="signature">Sophie</p>
+        <div class="signature">
+            With Love,<br>
+            Sophie
+        </div>
 
         <p><a href="index.html" class="back">← Back to home</a></p>
     </div>
