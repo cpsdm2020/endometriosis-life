@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
     <style>
-        /* Full-page background image */
+        /* Shared base styles */
         body {
             margin: 0;
             font-family: 'Square Peg', cursive;
@@ -19,24 +19,29 @@
             font-size: 15px;
         }
 
-        /* Adjusted for noticeable change on shorter scrolls */
+        /* Desired effect: vibrant at top → increasingly soft/dreamy as you scroll down */
         body::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 250%; /* Reduced from 600%/400% so fade happens faster/more noticeably */
+            height: 250%; /* Works well for current page length; increase if pages get longer */
             background: linear-gradient(to bottom,
-                rgba(255, 255, 255, 0.65) 0%,    /* Stronger wash-out at top */
-                rgba(255, 255, 255, 0.50) 20%,
-                rgba(255, 255, 255, 0.35) 40%,
-                rgba(255, 255, 255, 0.20) 60%,
-                rgba(255, 255, 255, 0.10) 80%,
-                rgba(255, 255, 255, 0.00) 100%   /* Full reveal lower down */
+                rgba(255, 255, 255, 0.00) 0%,    /* Full color at top */
+                rgba(255, 255, 255, 0.15) 20%,
+                rgba(255, 255, 255, 0.30) 40%,
+                rgba(255, 255, 255, 0.45) 60%,
+                rgba(255, 255, 255, 0.55) 80%,
+                rgba(255, 255, 255, 0.65) 100%   /* Soft and pale at bottom */
             );
             pointer-events: none;
             z-index: 0;
+        }
+
+        header, section {
+            position: relative;
+            z-index: 1;
         }
 
         /* Header full screen */
@@ -48,8 +53,6 @@
             padding-top: 40px;
             padding-left: 20px;
             padding-right: 20px;
-            position: relative;
-            z-index: 1;
         }
 
         .hero-content {
@@ -61,7 +64,6 @@
         header h1 {
             font-size: 205px;
             margin-bottom: 40px;
-            font-family: 'Square Peg', cursive;
             font-weight: lighter;
             color: #e8ba66;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -93,9 +95,6 @@
             padding-top: 100px;
             padding-bottom: 100px;
             background: transparent;
-            box-shadow: none;
-            position: relative;
-            z-index: 1;
         }
 
         #contact p {
