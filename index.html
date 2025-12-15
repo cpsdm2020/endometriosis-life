@@ -155,6 +155,34 @@
             font-size: 35px;
         }
 
+        /* ================= DONATE BUTTON - FIXED BOTTOM ================= */
+
+        .donate-fixed {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        .donate-fixed form {
+            margin: 0;
+        }
+
+        /* Optional: make the button slightly larger and add hover effect */
+        .donate-fixed input[type="image"] {
+            transition: transform 0.2s ease;
+        }
+
+        .donate-fixed input[type="image"]:hover {
+            transform: scale(1.05);
+        }
+
         /* ================= MOBILE ================= */
 
         @media (max-width: 500px) {
@@ -180,6 +208,12 @@
 
             .dropdown-toggle::after {
                 display: none;
+            }
+
+            /* Adjust donate button on mobile */
+            .donate-fixed {
+                bottom: 20px;
+                padding: 12px 20px;
             }
         }
     </style>
@@ -239,21 +273,22 @@
         </div>
     </header>
 
-    
-        <form action="https://www.paypal.com/donate" method="post" target="_top">
-        <input type="hidden" name="hosted_button_id" value="ELEXPMBEHT7DG" />
-        <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-        <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
-        </form>
-    
     <section id="contact">
         We'd love to hear from you<br>
         <a href="mailto:info@endometriosis-life.com"
            style="font-family: 'Roboto', sans-serif; font-size: 15px; color: #3B3B3B;">
             info@endometriosis-life.com
         </a>
-        
     </section>
+
+    <!-- Fixed Donate Button at Bottom -->
+    <div class="donate-fixed">
+        <form action="https://www.paypal.com/donate" method="post" target="_top">
+            <input type="hidden" name="hosted_button_id" value="ELEXPMBEHT7DG" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+            <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
