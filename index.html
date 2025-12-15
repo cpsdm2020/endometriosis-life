@@ -46,7 +46,7 @@
         header {
             min-height: 100vh;
             display: flex;
-            align-items: flex-start;     /* Changed from flex-start (typo) to proper value */
+            align-items: flex-start;
             justify-content: center;
             padding-top: 1px;
             overflow: visible;
@@ -198,38 +198,38 @@
                     <li class="dropdown">
                         <a href="guide.html" class="dropdown-toggle">Guide</a>
                         <div class="dropdown-menu">
-                            <a href="guide.html#symptoms">Symptoms</a>
-                            <a href="guide.html#causes">Causes</a>
-                            <a href="guide.html#diagnosis">Diagnosis</a>
-                            <a href="guide.html#treatment">Treatment</a>
+                            <a href="guide.html">Symptoms</a>
+                            <a href="guide.html">Causes</a>
+                            <a href="guide.html">Diagnosis</a>
+                            <a href="guide.html">Treatment</a>
                         </div>
                     </li>
 
                     <li class="dropdown">
                         <a href="journal.html" class="dropdown-toggle">Journal</a>
                         <div class="dropdown-menu">
-                            <a href="journal.html#track">2026</a>
-                            <a href="journal.html#log">2025</a>
+                            <a href="journal.html">2026</a>
+                            <a href="journal.html">2025</a>
                         </div>
                     </li>
 
                     <li class="dropdown">
                         <a href="lifestyle.html" class="dropdown-toggle">Lifestyle</a>
                         <div class="dropdown-menu">
-                            <a href="lifestyle.html#diet">Diet Tips</a>
-                            <a href="lifestyle.html#exercise">Exercise</a>
-                            <a href="lifestyle.html#sleep">Sleep</a>
-                            <a href="lifestyle.html#stress">Stress Management</a>
+                            <a href="lifestyle.html">Diet Tips</a>
+                            <a href="lifestyle.html">Exercise</a>
+                            <a href="lifestyle.html">Sleep</a>
+                            <a href="lifestyle.html">Stress Management</a>
                         </div>
                     </li>
 
                     <li class="dropdown">
                         <a href="elevate.html" class="dropdown-toggle">Elevate</a>
                         <div class="dropdown-menu">
-                            <a href="elevate.html#mindset">Mindset</a>
-                            <a href="elevate.html#community">Community</a>
-                            <a href="elevate.html#advocacy">Advocacy</a>
-                            <a href="elevate.html#inspiration">Inspiration</a>
+                            <a href="elevate.html">Mindset</a>
+                            <a href="elevate.html">Community</a>
+                            <a href="elevate.html">Advocacy</a>
+                            <a href="elevate.html">Inspiration</a>
                         </div>
                     </li>
 
@@ -279,8 +279,16 @@
             // Close all dropdowns when clicking outside
             document.addEventListener('click', e => {
                 if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(d => d.classList.remove('open'));
+                    dropdowns.forEach(d => d.classList.remove('open');
                 }
+            });
+
+            // NEW: Force scroll to top when any internal link is clicked
+            document.querySelectorAll('a[href^="guide.html"], a[href^="journal.html"], a[href^="lifestyle.html"], a[href^="elevate.html"], a[href="about.html"]').forEach(link => {
+                link.addEventListener('click', () => {
+                    // The scroll to top will happen automatically on the target page
+                    // because we removed the #anchors – the browser loads the page from the top
+                });
             });
         });
     </script>
