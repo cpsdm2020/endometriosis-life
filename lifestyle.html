@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Square+Peg&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Identical styles to guide.html */
         body {
             margin: 0;
             font-family: 'Square Peg', cursive;
@@ -46,11 +45,6 @@
         h1 {
             font-size: 60px;
             margin-bottom: 80px;
-        }
-
-        h1 a {
-            color: #3B3B3B;
-            text-decoration: none;
         }
 
         .tabs {
@@ -160,44 +154,65 @@
         <h1>Lifestyle</h1>
 
         <div class="tabs">
-            <button class="tab-button active" data-tab="diet">Diet Tips</button>
+            <button class="tab-button" data-tab="diet">Diet Tips</button>
             <button class="tab-button" data-tab="exercise">Exercise</button>
             <button class="tab-button" data-tab="sleep">Sleep</button>
             <button class="tab-button" data-tab="stress">Stress Management</button>
         </div>
 
-        <div id="diet" class="tab-content active">
+        <!-- Diet Tab -->
+        <div id="diet" class="tab-content">
             <p class="body-text">
                 Lifestyle changes have been one of the most powerful tools in managing my endometriosis — not as a cure, but as a way to reduce inflammation, balance hormones, and improve daily quality of life.
             </p>
             <p class="body-text">
-                Small, sustainable shifts in diet, movement, sleep, and stress management can make a profound difference over time. Anti-inflammatory foods, gentle exercise, restful routines, and mindfulness practices all play a role.
+                Small, sustainable shifts in diet, movement, sleep, and stress management can make a profound difference over time.
             </p>
             <p class="body-text">
-                This section shares what has worked for me and what research supports — from nourishing meal ideas to movement that honors your body’s limits, better sleep hygiene, and practical ways to lower chronic stress.
+                Focusing on anti-inflammatory foods like leafy greens, berries, fatty fish, turmeric, and ginger can help reduce pain and bloating. Limiting processed foods, sugar, red meat, and caffeine often brings relief for many.
             </p>
-            <!-- Add more specific diet content here if you have it -->
+            <p class="body-text">
+                It's not about perfection — listen to your body and find what works for you.
+            </p>
         </div>
 
+        <!-- Exercise Tab -->
         <div id="exercise" class="tab-content">
             <p class="body-text">
-                Gentle, regular movement can help reduce pain and inflammation while improving mood and energy. Activities like walking, yoga, swimming, or Pilates are often recommended because they are low-impact and support pelvic health.
+                Gentle, regular movement can help reduce endometriosis pain, ease inflammation, improve circulation in the pelvic area, and boost endorphins for better mood.
             </p>
-            <!-- Add your exercise-specific content -->
+            <p class="body-text">
+                Low-impact activities are best: walking in nature, yoga (especially restorative or yin), swimming, Pilates, or light strength training.
+            </p>
+            <p class="body-text">
+                Avoid high-intensity workouts during flare-ups — honor your body's limits and rest when needed. Consistency over intensity is key.
+            </p>
         </div>
 
+        <!-- Sleep Tab -->
         <div id="sleep" class="tab-content">
             <p class="body-text">
-                Good sleep is essential for healing and hormone balance. Creating a calming bedtime routine, keeping a consistent schedule, and optimizing your sleep environment can make a big difference.
+                Quality sleep is crucial for hormone regulation, immune function, and pain management. Poor sleep can worsen endometriosis symptoms significantly.
             </p>
-            <!-- Add your sleep-specific content -->
+            <p class="body-text">
+                Aim for a consistent sleep schedule, a cool dark room, and a wind-down routine (no screens an hour before bed, herbal tea, gentle stretching).
+            </p>
+            <p class="body-text">
+                Magnesium supplements, lavender essential oil, or warm baths can promote deeper rest. Track your cycle to anticipate harder nights.
+            </p>
         </div>
 
+        <!-- Stress Management Tab -->
         <div id="stress" class="tab-content">
             <p class="body-text">
-                Chronic stress can worsen endometriosis symptoms by increasing inflammation and disrupting hormones. Practices like meditation, deep breathing, journaling, or therapy can help manage stress and improve overall well-being.
+                Chronic stress elevates cortisol, which can increase inflammation and exacerbate endometriosis pain and fatigue.
             </p>
-            <!-- Add your stress management content -->
+            <p class="body-text">
+                Daily practices like deep breathing, meditation apps, journaling, spending time in nature, or talking to a therapist can lower stress levels meaningfully.
+            </p>
+            <p class="body-text">
+                Setting boundaries, saying no when needed, and prioritizing self-care aren't luxuries — they're essential for managing this condition.
+            </p>
         </div>
 
         <div class="signature">
@@ -212,14 +227,23 @@
         const tabButtons = document.querySelectorAll('.tab-button');
         const tabContents = document.querySelectorAll('.tab-content');
 
+        function activateTab(tabId) {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            const targetButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+            const targetContent = document.getElementById(tabId);
+
+            if (targetButton && targetContent) {
+                targetButton.classList.add('active');
+                targetContent.classList.add('active');
+            }
+        }
+
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-
-                button.classList.add('active');
                 const tabId = button.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
+                activateTab(tabId);
 
                 const url = new URL(window.location);
                 url.searchParams.set('tab', tabId);
@@ -231,15 +255,10 @@
             const urlParams = new URLSearchParams(window.location.search);
             const tab = urlParams.get('tab');
 
-            if (tab) {
-                const targetButton = document.querySelector(`.tab-button[data-tab="${tab}"]`);
-                if (targetButton) {
-                    document.querySelector('.tab-button.active').classList.remove('active');
-                    document.querySelector('.tab-content.active').classList.remove('active');
-
-                    targetButton.classList.add('active');
-                    document.getElementById(tab).classList.add('active');
-                }
+            if (tab && document.getElementById(tab)) {
+                activateTab(tab);
+            } else {
+                activateTab('diet'); // Default tab
             }
         });
     </script>
