@@ -89,12 +89,24 @@
             color: #e8ba66;
             font-weight: bold;
             display: block;
-            padding: 15px 10px; /* Larger hover area */
+            padding: 20px 10px; /* Larger hover area on main items */
         }
 
         /* Dropdown for Guide - stable + slow fade */
         .dropdown {
             position: relative;
+        }
+
+        /* Invisible bridge to keep hover active */
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 30px; /* Tall enough to bridge any gap */
+            background: transparent;
+            z-index: 9;
         }
 
         .dropdown:hover .dropdown-menu {
@@ -105,7 +117,7 @@
         .dropdown-menu {
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease 0.15s, visibility 0.3s ease 0.15s; /* Slow fade, delay on hide */
+            transition: opacity 0.3s ease 0.1s, visibility 0.3s ease 0.1s; /* Slow fade with slight delay on hide */
             position: absolute;
             top: 100%;
             left: 50%;
@@ -115,17 +127,6 @@
             padding: 20px 0;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             z-index: 10;
-        }
-
-        /* Invisible bridge to keep hover active when moving down */
-        .dropdown::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            height: 20px; /* Covers the gap */
-            background: transparent;
         }
 
         .dropdown-menu a {
@@ -184,6 +185,10 @@
 
             nav ul li a {
                 font-size: 35px;
+            }
+
+            .dropdown::after {
+                display: none; /* No bridge needed on mobile */
             }
 
             .dropdown-menu {
