@@ -100,18 +100,18 @@
 
         .dropdown-toggle {
             cursor: pointer;
-            position: relative; /* Needed for the ::after pseudo-element */
+            position: relative; /* For pseudo-element */
         }
 
-        /* NEW: Invisible bridge to eliminate hover gap */
+        /* STRONGER invisible bridge to fully eliminate hover gap */
         .dropdown-toggle::after {
             content: '';
             position: absolute;
             left: 0;
-            bottom: -20px; /* Extend downward by 20px (adjust if needed, 15-30px is usually enough) */
+            bottom: -40px; /* Extended downward generously */
             width: 100%;
-            height: 20px; /* Matches the bottom offset */
-            background: transparent; /* Fully invisible */
+            height: 40px; /* Matches the offset — covers padding + any rendering gap */
+            background: transparent;
         }
 
         .dropdown-menu {
@@ -128,19 +128,17 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
-            pointer-events: none; /* Disabled until menu is open */
+            pointer-events: none;
         }
 
-        /* Open on hover (desktop) OR when .open class is added (mobile/click) */
         .dropdown:hover .dropdown-menu,
         .dropdown.open .dropdown-menu {
             display: block;
             opacity: 1;
             visibility: visible;
-            pointer-events: auto; /* Enable clicks on menu items */
+            pointer-events: auto;
         }
 
-        /* Optional subtle highlight when hovering the toggle */
         .dropdown:hover > .dropdown-toggle {
             background: rgba(255, 255, 255, 0.1);
         }
@@ -230,7 +228,7 @@
 
     <header>
         <div class="hero-content">
-            <h1>Endometriosis Life</h1>
+            <h1>Endometriosis Life1</h1>
             <nav>
                 <ul>
                     <li class="dropdown">
@@ -271,20 +269,17 @@
             const dropdown = document.querySelector('.dropdown');
             const toggle = dropdown.querySelector('.dropdown-toggle');
 
-            // Click support for touch/mobile devices
             toggle.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent navigation to guide.html on tap
+                e.preventDefault();
                 dropdown.classList.toggle('open');
             });
 
-            // Close menu when clicking outside of it
             document.addEventListener('click', function(e) {
                 if (!dropdown.contains(e.target)) {
                     dropdown.classList.remove('open');
                 }
             });
 
-            // Optional: small delay on mouse leave to make moving cursor to menu easier
             dropdown.addEventListener('mouseleave', function() {
                 setTimeout(() => {
                     if (!dropdown.matches(':hover')) {
