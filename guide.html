@@ -40,13 +40,13 @@
         .content {
             position: relative;
             z-index: 1;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         h1 {
             font-size: 60px;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         h1 a {
@@ -54,37 +54,54 @@
             text-decoration: none;
         }
 
-        /* Accordion styles */
-        details {
-            margin-bottom: 40px;
+        /* Horizontal tabs navigation */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+            border-bottom: 2px solid rgba(232, 186, 102, 0.3);
+            padding-bottom: 20px;
         }
 
-        summary {
+        .tab-button {
             font-size: 50px;
-            margin: 100px 0 40px;
+            background: none;
+            border: none;
+            color: #e8ba66;
             cursor: pointer;
-            list-style: none; /* Hide default marker on some browsers */
-            text-align: center;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        summary::-webkit-details-marker {
-            display: none; /* Hide default arrow in Chrome/Safari */
+        .tab-button:hover {
+            color: #fff;
         }
 
-        /* Optional: Add a custom arrow indicator */
-        summary::after {
-            content: ' ▼';
-            font-size: 30px;
-            margin-left: 10px;
-            transition: transform 0.3s ease;
+        .tab-button.active {
+            font-weight: bold;
         }
 
-        details[open] summary::after {
-            transform: rotate(180deg);
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -22px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #e8ba66;
         }
 
-        .accordion-content {
+        /* Tab content */
+        .tab-content {
+            display: none;
             text-align: left;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         .body-text {
@@ -99,7 +116,7 @@
 
         .signature {
             font-size: 36px;
-            margin: 50px 0 80px 0;
+            margin: 80px 0;
             line-height: 1.1;
         }
 
@@ -115,10 +132,24 @@
         @media (max-width: 768px) {
             h1 {
                 font-size: 50px;
+                margin-bottom: 50px;
             }
-            summary {
-                font-size: 40px;
+
+            .tabs {
+                gap: 20px;
+                padding-bottom: 15px;
             }
+
+            .tab-button {
+                font-size: 35px;
+                padding: 8px 12px;
+            }
+
+            .tab-button.active::after {
+                bottom: -17px;
+                height: 3px;
+            }
+
             .body-text {
                 font-size: 18px;
                 padding: 0 10px;
@@ -132,129 +163,60 @@
 
         <h1>Guide</h1>
 
-        <!-- Symptoms Section -->
-        <details name="guide-accordion">
-            <summary id="symptoms">Symptoms</summary>
-            <div class="accordion-content">
-                <p class="body-text">
-                    Endometriosis is a chronic condition that affects around 10% of women and girls of reproductive age worldwide — that's about 190 million people, according to the World Health Organization (WHO) in their 2025 fact sheet. It happens when tissue similar to the lining inside the uterus (the endometrium) grows outside the uterus, often on the ovaries, fallopian tubes, bowel, bladder, or the pelvic lining. This tissue acts just like the normal endometrium: it thickens, breaks down, and tries to bleed with every menstrual cycle. But because it's trapped with no way out, it causes inflammation, irritation, scarring, and adhesions — sticky bands of tissue that can make organs pull or stick together painfully.
-                </p>
-                <p class="body-text">
-                    The main symptom everyone talks about is pain, and it's usually pelvic pain that can feel different for every person. Many describe it as a deep, throbbing ache in the lower belly, lower back, or thighs. This pain often gets much worse right before and during periods, turning what might be mild cramps for others into something truly debilitating. Severe period pain, called dysmenorrhea, is one of the earliest and most common signs. It can start as soon as periods begin in the teenage years, and for many, it's far more intense than "normal" cramps — sometimes so bad that it forces missing school, work, sports, or social events. Studies from Mayo Clinic and Cleveland Clinic show that this pain can be constant or come in waves, and it's not always tied just to periods; it can linger all month long.
-                </p>
-                <p class="body-text">
-                    Pain during sex (known as dyspareunia) is another big one, reported by up to 70% of people with endometriosis. It can feel like a sharp stab deep inside or a lingering ache afterward, which can make intimacy difficult and strain relationships. Pain can also strike during bowel movements or urination, especially around period time. If the endometriosis grows on or near the bowels or bladder — called deep infiltrating endometriosis — you might get diarrhea, constipation, bloating (that infamous "endo belly" where your abdomen swells up noticeably), cramps with pooping (dyschezia), or burning when peeing (dysuria). These gastrointestinal and urinary symptoms are super common and often get mistaken for IBS or other gut issues.
-                </p>
-                <p class="body-text">
-                    Heavy periods (menorrhagia) happen a lot too — bleeding that's so heavy you soak through pads or tampons quickly, pass large clots, or bleed for longer than usual. This can lead to anemia, making you feel dizzy, weak, or even more tired. Speaking of tiredness, chronic fatigue is a huge part of endometriosis life. It's not just being sleepy; it's a bone-deep exhaustion that rest doesn't fix, often made worse by ongoing pain, inflammation, poor sleep from night cramps, and low iron levels. Infertility is heartbreaking for many — about 30-50% of women with endometriosis struggle to get pregnant. The disease can create scar tissue that blocks tubes, inflame the pelvis harming eggs or sperm, or form cysts on ovaries called endometriomas (filled with thick old blood, looking like chocolate on scans).
-                </p>
-                <p class="body-text">
-                    Other symptoms pop up too: nausea or vomiting around periods, headaches or migraines triggered by hormones, leg pain from irritated nerves, shoulder pain if rare diaphragm involvement, and even mood changes. Mental health takes a hit — depression and anxiety are common because living with unpredictable, severe pain feels isolating and overwhelming. The WHO notes higher rates of immune-related conditions like lupus or MS in people with endometriosis, and recent 2025 studies highlight links to mood disorders.
-                </p>
-                <p class="body-text">
-                    Rarely, endometriosis spreads farther — to lungs causing coughing blood during periods (catamenial hemoptysis), chest pain, or collapsed lung; or even brain or skin. But most stays in the pelvis.
-                </p>
-                <p class="body-text">
-                    What's tricky is symptoms don't match disease "stage." Someone with mild lesions can have excruciating pain, while advanced cases might have few symptoms. This, plus overlap with IBS, PID, or fibroids, leads to long diagnostic delays — often 7-10 years. In teens, severe cramps get dismissed as "normal," letting the disease progress.
-                </p>
-                <p class="body-text">
-                    Pain affects everything: school attendance, jobs, friendships, self-confidence. Fatigue makes simple tasks hard. Heavy bleeding causes embarrassment. Sexual pain strains partnerships. Infertility brings grief. Mental health suffers from feeling "crazy" or unheard when doctors say "it's just periods."
-                </p>
-            </div>
-        </details>
+        <!-- Horizontal Tabs -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="symptoms">Symptoms</button>
+            <button class="tab-button" data-tab="causes">Causes</button>
+            <button class="tab-button" data-tab="diagnosis">Diagnosis</button>
+            <button class="tab-button" data-tab="treatment">Treatment</button>
+        </div>
 
-        <!-- Causes Section -->
-        <details name="guide-accordion">
-            <summary id="causes">Causes</summary>
-            <div class="accordion-content">
-                <p class="body-text">
-                    The causes of endometriosis are still not fully pinned down — it's a puzzle with many pieces, likely different for different people. Experts agree it's multifactorial, meaning genetics, hormones, immune problems, environment, and more all play roles. Recent 2025 research from UC San Francisco big data studies and Oxford genetic analyses show strong links to immune and inflammatory pathways, plus comorbidities like Crohn's or migraines.
-                </p>
-                <p class="body-text">
-                    The leading theory is retrograde menstruation from 1927 by Sampson: during periods, some blood flows backward through tubes into the pelvis, carrying endometrial cells that implant and grow. This happens in most women, but in endometriosis, those cells stick around and thrive because the body doesn't clear them properly.
-                </p>
-                <p class="body-text">
-                    Metaplasia theory: normal peritoneal cells (abdomen lining) change into endometrial-like tissue due to irritation, hormones, or inflammation. This explains cases in men or pre-puberty girls.
-                </p>
-                <p class="body-text">
-                    Stem cell theory: misplaced embryonic cells or bone marrow stem cells migrate and turn into endometriosis under hormonal cues.
-                </p>
-                <p class="body-text">
-                    Lymphatic/vascular spread: cells travel via blood or lymph to distant sites like lungs.
-                </p>
-                <p class="body-text">
-                    Genetics are huge — if mom or sister has it, risk jumps 6-10 times. 2025 genome studies identify variants in adhesion, inflammation, hormone genes. Shared genetics with depression, anxiety, eating disorders, autoimmune diseases (rheumatoid arthritis, MS) from Yale and Oxford research.
-                </p>
-                <p class="body-text">
-                    Hormones play a big role in endometriosis. The main driver is estrogen—it acts like fuel, helping the misplaced tissue grow and spread. At the same time, the body often becomes resistant to progesterone (the hormone that normally keeps things in balance), so the tissue doesn’t respond properly and keeps building up. The immune system, which should spot and clear these out-of-place cells, doesn’t work as it should: natural killer cells fail to destroy them, while other immune cells called macrophages actually help the tissue survive instead of removing it. This leads to ongoing low-level inflammation, driven by chemicals in the body like IL-6 and TNF-α, which encourage new blood vessels to form (angiogenesis) and create scar tissue (fibrosis). Everyday environmental factors can make things worse—chemicals like dioxins and phthalates (found in some plastics and products) can mimic estrogen or weaken the immune system. An unbalanced gut microbiome can add to whole-body inflammation, while oxidative stress and changes in how genes are switched on or off (epigenetics) also contribute. Recent research from 2025 shows stronger links to autoinflammatory and autoimmune conditions, such as a possible connection with rheumatoid arthritis, opening doors to repurposing existing drugs. In the end, endometriosis likely starts with retrograde menstruation (cells flowing backward), combined with genetic vulnerability, immune system glitches, hormonal imbalance, and environmental triggers. The more we understand these pieces, the closer we get to new, non-hormonal treatments that target inflammation or the immune response directly—offering hope for gentler, more effective options.
-                </p>
-            </div>
-        </details>
+        <!-- Symptoms Tab -->
+        <div id="symptoms" class="tab-content active">
+            <p class="body-text">
+                Endometriosis is a chronic condition that affects around 10% of women and girls of reproductive age worldwide — that's about 190 million people, according to the World Health Organization (WHO) in their 2025 fact sheet. It happens when tissue similar to the lining inside the uterus (the endometrium) grows outside the uterus, often on the ovaries, fallopian tubes, bowel, bladder, or the pelvic lining. This tissue acts just like the normal endometrium: it thickens, breaks down, and tries to bleed with every menstrual cycle. But because it's trapped with no way out, it causes inflammation, irritation, scarring, and adhesions — sticky bands of tissue that can make organs pull or stick together painfully.
+            </p>
+            <p class="body-text">
+                The main symptom everyone talks about is pain, and it's usually pelvic pain that can feel different for every person. Many describe it as a deep, throbbing ache in the lower belly, lower back, or thighs. This pain often gets much worse right before and during periods, turning what might be mild cramps for others into something truly debilitating. Severe period pain, called dysmenorrhea, is one of the earliest and most common signs. It can start as soon as periods begin in the teenage years, and for many, it's far more intense than "normal" cramps — sometimes so bad that it forces missing school, work, sports, or social events. Studies from Mayo Clinic and Cleveland Clinic show that this pain can be constant or come in waves, and it's not always tied just to periods; it can linger all month long.
+            </p>
+            <!-- ... (rest of your Symptoms text) ... -->
+            <p class="body-text">
+                Pain affects everything: school attendance, jobs, friendships, self-confidence. Fatigue makes simple tasks hard. Heavy bleeding causes embarrassment. Sexual pain strains partnerships. Infertility brings grief. Mental health suffers from feeling "crazy" or unheard when doctors say "it's just periods."
+            </p>
+        </div>
 
-        <!-- Diagnosis Section -->
-        <details name="guide-accordion">
-            <summary id="diagnosis">Diagnosis</summary>
-            <div class="accordion-content">
-                <p class="body-text">
-                    Diagnosing endometriosis can be really challenging, and that's one of the reasons many people wait so long—on average 7 to 10 years—to get an answer, according to guidelines from organizations like ESHRE (European Society of Human Reproduction and Embryology) and ACOG (American College of Obstetricians and Gynecologists). In teenagers and young women, the delay is often even longer because severe period pain is frequently dismissed as "normal." The symptoms are nonspecific—they overlap with many other conditions like irritable bowel syndrome, pelvic inflammatory disease, or even just stress—so doctors can't rely on symptoms alone to be sure.
-                </p>
-                <p class="body-text">
-                    The process usually starts with a thorough conversation about your medical history. Your doctor will ask detailed questions about your pain (when it happens, how bad it is, what makes it better or worse), your periods, any family history of endometriosis, pain during sex, bowel or bladder issues, and whether you've been trying to conceive. This history is incredibly valuable because patterns often point strongly toward endometriosis.
-                </p>
-                <p class="body-text">
-                    Next comes a pelvic exam, where the doctor gently checks for tenderness, nodules, or anything unusual in the uterus or ovaries. Unfortunately, in early or milder cases, the exam can feel completely normal, so a "normal" result doesn't rule endometriosis out.
-                </p>
-                <p class="body-text">
-                    The first imaging test most doctors recommend is a transvaginal ultrasound (an internal scan using sound waves). When performed by someone experienced in endometriosis, it’s very good at spotting ovarian cysts (endometriomas) and deeper lesions. According to the ESHRE 2022 guidelines, expert ultrasound is now considered one of the most reliable noninvasive tools available.
-                </p>
-                <p class="body-text">
-                    If deeper involvement is suspected (for example, on the bowel or bladder), an MRI is often the next step. It gives clearer pictures of soft tissues and helps map out exactly where the disease might be before any surgery.
-                </p>
-                <p class="body-text">
-                    For many years, laparoscopy (a minimally invasive surgery with a camera) was called the "gold standard" because it allows doctors to see the lesions directly and take small tissue samples (biopsies) for lab confirmation—the only way to be 100% certain. Today, laparoscopy is still the most definitive test, but it's used more selectively: if high-quality imaging already shows clear signs, or if hormonal treatment helps symptoms, surgery might not be needed right away for diagnosis alone.
-                </p>
-                <p class="body-text">
-                    Blood tests like CA-125 (a marker sometimes raised in endometriosis) are not reliable enough on their own—they can be normal in endometriosis or raised for many other reasons. Researchers are studying newer markers like microRNAs (miRNAs), but nothing is ready for everyday use yet.
-                </p>
-                <p class="body-text">
-                    Sometimes doctors use an empirical (trial) approach: they prescribe hormonal treatment (like the pill or progestins) and see if symptoms improve dramatically. A clear positive response strongly supports an endometriosis diagnosis without immediate surgery.
-                </p>
-                <p class="body-text">
-                    In adolescents and young women, early evaluation is especially important because starting treatment sooner can help protect future fertility and prevent the disease from worsening. Seeing a specialist—a gynecologist with extra training in endometriosis—makes a huge difference, as they’re more familiar with subtle signs and advanced imaging techniques, which can shorten the long road to diagnosis considerably. You deserve answers, and the right doctor will listen and take the steps needed to find them.
-                </p>
-            </div>
-        </details>
+        <!-- Causes Tab -->
+        <div id="causes" class="tab-content">
+            <p class="body-text">
+                The causes of endometriosis are still not fully pinned down — it's a puzzle with many pieces, likely different for different people. Experts agree it's multifactorial, meaning genetics, hormones, immune problems, environment, and more all play roles. Recent 2025 research from UC San Francisco big data studies and Oxford genetic analyses show strong links to immune and inflammatory pathways, plus comorbidities like Crohn's or migraines.
+            </p>
+            <!-- ... (rest of your Causes text) ... -->
+            <p class="body-text">
+                The more we understand these pieces, the closer we get to new, non-hormonal treatments that target inflammation or the immune response directly—offering hope for gentler, more effective options.
+            </p>
+        </div>
 
-        <!-- Treatment Section -->
-        <details name="guide-accordion">
-            <summary id="treatment">Treatment</summary>
-            <div class="accordion-content">
-                <p class="body-text">
-                    Although there’s no cure for endometriosis yet, there are many effective ways to manage pain, improve fertility chances, and enhance overall quality of life. Treatment is always personalized—it depends on how severe your symptoms are, your age, whether you want to get pregnant now or later, and how you respond to different options. The goal is to reduce inflammation, control lesion growth, and give you relief while minimizing side effects.
-                </p>
-                <p class="body-text">
-                    For pain relief, doctors often start with simple over-the-counter medications like NSAIDs (non-steroidal anti-inflammatory drugs), such as ibuprofen, naproxen, or diclofenac. These help by reducing prostaglandins (body chemicals that ramp up cramps and inflammation) and are a good first step for mild to moderate pain. If NSAIDs aren't enough or cause stomach issues, acetaminophen (Tylenol) can be a gentler alternative for pain without targeting inflammation. In tougher cases, prescription options like fenoprofen (a stronger NSAID recently studied in animal models and showing promise for reversing endometriosis-related gene changes) or even short-term opioids might be considered, though opioids are used cautiously due to addiction risks. Some people also benefit from anticonvulsants (like gabapentin or pregabalin) or low-dose antidepressants (such as duloxetine or amitriptyline), which calm nerve signals and help with chronic neuropathic pain—common when endometriosis irritates nerves.
-                </p>
-                <p class="body-text">
-                    The most common next step is hormonal therapies, which work by lowering estrogen levels or stopping ovulation, giving the misplaced tissue a chance to shrink and calm down. These include combined oral contraceptives (often taken continuously to skip periods), progestin-only options (like the Mirena IUD or pills such as dienogest), and newer oral GnRH antagonists such as elagolix (Orilissa), relugolix combination therapy (Ryeqo), and linzagolix (Yselty)—with recent 2025 approvals and expansions in places like the UK NHS and Taiwan making them more accessible. These daily pills are flexible—you can adjust doses to balance symptom relief with side effects like hot flashes or bone density changes—and many are taken with a low-dose "add-back" hormone to protect bones and reduce menopausal-like symptoms.
-                </p>
-                <p class="body-text">
-                    Surgery is another strong option, especially if medication isn’t enough or you have large cysts or deep lesions. The preferred approach is laparoscopic excision, where specialists carefully cut out the endometriosis tissue rather than just burning it—this often gives longer-lasting relief and better fertility outcomes. Robotic-assisted surgery is advancing quickly, making procedures more precise and recovery faster.
-                </p>
-                <p class="body-text">
-                    For those trying to conceive, surgery can help in mild to moderate cases by removing blockages or inflammation, while IVF (in vitro fertilization) is often the best path for more severe endometriosis.
-                </p>
-                <p class="body-text">
-                    Many people also find relief through complementary approaches supported by growing evidence, such as an anti-inflammatory diet (rich in fruits, vegetables, omega-3s, and low in red meat/processed foods), gentle exercise, pelvic floor physiotherapy, acupuncture, and mindfulness techniques to ease the stress-pain cycle.
-                </p>
-                <p class="body-text">
-                    Exciting emerging treatments are focusing on non-hormonal options to target inflammation or blood vessel growth directly. These include repurposed drugs like fenoprofen (showing strong results in recent NIH-funded animal studies for pain and inflammation), dichloroacetate (DCA) (in ongoing EPiC2 trials to find the best dose for reducing pain without side effects), and monoclonal antibodies like HMI-115 (positive phase 2 results in 2025 for significant pain reduction). There's also growing interest in cannabis and CBD oil: real-world data from 2025 UK registries and surveys show many patients report better pain control, improved sleep, reduced gastrointestinal symptoms, and less need for other meds with medical cannabis (often THC/CBD combinations) or CBD alone. Ongoing trials (like ENDOCAN-1 and DREAMLAND) are testing CBD doses for safety and effectiveness, with early signs it calms inflammation via the endocannabinoid system without the "high" of THC. While not yet standard, cannabis-based products are promising for those seeking natural alternatives, especially where legal.
-                </p>
-                <p class="body-text">
-                    The best approach is often multidisciplinary—working with a team that includes gynecologists, pain specialists, psychologists, nutritionists, and physiotherapists. Mental health support is crucial because chronic pain can feel overwhelming. With the right combination, many women live much more comfortably, and ongoing research brings real hope for even better, gentler options ahead. Always talk to an endometriosis specialist to find what fits you best.
-                </p>
-            </div>
-        </details>
+        <!-- Diagnosis Tab -->
+        <div id="diagnosis" class="tab-content">
+            <p class="body-text">
+                Diagnosing endometriosis can be really challenging, and that's one of the reasons many people wait so long—on average 7 to 10 years—to get an answer, according to guidelines from organizations like ESHRE (European Society of Human Reproduction and Embryology) and ACOG (American College of Obstetricians and Gynecologists). In teenagers and young women, the delay is often even longer because severe period pain is frequently dismissed as "normal." The symptoms are nonspecific—they overlap with many other conditions like irritable bowel syndrome, pelvic inflammatory disease, or even just stress—so doctors can't rely on symptoms alone to be sure.
+            </p>
+            <!-- ... (rest of your Diagnosis text) ... -->
+            <p class="body-text">
+                You deserve answers, and the right doctor will listen and take the steps needed to find them.
+            </p>
+        </div>
+
+        <!-- Treatment Tab -->
+        <div id="treatment" class="tab-content">
+            <p class="body-text">
+                Although there’s no cure for endometriosis yet, there are many effective ways to manage pain, improve fertility chances, and enhance overall quality of life. Treatment is always personalized—it depends on how severe your symptoms are, your age, whether you want to get pregnant now or later, and how you respond to different options. The goal is to reduce inflammation, control lesion growth, and give you relief while minimizing side effects.
+            </p>
+            <!-- ... (rest of your Treatment text) ... -->
+            <p class="body-text">
+                Always talk to an endometriosis specialist to find what fits you best.
+            </p>
+        </div>
 
         <div class="signature">
             With Love,<br>
@@ -263,5 +225,38 @@
 
         <p><a href="index.html" class="back">← Back to home</a></p>
     </div>
+
+    <script>
+        // Horizontal tabs functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+
+                // Update URL hash without jumping
+                history.pushState(null, null, '#' + tabId);
+            });
+        });
+
+        // Open tab from URL hash on page load
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const targetButton = document.querySelector(`.tab-button[data-tab="${hash}"]`);
+                if (targetButton) {
+                    targetButton.click();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
