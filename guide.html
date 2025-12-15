@@ -34,11 +34,12 @@
         }
         h1 {
             font-size: 80px;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
         h2 {
             font-size: 50px;
-            margin: 80px 0 40px;
+            margin: 100px 0 40px;
+            scroll-margin-top: 120px; /* Ensures section scrolls into view nicely */
         }
         .section-text {
             font-family: 'Roboto', sans-serif;
@@ -52,8 +53,21 @@
             font-size: 28px;
             color: #e8ba66;
             text-decoration: underline;
-            margin-top: 80px;
+            margin-top: 100px;
             display: inline-block;
+        }
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 60px;
+            }
+            h2 {
+                font-size: 40px;
+            }
+            .section-text {
+                font-size: 20px;
+                padding: 0 10px;
+            }
         }
     </style>
 </head>
@@ -61,17 +75,25 @@
     <div class="content">
         <h1>Guide</h1>
 
-        <h2>Symptoms</h2>
-        <p class="section-text">Add your text about symptoms here...</p>
+        <h2 id="symptoms">Symptoms</h2>
+        <p class="section-text">
+            Add your detailed text about symptoms here...
+        </p>
 
-        <h2>Causes</h2>
-        <p class="section-text">Add your text about causes here...</p>
+        <h2 id="causes">Causes</h2>
+        <p class="section-text">
+            Add your detailed text about causes here...
+        </p>
 
-        <h2>Diagnosis</h2>
-        <p class="section-text">Add your text about diagnosis here...</p>
+        <h2 id="diagnosis">Diagnosis</h2>
+        <p class="section-text">
+            Add your detailed text about diagnosis here...
+        </p>
 
-        <h2>Treatment</h2>
-        <p class="section-text">Add your text about treatment here...</p>
+        <h2 id="treatment">Treatment</h2>
+        <p class="section-text">
+            Add your detailed text about treatment here...
+        </p>
 
         <a href="index.html" class="back">← Back to home</a>
     </div>
