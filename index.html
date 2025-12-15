@@ -93,7 +93,7 @@
             cursor: pointer;
         }
 
-        /* Click-to-open dropdown */
+        /* Dropdown styles */
         .dropdown {
             position: relative;
         }
@@ -112,17 +112,25 @@
             min-width: 220px;
             padding: 20px 0;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            z-index: 20; /* Higher than overlay */
+            z-index: 20;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-            pointer-events: auto; /* Ensure mouse clicks work on menu */
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            pointer-events: none; /* Disabled until menu is open */
         }
 
+        /* Open on hover (desktop) OR when .open class is added (mobile/click) */
+        .dropdown:hover .dropdown-menu,
         .dropdown.open .dropdown-menu {
             display: block;
             opacity: 1;
             visibility: visible;
+            pointer-events: auto; /* Enable clicks on menu items */
+        }
+
+        /* Optional subtle highlight when hovering the toggle */
+        .dropdown:hover > .dropdown-toggle {
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .dropdown-menu a {
@@ -132,11 +140,10 @@
             color: #e8ba66;
             font-weight: bold;
             text-decoration: none;
-            pointer-events: auto; /* Extra safety for links */
         }
 
         .dropdown-menu a:hover {
-            background: #f0f0f0 !important; /* Light gray shade on hover */
+            background: #f0f0f0;
         }
 
         /* Contact section */
@@ -206,18 +213,6 @@
             }
         }
     </style>
-    <script>
-        // Simple toggle - no interference with link clicks
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdown = document.querySelector('.dropdown');
-            const toggle = dropdown.querySelector('.dropdown-toggle');
-
-            toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                dropdown.classList.toggle('open');
-            });
-        });
-    </script>
 </head>
 <body>
 
@@ -258,6 +253,35 @@
             </p>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.dropdown');
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+
+            // Click support for touch/mobile devices
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent navigation to guide.html on tap
+                dropdown.classList.toggle('open');
+            });
+
+            // Close menu when clicking outside of it
+            document.addEventListener('click', function(e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                }
+            });
+
+            // Optional: small delay on mouse leave to make moving cursor to menu easier
+            dropdown.addEventListener('mouseleave', function() {
+                setTimeout(() => {
+                    if (!dropdown.matches(':hover')) {
+                        dropdown.classList.remove('open');
+                    }
+                }, 300);
+            });
+        });
+    </script>
 
 </body>
 </html>
