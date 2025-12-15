@@ -238,6 +238,36 @@
             transform: scale(1.08);
         }
 
+        /* NEW: Social fixed box (mirrored on the right) */
+        .social-fixed {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            transform: none;
+            z-index: 1000;
+            background: transparent;
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .social-text {
+            margin: 0 0 12px 0;
+            font-size: 28px;
+            color: #AA336A;
+            line-height: 1.2;
+        }
+
+        .social-fixed a img {
+            transition: transform 0.2s ease;
+        }
+
+        .social-fixed a img:hover {
+            transform: scale(1.08);
+        }
+
         /* ================= MOBILE ================= */
         @media (max-width: 500px) {
             header {
@@ -297,6 +327,21 @@
             }
 
             .donate-text {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            /* Mobile adjustment for the new social box (stacked below donate on small screens) */
+            .social-fixed {
+                bottom: 100px; /* Places it above the donate box on mobile */
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+                padding: 5px 5px;
+                border-radius: 15px;
+            }
+
+            .social-text {
                 font-size: 14px;
                 margin-bottom: 10px;
             }
@@ -385,6 +430,14 @@
             <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate with PayPal button" />
             <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
         </form>
+    </div>
+
+    <!-- NEW: X (Twitter) fixed box -->
+    <div class="social-fixed">
+        <p class="social-text">Follow on X</p>
+        <a href="https://x.com/Sophie_endolife" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/X_logo_2023_%28black%29.png" alt="Follow on X" width="60" height="60" style="border-radius: 10px;">
+        </a>
     </div>
 
     <script>
