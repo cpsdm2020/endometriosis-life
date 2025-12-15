@@ -377,6 +377,10 @@
                 width: 30%;
                 max-width: 60px;
                 transform: scale(0.5);  /* ← 50% scale only on mobile */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
             }
 
             .social-text, .instagram-text, .donate-text {
@@ -542,7 +546,7 @@
 
             document.addEventListener('click', e => {
                 if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(d => d.classList.remove('open'));
+                    dropdowns.forEach(d => d.classList.remove('open');
                 }
             });
         });
