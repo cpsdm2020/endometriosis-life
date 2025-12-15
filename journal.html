@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal - Endometriosis Life</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Square+Peg&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Shared base styles - same effect as index */
+        body {
+            margin: 0;
+            font-family: 'Square Peg', cursive;
+            background: url('back.jpeg') center/cover no-repeat fixed;
+            min-height: 100vh;
+            color: #e8ba66;
+            position: relative;
+            text-align: center;
+            padding: 100px 20px;
+        }
 
+        /* Same scroll effect: vibrant top → soft/pale bottom */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom,
+                rgba(255,255,255,0.00) 0%,
+                rgba(255,255,255,0.01) 20%,
+                rgba(255,255,255,0.15) 40%,
+                rgba(255,255,255,0.35) 60%,
+                rgba(255,255,255,0.55) 80%,
+                rgba(255,255,255,0.85) 100%
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 60px;
+            margin-bottom: 60px;
+        }
+
+        h1 a {
+            color: #e8ba66;
+            text-decoration: none;
+        }
+
+        .body-text {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            line-height: 1.8;
+            margin: 30px auto;
+            max-width: 700px;
+            font-weight: 400;
+            color: #e8ba66;
+        }
+
+        .signature {
+            font-size: 36px;
+            margin: 50px 0 80px 0;
+            line-height: 1.1;
+        }
+
+        a.back {
+            font-size: 24px;
+            color: #e8ba66;
+            text-decoration: underline;
+        }
+
+        .back-wrapper {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1><a href="index.html">Journal</a></h1>
+
+        <p class="body-text">
+            Welcome to your personal endometriosis journal — a safe space to track, reflect, and understand your body’s patterns over time.
+        </p>
+        <p class="body-text">
+            Living with endometriosis means symptoms can fluctuate dramatically from day to day, cycle to cycle. Keeping a consistent journal helps you identify triggers, notice improvements, and recognize what truly supports your well-being.
+        </p>
+        <p class="body-text">
+            Use this space to log your pain levels, energy, mood, sleep quality, diet, exercise, medications, and menstrual cycle details. Over time, patterns will emerge — insights that doctors often miss and that can empower your conversations with healthcare providers.
+        </p>
+        <p class="body-text">
+            You don’t have to do this perfectly. Even a few notes a week can make a difference. This journal is for you — a tool to reclaim awareness and control in a condition that often feels unpredictable.
+        </p>
+        <p class="body-text">
+            Be gentle with yourself as you track. Some days will be harder than others, and that’s okay. The act of listening to your body, day after day, is a powerful form of self-care.
+        </p>
+
+        <div class="signature">
+            With Love,<br>
+            Sophie
+        </div>
+
+        <p class="back-wrapper"><a href="index.html" class="back">← Back to home</a></p>
+    </div>
+</body>
+</html>
