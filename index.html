@@ -163,24 +163,31 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px 30px;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 18px 35px;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
             text-align: center;
+            max-width: 90%;
+        }
+
+        .donate-text {
+            margin: 0 0 12px 0;
+            font-size: 28px;
+            color: #3B3B3B;
+            line-height: 1.2;
         }
 
         .donate-fixed form {
             margin: 0;
         }
 
-        /* Optional: make the button slightly larger and add hover effect */
         .donate-fixed input[type="image"] {
             transition: transform 0.2s ease;
         }
 
         .donate-fixed input[type="image"]:hover {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         /* ================= MOBILE ================= */
@@ -210,10 +217,15 @@
                 display: none;
             }
 
-            /* Adjust donate button on mobile */
             .donate-fixed {
-                bottom: 20px;
-                padding: 12px 20px;
+                bottom: 15px;
+                padding: 14px 20px;
+                border-radius: 15px;
+            }
+
+            .donate-text {
+                font-size: 22px;
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -281,8 +293,9 @@
         </a>
     </section>
 
-    <!-- Fixed Donate Button at Bottom -->
+    <!-- Fixed Donate Button with Slogan -->
     <div class="donate-fixed">
+        <p class="donate-text">If this site has helped you, consider supporting it ❤️</p>
         <form action="https://www.paypal.com/donate" method="post" target="_top">
             <input type="hidden" name="hosted_button_id" value="ELEXPMBEHT7DG" />
             <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
@@ -292,24 +305,19 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Select ALL dropdowns
             const dropdowns = document.querySelectorAll('.dropdown');
 
             dropdowns.forEach(dropdown => {
                 const toggle = dropdown.querySelector('.dropdown-toggle');
 
-                // Click/touch support
                 toggle.addEventListener('click', e => {
                     e.preventDefault();
-                    // Close all others first
                     dropdowns.forEach(d => {
                         if (d !== dropdown) d.classList.remove('open');
                     });
-                    // Toggle current
                     dropdown.classList.toggle('open');
                 });
 
-                // Optional: delay close on mouse leave
                 dropdown.addEventListener('mouseleave', () => {
                     setTimeout(() => {
                         if (!dropdown.matches(':hover')) {
@@ -319,10 +327,9 @@
                 });
             });
 
-            // Close all dropdowns when clicking outside
             document.addEventListener('click', e => {
                 if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(d => d.classList.remove('open');
+                    dropdowns.forEach(d => d.classList.remove('open'));
                 }
             });
         });
