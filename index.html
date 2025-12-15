@@ -93,7 +93,7 @@
             cursor: pointer;
         }
 
-        /* Click-to-open dropdown */
+        /* Click-to-open dropdown - all links work */
         .dropdown {
             position: relative;
         }
@@ -126,16 +126,15 @@
 
         .dropdown-menu a {
             display: block;
-            padding: 15px 30px; /* Increased padding for better hover area */
+            padding: 12px 25px;
             font-size: 35px;
             color: #e8ba66;
             font-weight: bold;
             text-decoration: none;
-            transition: background 0.3s ease;
         }
 
         .dropdown-menu a:hover {
-            background: #f0f0f0 !important; /* Strong light shade on hover - same for all */
+            background: #f0f0f0;
         }
 
         /* Contact section */
@@ -206,13 +205,13 @@
         }
     </style>
     <script>
-        // Simple toggle - no interference with link clicks
+        // Simple toggle - no interference at all with links
         document.addEventListener('DOMContentLoaded', function() {
             const dropdown = document.querySelector('.dropdown');
             const toggle = dropdown.querySelector('.dropdown-toggle');
 
             toggle.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent navigating on toggle click
+                e.preventDefault(); // Only prevent the main link navigation
                 dropdown.classList.toggle('open');
             });
         });
