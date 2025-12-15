@@ -10,8 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
 
 <style>
-/* ================= BASE ================= */
-
 body {
     margin: 0;
     font-family: 'Square Peg', cursive;
@@ -20,31 +18,26 @@ body {
     color: #e8ba66;
 }
 
-/* Visual overlay only (never blocks clicks) */
+/* visual overlay only */
 .background-overlay {
     position: fixed;
     inset: 0;
-    background: linear-gradient(to bottom,
-        rgba(255,255,255,0.0) 0%,
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0) 0%,
         rgba(255,255,255,0.85) 100%
     );
     pointer-events: none;
     z-index: 0;
 }
 
-/* ================= LAYOUT ================= */
-
-header, section {
-    position: relative;
-    z-index: 10;
-}
-
 header {
-    min-height: 100vh;      /* CRITICAL FIX */
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     padding-top: 40px;
-    overflow: visible;      /* CRITICAL FIX */
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content {
@@ -55,14 +48,7 @@ header h1 {
     font-size: 205px;
     margin-bottom: 40px;
     font-weight: lighter;
-    text-shadow: 2px 2px 4px rgba(0,0,0,.5);
-}
-
-/* ================= NAV ================= */
-
-nav {
-    position: relative;
-    z-index: 100000; /* FORCE ABOVE HEADER */
+    line-height: 1;
 }
 
 nav ul {
@@ -74,38 +60,30 @@ nav ul {
 nav ul li {
     display: inline-block;
     margin: 0 20px;
-    position: relative;
 }
 
-nav ul li a {
+nav a {
     font-size: 35px;
     color: #e8ba66;
     text-decoration: none;
     font-weight: bold;
     padding: 15px 10px;
-    display: block;
-    cursor: pointer;
+    display: inline-block;
 }
 
-/* ================= DROPDOWN (FINAL) ================= */
+/* ===== DROPDOWN (PORTALLED) ===== */
 
 .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    position: fixed; /* 🔑 key */
     background: white;
     min-width: 260px;
     padding: 20px 0;
     box-shadow: 0 15px 30px rgba(0,0,0,.35);
-
     display: none;
-
-    z-index: 2147483647; /* MAX STACK */
-    pointer-events: auto;
+    z-index: 999999; /* top of world */
 }
 
-.dropdown.open .dropdown-menu {
+.dropdown-menu.open {
     display: block;
 }
 
@@ -122,30 +100,14 @@ nav ul li a {
     background: #f0f0f0;
 }
 
-/* ================= CONTACT ================= */
-
 #contact {
     text-align: center;
     padding: 150px 0;
 }
 
-/* ================= MOBILE ================= */
-
 @media (max-width: 768px) {
     header h1 {
         font-size: 80px;
-    }
-
-    nav ul {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .dropdown-menu {
-        position: static;
-        transform: none;
-        box-shadow: none;
     }
 }
 </style>
@@ -157,18 +119,12 @@ nav ul li a {
 
 <header>
     <div class="hero-content">
-        <h1>Endometriosis Life1</h1>
+        <h1>Endometriosis Life22</h1>
 
         <nav>
             <ul>
-                <li class="dropdown">
-                    <a href="guide.html" class="dropdown-toggle">Guide</a>
-                    <div class="dropdown-menu">
-                        <a href="guide.html#symptoms">Symptoms</a>
-                        <a href="guide.html#causes">Causes</a>
-                        <a href="guide.html#diagnosis">Diagnosis</a>
-                        <a href="guide.html#treatment">Treatment</a>
-                    </div>
+                <li>
+                    <a href="guide.html" id="guideToggle">Guide</a>
                 </li>
                 <li><a href="#diary">Diary</a></li>
                 <li><a href="#lifestyle">Lifestyle</a></li>
@@ -178,6 +134,14 @@ nav ul li a {
         </nav>
     </div>
 </header>
+
+<!-- DROPDOWN IS NOW OUTSIDE HEADER -->
+<div class="dropdown-menu" id="guideMenu">
+    <a href="guide.html#symptoms">Symptoms</a>
+    <a href="guide.html#causes">Causes</a>
+    <a href="guide.html#diagnosis">Diagnosis</a>
+    <a href="guide.html#treatment">Treatment</a>
+</div>
 
 <section id="contact">
     <p>We'd love to hear from you</p>
@@ -190,23 +154,29 @@ nav ul li a {
 </section>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const dropdown = document.querySelector('.dropdown');
-    const toggle = dropdown.querySelector('.dropdown-toggle');
+const toggle = document.getElementById('guideToggle');
+const menu = document.getElementById('guideMenu');
 
-    toggle.addEventListener('click', e => {
-        e.preventDefault();
-        dropdown.classList.toggle('open');
-    });
+toggle.addEventListener('click', e => {
+    e.preventDefault();
 
-    document.addEventListener('click', e => {
-        if (!dropdown.contains(e.target)) {
-            dropdown.classList.remove('open');
-        }
-    });
+    const rect = toggle.getBoundingClientRect();
+
+    menu.style.top = rect.bottom + 'px';
+    menu.style.left = rect.left + rect.width / 2 + 'px';
+    menu.style.transform = 'translateX(-50%)';
+
+    menu.classList.toggle('open');
+});
+
+document.addEventListener('click', e => {
+    if (!menu.contains(e.target) && e.target !== toggle) {
+        menu.classList.remove('open');
+    }
 });
 </script>
 
 </body>
 </html>
+
 
