@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifestyle - Endometriosis Life</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Square+Peg&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Shared base styles - same effect as index */
+        body {
+            margin: 0;
+            font-family: 'Square Peg', cursive;
+            background: url('back.jpeg') center/cover no-repeat fixed;
+            min-height: 100vh;
+            color: #e8ba66;
+            position: relative;
+            text-align: center;
+            padding: 100px 20px;
+        }
 
+        /* Same scroll effect: vibrant top → soft/pale bottom */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom,
+                rgba(255,255,255,0.00) 0%,
+                rgba(255,255,255,0.01) 20%,
+                rgba(255,255,255,0.15) 40%,
+                rgba(255,255,255,0.35) 60%,
+                rgba(255,255,255,0.55) 80%,
+                rgba(255,255,255,0.85) 100%
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 60px;
+            margin-bottom: 60px;
+        }
+
+        h1 a {
+            color: #e8ba66;
+            text-decoration: none;
+        }
+
+        .body-text {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            line-height: 1.8;
+            margin: 30px auto;
+            max-width: 700px;
+            font-weight: 400;
+            color: #e8ba66;
+        }
+
+        .signature {
+            font-size: 36px;
+            margin: 50px 0 80px 0;
+            line-height: 1.1;
+        }
+
+        a.back {
+            font-size: 24px;
+            color: #e8ba66;
+            text-decoration: underline;
+        }
+
+        .back-wrapper {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1><a href="index.html">Lifestyle</a></h1>
+
+        <p class="body-text">
+            Lifestyle changes have been one of the most powerful tools in managing my endometriosis — not as a cure, but as a way to reduce inflammation, balance hormones, and improve daily quality of life.
+        </p>
+        <p class="body-text">
+            Small, sustainable shifts in diet, movement, sleep, and stress management can make a profound difference over time. Anti-inflammatory foods, gentle exercise, restful routines, and mindfulness practices all play a role.
+        </p>
+        <p class="body-text">
+            This section shares what has worked for me and what research supports — from nourishing meal ideas to movement that honors your body’s limits, better sleep hygiene, and practical ways to lower chronic stress.
+        </p>
+        <p class="body-text">
+            There is no one-size-fits-all approach. Every body is different. The goal is to experiment kindly, listen deeply, and find what helps you feel stronger, calmer, and more in tune with yourself.
+        </p>
+        <p class="body-text">
+            You deserve to feel good in your body, even on hard days. These lifestyle tools are here to support you in building a life that feels lighter, despite endometriosis.
+        </p>
+
+        <div class="signature">
+            With Love,<br>
+            Sophie
+        </div>
+
+        <p class="back-wrapper"><a href="index.html" class="back">← Back to home</a></p>
+    </div>
+</body>
+</html>
