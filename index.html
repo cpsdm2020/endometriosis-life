@@ -1,191 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Endometriosis Life</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Endometriosis Life</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Square Peg', cursive;
-            background: url('back.jpeg') center/cover no-repeat fixed;
-            min-height: 100vh;
-            color: #e8ba66;
-            position: relative;
-            font-size: 15px;
-        }
+<style>
+/* ================= BACKGROUND LAYERS ================= */
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 110%;
-            background: linear-gradient(to bottom,
-                rgba(255, 255, 255, 0.00) 0%,
-                rgba(255, 255, 255, 0.01) 20%,
-                rgba(255, 255, 255, 0.15) 40%,
-                rgba(255, 255, 255, 0.35) 60%,
-                rgba(255, 255, 255, 0.55) 80%,
-                rgba(255, 255, 255, 0.85) 100%
-            );
-            pointer-events: none;
-            z-index: 0;
-        }
+body {
+    margin: 0;
+    font-family: 'Square Peg', cursive;
+    background: url('back.jpeg') center/cover no-repeat fixed;
+    min-height: 100vh;
+    color: #e8ba66;
+    font-size: 15px;
+}
 
-        header, section {
-            position: relative;
-            z-index: 1;
-        }
+/* Dedicated overlay layer */
+.background-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to bottom,
+        rgba(255,255,255,0.0) 0%,
+        rgba(255,255,255,0.01) 20%,
+        rgba(255,255,255,0.15) 40%,
+        rgba(255,255,255,0.35) 60%,
+        rgba(255,255,255,0.55) 80%,
+        rgba(255,255,255,0.85) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
 
-        header {
-            height: 100vh;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding-top: 40px;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
+/* ================= CONTENT ================= */
 
-        .hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
+header, section {
+    position: relative;
+    z-index: 10;
+}
 
-        header h1 {
-            font-size: 205px;
-            margin-bottom: 40px;
-            font-weight: lighter;
-            color: #e8ba66;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            letter-spacing: -2px;
-        }
+header {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 10px 0 0;
-        }
+.hero-content {
+    text-align: center;
+}
 
-        nav ul li {
-            display: inline-block;
-            margin: 0 20px;
-            position: relative;
-        }
+header h1 {
+    font-size: 205px;
+    margin-bottom: 40px;
+    font-weight: lighter;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
 
-        nav ul li a {
-            font-size: 35px;
-            text-decoration: none;
-            color: #e8ba66;
-            font-weight: bold;
-            display: block;
-            padding: 15px 10px;
-            cursor: pointer;
-        }
+/* ================= NAV ================= */
 
-        /* ===================== DROPDOWN FIX ===================== */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-        .dropdown {
-            position: relative;
-        }
+nav ul li {
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
 
-        .dropdown-toggle {
-            cursor: pointer;
-            position: relative;
-        }
+nav ul li a {
+    font-size: 35px;
+    color: #e8ba66;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px 10px;
+    display: block;
+}
 
-        .dropdown-toggle::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -40px;
-            width: 100%;
-            height: 40px;
-            background: transparent;
-        }
+/* ================= DROPDOWN (HARD FIX) ================= */
 
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            min-width: 220px;
-            padding: 20px 0;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            z-index: 20;
+.dropdown {
+    position: relative;
+}
 
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-        }
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    min-width: 240px;
+    padding: 20px 0;
+    box-shadow: 0 15px 30px rgba(0,0,0,.35);
+    z-index: 9999; /* absolutely on top */
 
-        .dropdown:hover .dropdown-menu,
-        .dropdown.open .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-        }
+    display: none;
+}
 
-        .dropdown-menu a {
-            display: block;
-            padding: 12px 25px;
-            font-size: 35px;
-            color: #e8ba66;
-            font-weight: bold;
-            text-decoration: none;
-        }
+.dropdown:hover .dropdown-menu,
+.dropdown.open .dropdown-menu {
+    display: block;
+}
 
-        .dropdown-menu a:hover {
-            background: #f0f0f0;
-        }
+/* KEY: keep hover alive */
+.dropdown-menu:hover {
+    display: block;
+}
 
-        /* ======================================================== */
+.dropdown-menu a {
+    display: block;
+    padding: 15px 25px;
+    font-size: 35px;
+    color: #e8ba66;
+    text-decoration: none;
+    white-space: nowrap;
+}
 
-        #contact {
-            text-align: center;
-            margin-top: -100px;
-            padding-top: 100px;
-            padding-bottom: 100px;
-        }
+.dropdown-menu a:hover {
+    background: #f0f0f0;
+}
 
-        #contact p {
-            margin: 0;
-            font-size: 8px;
-        }
+/* ================= CONTACT ================= */
 
-        #contact p:first-child {
-            margin-bottom: 20px;
-            font-size: 25px;
-        }
+#contact {
+    text-align: center;
+    padding: 150px 0;
+}
 
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 80px;
-            }
+/* ================= MOBILE ================= */
 
-            nav ul {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 80px;
+    }
 
-            .dropdown-menu {
-                position: static;
-                transform: none;
-            }
-        }
-    </style>
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+    }
+}
+</style>
 </head>
 
 <body>
+
+<div class="background-overlay"></div>
 
 <header>
     <div class="hero-content">
@@ -221,23 +195,17 @@
 </section>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const dropdown = document.querySelector('.dropdown');
-    const toggle = dropdown.querySelector('.dropdown-toggle');
-
-    toggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        dropdown.classList.toggle('open');
+document.addEventListener('click', e => {
+    document.querySelectorAll('.dropdown').forEach(d => {
+        if (!d.contains(e.target)) d.classList.remove('open');
     });
+});
 
-    document.addEventListener('click', function (e) {
-        if (!dropdown.contains(e.target)) {
-            dropdown.classList.remove('open');
-        }
-    });
+document.querySelector('.dropdown-toggle').addEventListener('click', e => {
+    e.preventDefault();
+    e.target.parentElement.classList.toggle('open');
 });
 </script>
 
 </body>
 </html>
-
