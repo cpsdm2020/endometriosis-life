@@ -80,6 +80,7 @@
         nav ul li {
             display: inline-block;
             margin: 0 20px;
+            position: relative;
         }
 
         nav ul li a {
@@ -89,20 +90,20 @@
             font-weight: bold;
             display: block;
             padding: 15px 10px;
+            cursor: pointer;
         }
 
-        /* New stable dropdown - no gap issue */
+        /* Click-to-open dropdown - no hover problems */
         .dropdown {
             position: relative;
-            display: inline-block;
         }
 
-        .dropdown > a {
-            position: relative;
-            z-index: 11;
+        .dropdown-toggle {
+            cursor: pointer;
         }
 
         .dropdown-menu {
+            display: none;
             position: absolute;
             top: 100%;
             left: 50%;
@@ -111,13 +112,14 @@
             min-width: 220px;
             padding: 20px 0;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 10;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.4s ease, visibility 0.4s ease; /* Slow smooth fade */
-            z-index: 10;
         }
 
-        .dropdown:hover .dropdown-menu {
+        .dropdown.open .dropdown-menu {
+            display: block;
             opacity: 1;
             visibility: visible;
         }
@@ -186,14 +188,6 @@
                 background: white;
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
                 padding: 10px 0;
-                opacity: 1;
-                visibility: visible;
-                display: none;
-            }
-
-            .dropdown:active .dropdown-menu,
-            .dropdown:focus-within .dropdown-menu {
-                display: block;
             }
 
             #contact {
@@ -210,6 +204,29 @@
             }
         }
     </style>
+    <script>
+        // Simple JS to toggle dropdown on click (closes when clicking elsewhere)
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.dropdown');
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', function() {
+                dropdown.classList.remove('open');
+            });
+
+            // Prevent close when clicking inside dropdown
+            dropdown.querySelector('.dropdown-menu').addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -219,7 +236,7 @@
             <nav>
                 <ul>
                     <li class="dropdown">
-                        <a href="guide.html">Guide</a>
+                        <a href="guide.html" class="dropdown-toggle">Guide</a>
                         <div class="dropdown-menu">
                             <a href="guide.html#symptoms">Symptoms</a>
                             <a href="guide.html#causes">Causes</a>
