@@ -205,17 +205,17 @@
         }
     </style>
     <script>
-        // Toggle dropdown on click - all links work perfectly
+        // Toggle dropdown on click - all links work
         document.addEventListener('DOMContentLoaded', function() {
             const dropdown = document.querySelector('.dropdown');
             const toggle = dropdown.querySelector('.dropdown-toggle');
 
             toggle.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent going to guide.html
+                e.preventDefault();
                 dropdown.classList.toggle('open');
             });
 
-            // Close when clicking outside
+            // Close only when clicking completely outside the dropdown
             document.addEventListener('click', function(e) {
                 if (!dropdown.contains(e.target)) {
                     dropdown.classList.remove('open');
