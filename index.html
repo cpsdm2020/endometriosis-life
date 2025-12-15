@@ -93,7 +93,7 @@
             cursor: pointer;
         }
 
-        /* Click-to-open dropdown - no hover problems */
+        /* Click-to-open dropdown - all options clickable */
         .dropdown {
             position: relative;
         }
@@ -115,7 +115,7 @@
             z-index: 10;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease; /* Slow smooth fade */
+            transition: opacity 0.4s ease, visibility 0.4s ease;
         }
 
         .dropdown.open .dropdown-menu {
@@ -205,26 +205,24 @@
         }
     </style>
     <script>
-        // Simple JS to toggle dropdown on click (closes when clicking elsewhere)
+        // Toggle dropdown on click - all links work
         document.addEventListener('DOMContentLoaded', function() {
             const dropdown = document.querySelector('.dropdown');
             const toggle = dropdown.querySelector('.dropdown-toggle');
 
             toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+                e.preventDefault(); // Prevent going to guide.html on toggle click
                 dropdown.classList.toggle('open');
             });
 
             // Close when clicking outside
-            document.addEventListener('click', function() {
-                dropdown.classList.remove('open');
+            document.addEventListener('click', function(e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                }
             });
 
-            // Prevent close when clicking inside dropdown
-            dropdown.querySelector('.dropdown-menu').addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
+            // Do NOT stop propagation on dropdown-menu clicks - allows links to work
         });
     </script>
 </head>
