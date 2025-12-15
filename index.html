@@ -35,15 +35,8 @@
                 rgba(255, 255, 255, 0.55) 80%,
                 rgba(255, 255, 255, 0.85) 100%
             );
-            pointer-events: auto; /* Allow clicks normally */
+            pointer-events: none; /* Critical: overlay does not block mouse clicks */
             z-index: 0;
-            transition: pointer-events 0s;
-        }
-
-        /* When dropdown is open, ignore clicks on overlay so menu is clickable */
-        .dropdown.open ~ body::before,
-        .dropdown.open + body::before {
-            pointer-events: none;
         }
 
         header, section {
@@ -119,10 +112,11 @@
             min-width: 220px;
             padding: 20px 0;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            z-index: 10;
+            z-index: 20; /* Higher than overlay */
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.4s ease, visibility 0.4s ease;
+            pointer-events: auto; /* Ensure mouse clicks work on menu */
         }
 
         .dropdown.open .dropdown-menu {
@@ -138,6 +132,7 @@
             color: #e8ba66;
             font-weight: bold;
             text-decoration: none;
+            pointer-events: auto; /* Extra safety for links */
         }
 
         .dropdown-menu a:hover {
