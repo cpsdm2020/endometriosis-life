@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Square+Peg&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Shared base styles - same effect as index */
+        /* Identical styles to guide.html */
         body {
             margin: 0;
             font-family: 'Square Peg', cursive;
@@ -20,18 +20,17 @@
             padding: 100px 20px;
         }
 
-        /* Same scroll effect: vibrant top → soft/pale bottom */
         body::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to bottom,
-                rgba(255,255,255,0.00) 0%,
-                rgba(255,255,255,0.01) 20%,
-                rgba(255,255,255,0.15) 40%,
-                rgba(255,255,255,0.35) 60%,
-                rgba(255,255,255,0.55) 80%,
-                rgba(255,255,255,0.85) 100%
+                rgba(255, 255, 255, 0.00) 0%,
+                rgba(255, 255, 255, 0.01) 20%,
+                rgba(255, 255, 255, 0.15) 40%,
+                rgba(255, 255, 255, 0.35) 60%,
+                rgba(255, 255, 255, 0.55) 80%,
+                rgba(255, 255, 255, 0.85) 100%
             );
             pointer-events: none;
             z-index: 0;
@@ -40,18 +39,66 @@
         .content {
             position: relative;
             z-index: 1;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         h1 {
             font-size: 60px;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         h1 a {
             color: #3B3B3B;
             text-decoration: none;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+            border-bottom: 2px solid rgba(232, 186, 102, 0.3);
+            padding-bottom: 20px;
+        }
+
+        .tab-button {
+            font-size: 20px;
+            background: none;
+            border: none;
+            color: #3B3B3B;
+            cursor: pointer;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab-button:hover {
+            color: #fff;
+        }
+
+        .tab-button.active {
+            font-weight: bold;
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -22px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #3B3B3B;
+        }
+
+        .tab-content {
+            display: none;
+            text-align: left;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         .body-text {
@@ -66,7 +113,7 @@
 
         .signature {
             font-size: 36px;
-            margin: 50px 0 80px 0;
+            margin: 80px 0;
             line-height: 1.1;
         }
 
@@ -74,40 +121,127 @@
             font-size: 24px;
             color: #3B3B3B;
             text-decoration: underline;
+            margin-top: 80px;
+            display: inline-block;
         }
 
-        .back-wrapper {
-            margin-top: 40px;
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 50px;
+                margin-bottom: 50px;
+            }
+
+            .tabs {
+                gap: 20px;
+                padding-bottom: 15px;
+            }
+
+            .tab-button {
+                font-size: 15px;
+                padding: 8px 12px;
+            }
+
+            .tab-button.active::after {
+                bottom: -17px;
+                height: 3px;
+            }
+
+            .body-text {
+                font-size: 18px;
+                padding: 0 10px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="content">
         <p><a href="index.html" class="back">← Back to home</a></p>
-        <h1><a href="index.html">Lifestyle</a></h1>
 
-        <p class="body-text">
-            Lifestyle changes have been one of the most powerful tools in managing my endometriosis — not as a cure, but as a way to reduce inflammation, balance hormones, and improve daily quality of life.
-        </p>
-        <p class="body-text">
-            Small, sustainable shifts in diet, movement, sleep, and stress management can make a profound difference over time. Anti-inflammatory foods, gentle exercise, restful routines, and mindfulness practices all play a role.
-        </p>
-        <p class="body-text">
-            This section shares what has worked for me and what research supports — from nourishing meal ideas to movement that honors your body’s limits, better sleep hygiene, and practical ways to lower chronic stress.
-        </p>
-        <p class="body-text">
-            There is no one-size-fits-all approach. Every body is different. The goal is to experiment kindly, listen deeply, and find what helps you feel stronger, calmer, and more in tune with yourself.
-        </p>
-        <p class="body-text">
-            You deserve to feel good in your body, even on hard days. These lifestyle tools are here to support you in building a life that feels lighter, despite endometriosis.
-        </p>
+        <h1>Lifestyle</h1>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="diet">Diet Tips</button>
+            <button class="tab-button" data-tab="exercise">Exercise</button>
+            <button class="tab-button" data-tab="sleep">Sleep</button>
+            <button class="tab-button" data-tab="stress">Stress Management</button>
+        </div>
+
+        <div id="diet" class="tab-content active">
+            <p class="body-text">
+                Lifestyle changes have been one of the most powerful tools in managing my endometriosis — not as a cure, but as a way to reduce inflammation, balance hormones, and improve daily quality of life.
+            </p>
+            <p class="body-text">
+                Small, sustainable shifts in diet, movement, sleep, and stress management can make a profound difference over time. Anti-inflammatory foods, gentle exercise, restful routines, and mindfulness practices all play a role.
+            </p>
+            <p class="body-text">
+                This section shares what has worked for me and what research supports — from nourishing meal ideas to movement that honors your body’s limits, better sleep hygiene, and practical ways to lower chronic stress.
+            </p>
+            <!-- Add more specific diet content here if you have it -->
+        </div>
+
+        <div id="exercise" class="tab-content">
+            <p class="body-text">
+                Gentle, regular movement can help reduce pain and inflammation while improving mood and energy. Activities like walking, yoga, swimming, or Pilates are often recommended because they are low-impact and support pelvic health.
+            </p>
+            <!-- Add your exercise-specific content -->
+        </div>
+
+        <div id="sleep" class="tab-content">
+            <p class="body-text">
+                Good sleep is essential for healing and hormone balance. Creating a calming bedtime routine, keeping a consistent schedule, and optimizing your sleep environment can make a big difference.
+            </p>
+            <!-- Add your sleep-specific content -->
+        </div>
+
+        <div id="stress" class="tab-content">
+            <p class="body-text">
+                Chronic stress can worsen endometriosis symptoms by increasing inflammation and disrupting hormones. Practices like meditation, deep breathing, journaling, or therapy can help manage stress and improve overall well-being.
+            </p>
+            <!-- Add your stress management content -->
+        </div>
 
         <div class="signature">
             With Love,<br>
             Sophie
         </div>
 
-        <p class="back-wrapper"><a href="index.html" class="back">← Back to home</a></p>
+        <p><a href="index.html" class="back">← Back to home</a></p>
     </div>
+
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+
+                const url = new URL(window.location);
+                url.searchParams.set('tab', tabId);
+                history.pushState(null, '', url);
+            });
+        });
+
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tab = urlParams.get('tab');
+
+            if (tab) {
+                const targetButton = document.querySelector(`.tab-button[data-tab="${tab}"]`);
+                if (targetButton) {
+                    document.querySelector('.tab-button.active').classList.remove('active');
+                    document.querySelector('.tab-content.active').classList.remove('active');
+
+                    targetButton.classList.add('active');
+                    document.getElementById(tab).classList.add('active');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
