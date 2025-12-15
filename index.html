@@ -89,7 +89,7 @@
             color: #e8ba66;
             font-weight: bold;
             display: block;
-            padding: 10px 0; /* Adds clickable/touchable area */
+            padding: 15px 10px; /* Larger hover area on main link */
         }
 
         /* Dropdown for Guide - stable on hover */
@@ -99,17 +99,12 @@
 
         .dropdown:hover .dropdown-menu {
             display: block;
-            opacity: 1;
-            visibility: visible;
         }
 
         .dropdown-menu {
-            display: block;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 2s ease, visibility 2s ease; /* Smooth + delay */
+            display: none;
             position: absolute;
-            top: 100%;
+            top: calc(100% + 8px); /* Small gap bridged by hover */
             left: 50%;
             transform: translateX(-50%);
             background: white;
@@ -119,12 +114,23 @@
             z-index: 10;
         }
 
+        /* Invisible buffer to prevent disappearance when moving mouse down */
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 15px; /* Bridge the gap */
+            background: transparent;
+        }
+
         .dropdown-menu a {
             display: block;
             padding: 12px 25px;
             font-size: 35px;
             color: #e8ba66;
-            font-weight: none;
+            font-weight: bold; /* Fixed from 'none' */
             text-decoration: none;
         }
 
@@ -183,8 +189,6 @@
                 background: white;
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
                 padding: 10px 0;
-                opacity: 1;
-                visibility: visible;
                 display: none;
             }
 
