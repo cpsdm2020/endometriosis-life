@@ -246,39 +246,46 @@
     </div>
 
     <script>
+        // Get all buttons and contents once
         const tabButtons = document.querySelectorAll('.tab-button');
         const tabContents = document.querySelectorAll('.tab-content');
 
+        // Function to activate a specific tab
+        function activateTab(tabId) {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            const targetButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+            const targetContent = document.getElementById(tabId);
+
+            if (targetButton && targetContent) {
+                targetButton.classList.add('active');
+                targetContent.classList.add('active');
+            }
+        }
+
+        // Click handler for tabs
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-
-                button.classList.add('active');
                 const tabId = button.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
+                activateTab(tabId);
 
+                // Update URL with query parameter
                 const url = new URL(window.location);
                 url.searchParams.set('tab', tabId);
                 history.pushState(null, '', url);
             });
         });
 
-        // Fixed: Use querySelectorAll for reliability
+        // On page load: check for ?tab= parameter and activate correct tab
         window.addEventListener('load', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const tab = urlParams.get('tab');
 
             if (tab) {
-                const targetButton = document.querySelector(`.tab-button[data-tab="${tab}"]`);
-                if (targetButton) {
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-
-                    targetButton.classList.add('active');
-                    document.getElementById(tab).classList.add('active');
-                }
+                activateTab(tab);
             }
+            // If no parameter, default is Mindset (already active in HTML)
         });
     </script>
 </body>
