@@ -11,7 +11,6 @@
 
     <style>
         /* ================= BASE ================= */
-
         body {
             margin: 0;
             font-family: 'Square Peg', cursive;
@@ -20,7 +19,6 @@
             color: #3B3B3B;
         }
 
-        /* Visual overlay only (never blocks clicks) */
         .background-overlay {
             position: fixed;
             inset: 0;
@@ -37,7 +35,6 @@
         }
 
         /* ================= LAYOUT ================= */
-
         header, section {
             position: relative;
             z-index: 10;
@@ -46,15 +43,14 @@
         header {
             min-height: 100vh;
             display: flex;
-            align-items: flex-start;     /* Changed: aligns content to the top */
+            align-items: flex-start;
             justify-content: center;
-            padding: 0px 0px 0;        /* Adds space from the very top */
+            padding: 40px 20px 0;
             overflow: visible;
         }
 
         .hero-content {
             text-align: center;
-            /* padding-top removed - no longer needed */
         }
 
         header h1 {
@@ -65,8 +61,46 @@
             letter-spacing: -2px;  
         }
 
-        /* ================= NAV ================= */
+        /* ================= NEW: THREE BOXES ================= */
+        .boxes-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 80px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
 
+        .box {
+            width: 280px;
+            height: 380px;
+            border: 8px solid #e63946;
+            border-radius: 20px;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(230, 57, 70, 0.3);
+        }
+
+        .box h2 {
+            font-size: 62px;
+            color: #e63946;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* ================= NAV ================= */
         nav {
             position: relative;
             z-index: 100000;
@@ -94,17 +128,11 @@
             cursor: pointer;
         }
 
-        /* ================= DROPDOWN (SAME FOR ALL) ================= */
-
+        /* ================= DROPDOWN ================= */
         .dropdown {
             position: relative;
         }
 
-        .dropdown-toggle {
-            position: relative;
-        }
-
-        /* Invisible bridge to eliminate hover gap */
         .dropdown-toggle::after {
             content: '';
             position: absolute;
@@ -129,7 +157,6 @@
             pointer-events: auto;
         }
 
-        /* Open on hover or when .open */
         .dropdown:hover .dropdown-menu,
         .dropdown.open .dropdown-menu {
             display: block;
@@ -149,22 +176,20 @@
         }
 
         /* ================= CONTACT ================= */
-
         #contact {
             text-align: center;
             padding: 150px 0;
             font-size: 25px;
         }
 
-        /* ================= DONATE BUTTON - FIXED BOTTOM ================= */
-
+        /* ================= DONATE BUTTON ================= */
         .donate-fixed {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
-            background: transparent/*rgba(255, 255, 255, 0.95)*/;
+            background: transparent;
             padding: 8px 15px;
             border-radius: 20px;
             box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
@@ -179,10 +204,6 @@
             line-height: 1.2;
         }
 
-        .donate-fixed form {
-            margin: 0;
-        }
-
         .donate-fixed input[type="image"] {
             transition: transform 0.2s ease;
         }
@@ -192,22 +213,33 @@
         }
 
         /* ================= MOBILE ================= */
-
         @media (max-width: 500px) {
             header {
-                padding-top: 20px;       /* Comfortable top space on mobile */
+                padding-top: 20px;
             }
 
             header h1 {
                 font-size: 60px;
             }
 
-            .hero-content {
-                padding-top: 0;          /* No extra padding needed */
-            }
-
             header h1 {
                 margin-bottom: 15px;
+            }
+
+            .boxes-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+                margin-top: 50px;
+            }
+
+            .box {
+                width: 260px;
+                height: 320px;
+            }
+
+            .box h2 {
+                font-size: 50px;
             }
 
             nav ul {
@@ -243,9 +275,8 @@
         }
     </style>
 </head>
-
 <body>
-    
+
     <div class="background-overlay"></div>
 
     <header>
@@ -292,26 +323,38 @@
                         </div>
                     </li>
 
-                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="about.html">About</a></li>
                 </ul>
             </nav>
+
+            <!-- NEW: Three Boxes -->
+            <div class="boxes-container">
+                <a href="news.html" class="box">
+                    <h2>News</h2>
+                </a>
+                <a href="book.html" class="box">
+                    <h2>My Upcoming Book</h2>
+                </a>
+                <a href="curiosities.html" class="box">
+                    <h2>Curiosities</h2>
+                </a>
+            </div>
         </div>
     </header>
 
     <section id="contact">
-        I'd love to hear from you<br>
+        We'd love to hear from you<br>
         <a href="mailto:info@endometriosis-life.com"
            style="font-family: 'Roboto', sans-serif; font-size: 10px; color: #3B3B3B;">
             info@endometriosis-life.com
         </a>
     </section>
 
-    <!-- Fixed Donate Button with Slogan -->
     <div class="donate-fixed">
-        <p class="donate-text">Support me and receive a gift ❤️</p>
+        <p class="donate-text">If this site has helped you, consider supporting it ❤️</p>
         <form action="https://www.paypal.com/donate" method="post" target="_top">
             <input type="hidden" name="hosted_button_id" value="ELEXPMBEHT7DG" />
-            <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate with PayPal button" />
             <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
         </form>
     </div>
@@ -347,6 +390,5 @@
             });
         });
     </script>
-
 </body>
 </html>
