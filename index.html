@@ -93,7 +93,7 @@
             cursor: pointer;
         }
 
-        /* Click-to-open dropdown - all options clickable */
+        /* Click-to-open dropdown */
         .dropdown {
             position: relative;
         }
@@ -205,13 +205,13 @@
         }
     </style>
     <script>
-        // Toggle dropdown on click - all links work
+        // Toggle dropdown on click - all links work perfectly
         document.addEventListener('DOMContentLoaded', function() {
             const dropdown = document.querySelector('.dropdown');
             const toggle = dropdown.querySelector('.dropdown-toggle');
 
             toggle.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent going to guide.html on toggle click
+                e.preventDefault(); // Prevent going to guide.html
                 dropdown.classList.toggle('open');
             });
 
@@ -221,8 +221,6 @@
                     dropdown.classList.remove('open');
                 }
             });
-
-            // Do NOT stop propagation on dropdown-menu clicks - allows links to work
         });
     </script>
 </head>
