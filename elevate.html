@@ -8,8 +8,148 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Square+Peg&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Identical styles to guide.html */
-        /* (Same full <style> block as above) */
+        body {
+            margin: 0;
+            font-family: 'Square Peg', cursive;
+            background: url('back.jpeg') center/cover no-repeat fixed;
+            min-height: 100vh;
+            color: #3B3B3B;
+            position: relative;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom,
+                rgba(255, 255, 255, 0.00) 0%,
+                rgba(255, 255, 255, 0.01) 20%,
+                rgba(255, 255, 255, 0.15) 40%,
+                rgba(255, 255, 255, 0.35) 60%,
+                rgba(255, 255, 255, 0.55) 80%,
+                rgba(255, 255, 255, 0.85) 100%
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 60px;
+            margin-bottom: 80px;
+        }
+
+        h1 a {
+            color: #3B3B3B;
+            text-decoration: none;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+            border-bottom: 2px solid rgba(232, 186, 102, 0.3);
+            padding-bottom: 20px;
+        }
+
+        .tab-button {
+            font-size: 20px;
+            background: none;
+            border: none;
+            color: #3B3B3B;
+            cursor: pointer;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab-button:hover {
+            color: #fff;
+        }
+
+        .tab-button.active {
+            font-weight: bold;
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -22px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #3B3B3B;
+        }
+
+        .tab-content {
+            display: none;
+            text-align: left;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .body-text {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            line-height: 1.8;
+            margin: 30px auto;
+            max-width: 700px;
+            font-weight: 400;
+            color: #3B3B3B;
+        }
+
+        .signature {
+            font-size: 36px;
+            margin: 80px 0;
+            line-height: 1.1;
+        }
+
+        a.back {
+            font-size: 24px;
+            color: #3B3B3B;
+            text-decoration: underline;
+            margin-top: 80px;
+            display: inline-block;
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 50px;
+                margin-bottom: 50px;
+            }
+
+            .tabs {
+                gap: 20px;
+                padding-bottom: 15px;
+            }
+
+            .tab-button {
+                font-size: 15px;
+                padding: 8px 12px;
+            }
+
+            .tab-button.active::after {
+                bottom: -17px;
+                height: 3px;
+            }
+
+            .body-text {
+                font-size: 18px;
+                padding: 0 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -32,28 +172,69 @@
             <p class="body-text">
                 This space is dedicated to lifting you up: mindset shifts, stories of resilience, community connection, advocacy, and inspiration that remind you of your strength.
             </p>
-            <!-- Add more mindset-specific content -->
+            <p class="body-text">
+                Here you’ll find encouragement to reframe challenges, tools to cultivate inner peace, ways to connect with others who understand, and motivation to advocate for yourself and others.
+            </p>
+            <p class="body-text">
+                Living with a chronic illness asks so much of us. But it can also awaken deep compassion, courage, and purpose. You are more than your diagnosis. You are powerful, worthy, and capable of a meaningful, vibrant life.
+            </p>
+            <p class="body-text">
+                Let this be a reminder: you are not alone, and you are allowed to thrive — not just survive.
+            </p>
         </div>
 
         <div id="community" class="tab-content">
             <p class="body-text">
-                You are not alone. Connecting with others who understand your experience can be incredibly healing and empowering.
+                Endometriosis can feel heavy — physically, emotionally, and mentally. But it does not define your worth, your potential, or your capacity for joy.
             </p>
-            <!-- Add community content -->
+            <p class="body-text">
+                This space is dedicated to lifting you up: mindset shifts, stories of resilience, community connection, advocacy, and inspiration that remind you of your strength.
+            </p>
+            <p class="body-text">
+                Here you’ll find encouragement to reframe challenges, tools to cultivate inner peace, ways to connect with others who understand, and motivation to advocate for yourself and others.
+            </p>
+            <p class="body-text">
+                Living with a chronic illness asks so much of us. But it can also awaken deep compassion, courage, and purpose. You are more than your diagnosis. You are powerful, worthy, and capable of a meaningful, vibrant life.
+            </p>
+            <p class="body-text">
+                Let this be a reminder: you are not alone, and you are allowed to thrive — not just survive.
+            </p>
         </div>
 
         <div id="advocacy" class="tab-content">
             <p class="body-text">
-                Speaking up for yourself and others helps drive awareness, research, and better care.
+                Endometriosis can feel heavy — physically, emotionally, and mentally. But it does not define your worth, your potential, or your capacity for joy.
             </p>
-            <!-- Add advocacy content -->
+            <p class="body-text">
+                This space is dedicated to lifting you up: mindset shifts, stories of resilience, community connection, advocacy, and inspiration that remind you of your strength.
+            </p>
+            <p class="body-text">
+                Here you’ll find encouragement to reframe challenges, tools to cultivate inner peace, ways to connect with others who understand, and motivation to advocate for yourself and others.
+            </p>
+            <p class="body-text">
+                Living with a chronic illness asks so much of us. But it can also awaken deep compassion, courage, and purpose. You are more than your diagnosis. You are powerful, worthy, and capable of a meaningful, vibrant life.
+            </p>
+            <p class="body-text">
+                Let this be a reminder: you are not alone, and you are allowed to thrive — not just survive.
+            </p>
         </div>
 
         <div id="inspiration" class="tab-content">
             <p class="body-text">
-                Stories of hope, courage, and thriving despite challenges.
+                Endometriosis can feel heavy — physically, emotionally, and mentally. But it does not define your worth, your potential, or your capacity for joy.
             </p>
-            <!-- Add inspiration content -->
+            <p class="body-text">
+                This space is dedicated to lifting you up: mindset shifts, stories of resilience, community connection, advocacy, and inspiration that remind you of your strength.
+            </p>
+            <p class="body-text">
+                Here you’ll find encouragement to reframe challenges, tools to cultivate inner peace, ways to connect with others who understand, and motivation to advocate for yourself and others.
+            </p>
+            <p class="body-text">
+                Living with a chronic illness asks so much of us. But it can also awaken deep compassion, courage, and purpose. You are more than your diagnosis. You are powerful, worthy, and capable of a meaningful, vibrant life.
+            </p>
+            <p class="body-text">
+                Let this be a reminder: you are not alone, and you are allowed to thrive — not just survive.
+            </p>
         </div>
 
         <div class="signature">
@@ -64,9 +245,40 @@
         <p><a href="index.html" class="back">← Back to home</a></p>
     </div>
 
-    <!-- Identical script as guide.html -->
     <script>
-        /* (Same full script as above) */
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+
+                const url = new URL(window.location);
+                url.searchParams.set('tab', tabId);
+                history.pushState(null, '', url);
+            });
+        });
+
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tab = urlParams.get('tab');
+
+            if (tab) {
+                const targetButton = document.querySelector(`.tab-button[data-tab="${tab}"]`);
+                if (targetButton) {
+                    document.querySelector('.tab-button.active').classList.remove('active');
+                    document.querySelector('.tab-content.active').classList.remove('active');
+
+                    targetButton.classList.add('active');
+                    document.getElementById(tab).classList.add('active');
+                }
+            }
+        });
     </script>
 </body>
 </html>
