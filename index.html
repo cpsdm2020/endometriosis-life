@@ -10,34 +10,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
 
 <style>
-/* ================= BACKGROUND LAYERS ================= */
-
 body {
     margin: 0;
     font-family: 'Square Peg', cursive;
     background: url('back.jpeg') center/cover no-repeat fixed;
     min-height: 100vh;
     color: #e8ba66;
-    font-size: 15px;
 }
 
-/* Dedicated overlay layer */
+/* Visual overlay only */
 .background-overlay {
     position: fixed;
     inset: 0;
     background: linear-gradient(to bottom,
         rgba(255,255,255,0.0) 0%,
-        rgba(255,255,255,0.01) 20%,
-        rgba(255,255,255,0.15) 40%,
-        rgba(255,255,255,0.35) 60%,
-        rgba(255,255,255,0.55) 80%,
         rgba(255,255,255,0.85) 100%
     );
     pointer-events: none;
     z-index: 0;
 }
-
-/* ================= CONTENT ================= */
 
 header, section {
     position: relative;
@@ -59,11 +50,10 @@ header h1 {
     font-size: 205px;
     margin-bottom: 40px;
     font-weight: lighter;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 4px rgba(0,0,0,.5);
 }
 
-/* ================= NAV ================= */
-
+/* NAV */
 nav ul {
     list-style: none;
     padding: 0;
@@ -85,11 +75,7 @@ nav ul li a {
     display: block;
 }
 
-/* ================= DROPDOWN (HARD FIX) ================= */
-
-.dropdown {
-    position: relative;
-}
+/* ===== DROPDOWN — CLICK ONLY ===== */
 
 .dropdown-menu {
     position: absolute;
@@ -97,27 +83,21 @@ nav ul li a {
     left: 50%;
     transform: translateX(-50%);
     background: white;
-    min-width: 240px;
+    min-width: 260px;
     padding: 20px 0;
     box-shadow: 0 15px 30px rgba(0,0,0,.35);
-    z-index: 9999; /* absolutely on top */
+    z-index: 9999;
 
     display: none;
 }
 
-.dropdown:hover .dropdown-menu,
 .dropdown.open .dropdown-menu {
-    display: block;
-}
-
-/* KEY: keep hover alive */
-.dropdown-menu:hover {
     display: block;
 }
 
 .dropdown-menu a {
     display: block;
-    padding: 15px 25px;
+    padding: 15px 30px;
     font-size: 35px;
     color: #e8ba66;
     text-decoration: none;
@@ -128,14 +108,11 @@ nav ul li a {
     background: #f0f0f0;
 }
 
-/* ================= CONTACT ================= */
-
+/* CONTACT */
 #contact {
     text-align: center;
     padding: 150px 0;
 }
-
-/* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
     header h1 {
@@ -163,7 +140,8 @@ nav ul li a {
 
 <header>
     <div class="hero-content">
-        <h1>Endometriosis Life</h1>
+        <h1>Endometriosis Life23</h1>
+
         <nav>
             <ul>
                 <li class="dropdown">
@@ -195,17 +173,23 @@ nav ul li a {
 </section>
 
 <script>
-document.addEventListener('click', e => {
-    document.querySelectorAll('.dropdown').forEach(d => {
-        if (!d.contains(e.target)) d.classList.remove('open');
-    });
-});
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdown = document.querySelector('.dropdown');
+    const toggle = dropdown.querySelector('.dropdown-toggle');
 
-document.querySelector('.dropdown-toggle').addEventListener('click', e => {
-    e.preventDefault();
-    e.target.parentElement.classList.toggle('open');
+    toggle.addEventListener('click', e => {
+        e.preventDefault();
+        dropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', e => {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('open');
+        }
+    });
 });
 </script>
 
 </body>
 </html>
+
