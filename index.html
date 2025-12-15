@@ -61,11 +61,11 @@
             letter-spacing: -2px;  
         }
 
-        /* ================= NEW: THREE BOXES ================= */
+        /* ================= THREE BOXES - CLOSER TOGETHER ================= */
         .boxes-container {
             display: flex;
             justify-content: center;
-            gap: 60px;
+            gap: 20px;           /* Reduced from 60px to make boxes closer */
             flex-wrap: wrap;
             margin-top: 80px;
             padding: 0 20px;
@@ -184,12 +184,12 @@
             font-size: 15px;
         }
 
-        /* ================= DONATE BUTTON - NOW LEFT-ALIGNED ================= */
+        /* ================= DONATE BUTTON - LEFT-ALIGNED ================= */
         .donate-fixed {
             position: fixed;
             bottom: 30px;
-            left: 20px;                  /* Moved to the far left */
-            transform: none;             /* Removes centering */
+            left: 20px;
+            transform: none;
             z-index: 1000;
             background: transparent;
             padding: 8px 15px;
@@ -231,7 +231,7 @@
             .boxes-container {
                 flex-direction: column;
                 align-items: center;
-                gap: 40px;
+                gap: 40px;           /* Vertical spacing on mobile - kept comfortable */
                 margin-top: 50px;
             }
 
@@ -264,7 +264,6 @@
                 display: none;
             }
 
-            /* On mobile: center the donate box again for better visibility */
             .donate-fixed {
                 bottom: 15px;
                 left: 50%;
@@ -332,7 +331,7 @@
                 </ul>
             </nav>
 
-            <!-- NEW: Three Boxes -->
+            <!-- Three Boxes - Now Closer -->
             <div class="boxes-container">
                 <a href="news.html" class="box">
                     <h2>News</h2>
@@ -390,7 +389,7 @@
 
             document.addEventListener('click', e => {
                 if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(d => d.classList.remove('open');
+                    dropdowns.forEach(d => d.classList.remove('open'));
                 }
             });
         });
