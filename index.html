@@ -74,7 +74,7 @@
         .boxes-container {
             display: flex;
             justify-content: center;
-            gap: 20px;           /* Reduced from 60px to make boxes closer */
+            gap: 20px;
             flex-wrap: wrap;
             margin-top: 80px;
             padding: 0 20px;
@@ -143,15 +143,12 @@
             cursor: pointer;
         }
         
-        /* New rules: Force dark gray text + very thin gold contour */
         nav > ul > li > a.dropdown-toggle,
         nav > ul > li > a {
             color: #AA336A !important;
-            -webkit-text-stroke: 0.5px #D4AF37;  /* Very thin gold outline */
-            paint-order: stroke fill;            /* Optional: draws outline behind the text fill */
+            -webkit-text-stroke: 0.5px #D4AF37;
+            paint-order: stroke fill;
         }
-
-
 
         /* ================= DROPDOWN ================= */
         .dropdown {
@@ -180,7 +177,7 @@
             display: none;
             z-index: 2147483647;
             pointer-events: auto;
-            border-radius: 20px;   /* Adjust this value for more/less roundness */
+            border-radius: 20px;
         }
 
         .dropdown:hover .dropdown-menu,
@@ -208,12 +205,11 @@
             font-size: 25px;
         }
 
-        /* ================= DONATE BUTTON - LEFT-ALIGNED ================= */
+        /* ================= SOCIAL / DONATE BOXES ================= */
         .donate-fixed {
             position: fixed;
             bottom: 30px;
             left: 20px;
-            transform: none;
             z-index: 1000;
             background: transparent;
             padding: 8px 15px;
@@ -230,20 +226,10 @@
             line-height: 1.2;
         }
 
-        .donate-fixed input[type="image"] {
-            transition: transform 0.2s ease;
-        }
-
-        .donate-fixed input[type="image"]:hover {
-            transform: scale(1.08);
-        }
-
-        /* Social fixed box - X (middle) */
         .social-fixed {
             position: fixed;
             bottom: 160px;
             left: 20px;
-            transform: none;
             z-index: 1000;
             background: transparent;
             padding: 8px 15px;
@@ -255,12 +241,10 @@
             min-width: 140px;
         }
 
-        /* Instagram box (topmost) - identical to .social-fixed */
         .instagram-fixed {
             position: fixed;
-            bottom: 300px;  /* Above the X box */
+            bottom: 300px;
             left: 20px;
-            transform: none;
             z-index: 1000;
             background: transparent;
             padding: 8px 15px;
@@ -279,17 +263,27 @@
             line-height: 1.2;
         }
 
-        .social-fixed a img, .instagram-fixed a img {
-            transition: transform 0.2s ease;
-        }
-
+        /* Hover effects */
         .social-fixed a img:hover, .instagram-fixed a img:hover {
             transform: scale(1.08);
         }
+        .donate-fixed input[type="image"]:hover {
+            transform: scale(1.08);
+        }
 
-        /* NEW: Mobile bottom bar container */
+        /* Mobile bottom bar */
         .bottom-bar {
-            display: none; /* Hidden on desktop */
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(5px);
+            padding: 10px 0;
+            z-index: 1000;
+            justify-content: space-around;
+            align-items: center;
         }
 
         /* ================= MOBILE ================= */
@@ -300,9 +294,6 @@
 
             header h1 {
                 font-size: 60px;
-            }
-
-            header h1 {
                 margin-bottom: 15px;
             }
 
@@ -323,7 +314,6 @@
             }
 
             nav ul {
-                display: flex;
                 flex-direction: column;
                 gap: 15px;
             }
@@ -342,44 +332,48 @@
                 display: none;
             }
 
-            .donate-text {
-                font-size: 14px;
-                margin-bottom: 10px;
-            }
-
-            /* Hide individual fixed positions on mobile */
+            /* Hide stacked desktop boxes */
             .instagram-fixed, .social-fixed, .donate-fixed {
-                position: static;
-                transform: none;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                margin: 0;
+                display: none;
             }
 
-            /* Show and style the horizontal bottom bar on mobile */
+            /* Show horizontal bottom bar */
             .bottom-bar {
-                display: none; 
+                display: flex;
             }
 
+            /* Uniform small boxes on mobile */
             .bottom-bar > div {
-                padding: 15px 15px;
-                border-radius: 15px;
-                width: 30%;
-                max-width: 60px;
-                transform: scale(0.5);  /* ← 50% scale only on mobile */
+                width: 90px;
+                height: 90px;
+                padding: 8px;
+                background: transparent;
+                border-radius: 20px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
                 display: flex;
+                flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                flex-direction: column;
+                text-align: center;
             }
 
-            .social-text, .instagram-text, .donate-text {
+            .bottom-bar .instagram-text,
+            .bottom-bar .social-text,
+            .bottom-bar .donate-text {
                 font-size: 16px;
-                margin-bottom: 20px;
+                margin-bottom: 6px;
             }
 
-            .bottom-bar img, .bottom-bar input[type="image"] {
-                width: 5px;
-                height: 5px;
+            .bottom-bar img,
+            .bottom-bar input[type="image"] {
+                width: 40px;
+                height: 40px;
+                transition: transform 0.2s ease;
+            }
+
+            .bottom-bar img:hover,
+            .bottom-bar input[type="image"]:hover {
+                transform: scale(1.08);
             }
         }
     </style>
@@ -436,7 +430,6 @@
                 </ul>
             </nav>
 
-            <!-- Three Boxes - Now Closer -->
             <div class="boxes-container">
                 <a href="news.html" class="box">
                     <h2>News</h2>
@@ -459,7 +452,7 @@
         </a>
     </section>
 
-    <!-- Desktop: Stacked vertically on left -->
+    <!-- Desktop stacked boxes -->
     <div class="instagram-fixed">
         <p class="instagram-text">Me on Instagram</p>
         <a href="https://www.instagram.com/Sophie_endolife" target="_blank">
@@ -483,7 +476,7 @@
         </form>
     </div>
 
-    <!-- Mobile: Horizontal bar at bottom (contains the same three boxes) -->
+    <!-- Mobile horizontal bar -->
     <div class="bottom-bar">
         <div class="instagram-fixed">
             <p class="instagram-text">Instagram</p>
@@ -493,7 +486,7 @@
         </div>
 
         <div class="social-fixed">
-            <p class="social-text">Me on X</p>
+            <p class="social-text">X</p>
             <a href="https://x.com/Sophie_endolife" target="_blank">
                 <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/x-social-media-black-icon.png" alt="Follow on X" style="border-radius: 10px;">
             </a>
@@ -535,7 +528,7 @@
 
             document.addEventListener('click', e => {
                 if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(d => d.classList.remove('open');
+                    dropdowns.forEach(d => d.classList.remove('open'));
                 }
             });
         });
