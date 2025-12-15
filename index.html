@@ -40,11 +40,11 @@
         }
 
         header {
-            min-height: 100vh;      /* CRITICAL FIX */
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             padding-top: 40px;
-            overflow: visible;      /* CRITICAL FIX */
+            overflow: visible;
         }
 
         .hero-content {
@@ -62,7 +62,7 @@
 
         nav {
             position: relative;
-            z-index: 100000; /* FORCE ABOVE HEADER */
+            z-index: 100000;
         }
 
         nav ul {
@@ -87,17 +87,17 @@
             cursor: pointer;
         }
 
-        /* ================= DROPDOWN (FINAL WITH HOVER + CLICK) ================= */
+        /* ================= DROPDOWN (SAME FOR ALL) ================= */
 
         .dropdown {
             position: relative;
         }
 
         .dropdown-toggle {
-            position: relative; /* Needed for the invisible bridge */
+            position: relative;
         }
 
-        /* Invisible bridge to eliminate any hover gap – works even with 4+ items */
+        /* Invisible bridge to eliminate hover gap */
         .dropdown-toggle::after {
             content: '';
             position: absolute;
@@ -114,17 +114,15 @@
             left: 50%;
             transform: translateX(-50%);
             background: white;
-            min-width: 160px;  /* here*/
+            min-width: 160px;
             padding: 20px 0;
             box-shadow: 0 15px 30px rgba(0,0,0,.35);
-
-            display: none;                 /* Hidden by default */
-
-            z-index: 2147483647;           /* MAX STACK */
+            display: none;
+            z-index: 2147483647;
             pointer-events: auto;
         }
 
-        /* Open on hover (desktop) OR when .open class is active (mobile/click) */
+        /* Open on hover or when .open */
         .dropdown:hover .dropdown-menu,
         .dropdown.open .dropdown-menu {
             display: block;
@@ -173,7 +171,6 @@
                 box-shadow: none;
             }
 
-            /* Remove bridge on mobile – not needed for touch */
             .dropdown-toggle::after {
                 display: none;
             }
@@ -200,9 +197,37 @@
                             <a href="guide.html#treatment">Treatment</a>
                         </div>
                     </li>
-                    <li><a href="#diary">Diary</a></li>
-                    <li><a href="#lifestyle">Lifestyle</a></li>
-                    <li><a href="#lifestyle">Elevate</a></li>
+
+                    <li class="dropdown">
+                        <a href="journal.html" class="dropdown-toggle">journal</a>
+                        <div class="dropdown-menu">
+                            <a href="journal.html#track">Track Symptoms</a>
+                            <a href="journal.html#log">Daily Log</a>
+                            <a href="journal.html#patterns">Patterns</a>
+                            <a href="journal.html#export">Export Data</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="lifestyle.html" class="dropdown-toggle">Lifestyle</a>
+                        <div class="dropdown-menu">
+                            <a href="lifestyle.html#diet">Diet Tips</a>
+                            <a href="lifestyle.html#exercise">Exercise</a>
+                            <a href="lifestyle.html#sleep">Sleep</a>
+                            <a href="lifestyle.html#stress">Stress Management</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="elevate.html" class="dropdown-toggle">Elevate</a>
+                        <div class="dropdown-menu">
+                            <a href="elevate.html#mindset">Mindset</a>
+                            <a href="elevate.html#community">Community</a>
+                            <a href="elevate.html#advocacy">Advocacy</a>
+                            <a href="elevate.html#inspiration">Inspiration</a>
+                        </div>
+                    </li>
+
                     <li><a href="about.html">About</a></li>
                 </ul>
             </nav>
@@ -221,29 +246,38 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const dropdown = document.querySelector('.dropdown');
-            const toggle = dropdown.querySelector('.dropdown-toggle');
+            // Select ALL dropdowns
+            const dropdowns = document.querySelectorAll('.dropdown');
 
-            // Click support for mobile/touch devices
-            toggle.addEventListener('click', e => {
-                e.preventDefault();                // Prevent navigation on tap
-                dropdown.classList.toggle('open');
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+
+                // Click/touch support
+                toggle.addEventListener('click', e => {
+                    e.preventDefault();
+                    // Close all others first
+                    dropdowns.forEach(d => {
+                        if (d !== dropdown) d.classList.remove('open');
+                    });
+                    // Toggle current
+                    dropdown.classList.toggle('open');
+                });
+
+                // Optional: delay close on mouse leave
+                dropdown.addEventListener('mouseleave', () => {
+                    setTimeout(() => {
+                        if (!dropdown.matches(':hover')) {
+                            dropdown.classList.remove('open');
+                        }
+                    }, 300);
+                });
             });
 
-            // Close when clicking outside the dropdown
+            // Close all dropdowns when clicking outside
             document.addEventListener('click', e => {
-                if (!dropdown.contains(e.target)) {
-                    dropdown.classList.remove('open');
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(d => d.classList.remove('open'));
                 }
-            });
-
-            // Optional extra forgiveness: delay closing on mouse leave
-            dropdown.addEventListener('mouseleave', () => {
-                setTimeout(() => {
-                    if (!dropdown.matches(':hover')) {
-                        dropdown.classList.remove('open');
-                    }
-                }, 300);
             });
         });
     </script>
