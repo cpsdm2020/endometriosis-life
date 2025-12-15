@@ -198,10 +198,10 @@
                     <li class="dropdown">
                         <a href="guide.html" class="dropdown-toggle">Guide</a>
                         <div class="dropdown-menu">
-                            <a href="guide.html">Symptoms</a>
-                            <a href="guide.html">Causes</a>
-                            <a href="guide.html">Diagnosis</a>
-                            <a href="guide.html">Treatment</a>
+                            <a href="guide.html?tab=symptoms">Symptoms</a>
+                            <a href="guide.html?tab=causes">Causes</a>
+                            <a href="guide.html?tab=diagnosis">Diagnosis</a>
+                            <a href="guide.html?tab=treatment">Treatment</a>
                         </div>
                     </li>
 
@@ -281,14 +281,6 @@
                 if (!e.target.closest('.dropdown')) {
                     dropdowns.forEach(d => d.classList.remove('open');
                 }
-            });
-
-            // NEW: Force scroll to top when any internal link is clicked
-            document.querySelectorAll('a[href^="guide.html"], a[href^="journal.html"], a[href^="lifestyle.html"], a[href^="elevate.html"], a[href="about.html"]').forEach(link => {
-                link.addEventListener('click', () => {
-                    // The scroll to top will happen automatically on the target page
-                    // because we removed the #anchors – the browser loads the page from the top
-                });
             });
         });
     </script>
