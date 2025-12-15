@@ -10,6 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
 
 <style>
+/* ================= BASE ================= */
+
 body {
     margin: 0;
     font-family: 'Square Peg', cursive;
@@ -18,7 +20,7 @@ body {
     color: #e8ba66;
 }
 
-/* Visual overlay only */
+/* Visual overlay only (never blocks clicks) */
 .background-overlay {
     position: fixed;
     inset: 0;
@@ -30,16 +32,19 @@ body {
     z-index: 0;
 }
 
+/* ================= LAYOUT ================= */
+
 header, section {
     position: relative;
     z-index: 10;
 }
 
 header {
-    height: 100vh;
+    min-height: 100vh;      /* CRITICAL FIX */
     display: flex;
     justify-content: center;
     padding-top: 40px;
+    overflow: visible;      /* CRITICAL FIX */
 }
 
 .hero-content {
@@ -53,7 +58,13 @@ header h1 {
     text-shadow: 2px 2px 4px rgba(0,0,0,.5);
 }
 
-/* NAV */
+/* ================= NAV ================= */
+
+nav {
+    position: relative;
+    z-index: 100000; /* FORCE ABOVE HEADER */
+}
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -73,9 +84,10 @@ nav ul li a {
     font-weight: bold;
     padding: 15px 10px;
     display: block;
+    cursor: pointer;
 }
 
-/* ===== DROPDOWN — CLICK ONLY ===== */
+/* ================= DROPDOWN (FINAL) ================= */
 
 .dropdown-menu {
     position: absolute;
@@ -86,9 +98,11 @@ nav ul li a {
     min-width: 260px;
     padding: 20px 0;
     box-shadow: 0 15px 30px rgba(0,0,0,.35);
-    z-index: 9999;
 
     display: none;
+
+    z-index: 2147483647; /* MAX STACK */
+    pointer-events: auto;
 }
 
 .dropdown.open .dropdown-menu {
@@ -108,11 +122,14 @@ nav ul li a {
     background: #f0f0f0;
 }
 
-/* CONTACT */
+/* ================= CONTACT ================= */
+
 #contact {
     text-align: center;
     padding: 150px 0;
 }
+
+/* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
     header h1 {
@@ -140,7 +157,7 @@ nav ul li a {
 
 <header>
     <div class="hero-content">
-        <h1>Endometriosis Life23</h1>
+        <h1>Endometriosis Life1</h1>
 
         <nav>
             <ul>
