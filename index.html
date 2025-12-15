@@ -238,7 +238,7 @@
             transform: scale(1.08);
         }
 
-        /* Social fixed box - now on the LEFT, above Donate */
+        /* Social fixed box - X (middle) */
         .social-fixed {
             position: fixed;
             bottom: 160px;
@@ -251,22 +251,39 @@
             box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
             text-align: center;
             max-width: 90%;
-            width: fit-content;     /* ← Add this */
-            min-width: 140px;       /* ← Add this (adjust if needed after testing) */
+            width: fit-content;
+            min-width: 140px;
         }
 
-        .social-text {
+        /* New: Instagram box (topmost) - identical to .social-fixed */
+        .instagram-fixed {
+            position: fixed;
+            bottom: 250px;  /* Above the X box */
+            left: 20px;
+            transform: none;
+            z-index: 1000;
+            background: transparent;
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            max-width: 90%;
+            width: fit-content;
+            min-width: 140px;
+        }
+
+        .social-text, .instagram-text {
             margin: 0 0 12px 0;
             font-size: 28px;
             color: #AA336A;
             line-height: 1.2;
         }
 
-        .social-fixed a img {
+        .social-fixed a img, .instagram-fixed a img {
             transition: transform 0.2s ease;
         }
 
-        .social-fixed a img:hover {
+        .social-fixed a img:hover, .instagram-fixed a img:hover {
             transform: scale(1.08);
         }
 
@@ -287,7 +304,7 @@
             .boxes-container {
                 flex-direction: column;
                 align-items: center;
-                gap: 40px;           /* Vertical spacing on mobile - kept comfortable */
+                gap: 40px;
                 margin-top: 50px;
             }
 
@@ -333,7 +350,7 @@
                 margin-bottom: 10px;
             }
 
-            /* Mobile: X box on left (centered) and above donate */
+            /* Mobile: X box */
             .social-fixed {
                 bottom: 90px;
                 left: 50%;
@@ -342,7 +359,16 @@
                 border-radius: 15px;
             }
 
-            .social-text {
+            /* Mobile: Instagram box (above X) */
+            .instagram-fixed {
+                bottom: 165px;  /* Above X box on mobile */
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 5px 5px;
+                border-radius: 15px;
+            }
+
+            .social-text, .instagram-text {
                 font-size: 14px;
                 margin-bottom: 10px;
             }
@@ -424,7 +450,15 @@
         </a>
     </section>
 
-    <!-- X box first (on top) and now on the left above Donate -->
+    <!-- NEW: Instagram box (topmost) -->
+    <div class="instagram-fixed">
+        <p class="instagram-text">Follow Me on Instagram</p>
+        <a href="https://www.instagram.com/sophie_endolife" target="_blank">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/instagram-black-icon.png" alt="Follow on Instagram" width="60" height="60" style="border-radius: 10px;">
+        </a>
+    </div>
+
+    <!-- X box (middle) -->
     <div class="social-fixed">
         <p class="social-text">Follow Me on X</p>
         <a href="https://x.com/Sophie_endolife" target="_blank">
@@ -432,6 +466,7 @@
         </a>
     </div>
 
+    <!-- Donate box (bottom) -->
     <div class="donate-fixed">
         <p class="donate-text">❤️ Support ❤️</p>
         <form action="https://www.paypal.com/donate" method="post" target="_top">
@@ -473,4 +508,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
