@@ -88,29 +88,40 @@
             text-decoration: none;
             color: #e8ba66;
             font-weight: bold;
+            display: block;
+            padding: 10px 0; /* Adds clickable/touchable area */
         }
 
-        /* Dropdown for Guide */
+        /* Dropdown for Guide - stable on hover */
+        .dropdown {
+            position: relative;
+        }
+
         .dropdown:hover .dropdown-menu {
             display: block;
+            opacity: 1;
+            visibility: visible;
         }
 
         .dropdown-menu {
-            display: none;
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease; /* Smooth + delay */
             position: absolute;
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
             background: white;
-            min-width: 200px;
-            padding: 15px 0;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            min-width: 220px;
+            padding: 20px 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             z-index: 10;
         }
 
         .dropdown-menu a {
             display: block;
-            padding: 10px 20px;
+            padding: 12px 25px;
             font-size: 35px;
             color: #e8ba66;
             font-weight: bold;
@@ -118,7 +129,7 @@
         }
 
         .dropdown-menu a:hover {
-            background: #f8f8f8;
+            background: #f0f0f0;
         }
 
         /* Contact section */
@@ -166,17 +177,20 @@
                 font-size: 35px;
             }
 
-            .dropdown:hover .dropdown-menu,
-            .dropdown:focus-within .dropdown-menu {
-                display: block;
-            }
-
             .dropdown-menu {
                 position: static;
                 transform: none;
                 background: white;
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
                 padding: 10px 0;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+            }
+
+            .dropdown:active .dropdown-menu,
+            .dropdown:focus-within .dropdown-menu {
+                display: block;
             }
 
             #contact {
@@ -202,7 +216,7 @@
             <nav>
                 <ul>
                     <li class="dropdown">
-                        <a href="guide.html">Guide</a> <!-- Main Guide link goes to the page -->
+                        <a href="guide.html">Guide</a>
                         <div class="dropdown-menu">
                             <a href="guide.html#symptoms">Symptoms</a>
                             <a href="guide.html#causes">Causes</a>
