@@ -26,7 +26,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 110%; /* Works well for current page length; increase if pages get longer */
+            height: 110%;
             background: linear-gradient(to bottom,
                 rgba(255, 255, 255, 0.00) 0%,
                 rgba(255, 255, 255, 0.01) 20%,
@@ -70,6 +70,7 @@
             letter-spacing: -2px;
         }
 
+        /* Main navigation */
         nav ul {
             list-style: none;
             padding: 0;
@@ -77,8 +78,9 @@
         }
 
         nav ul li {
-            display: inline;
+            display: inline-block;
             margin: 0 20px;
+            position: relative;
         }
 
         nav ul li a {
@@ -86,6 +88,37 @@
             text-decoration: none;
             color: #e8ba66;
             font-weight: bold;
+        }
+
+        /* Dropdown for Guide */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            min-width: 200px;
+            padding: 15px 0;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            font-size: 35px;
+            color: #e8ba66;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: #f8f8f8;
         }
 
         /* Contact section */
@@ -133,6 +166,19 @@
                 font-size: 35px;
             }
 
+            .dropdown:hover .dropdown-menu,
+            .dropdown:focus-within .dropdown-menu {
+                display: block;
+            }
+
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                background: white;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                padding: 10px 0;
+            }
+
             #contact {
                 margin-top: -50px;
                 padding-top: 180px;
@@ -155,7 +201,15 @@
             <h1>Endometriosis Life</h1>
             <nav>
                 <ul>
-                    <li><a href="guide.html">Guide</a></li>
+                    <li class="dropdown">
+                        <a href="guide.html">Guide</a> <!-- Main Guide link goes to the page -->
+                        <div class="dropdown-menu">
+                            <a href="guide.html#symptoms">Symptoms</a>
+                            <a href="guide.html#causes">Causes</a>
+                            <a href="guide.html#diagnosis">Diagnosis</a>
+                            <a href="guide.html#treatment">Treatment</a>
+                        </div>
+                    </li>
                     <li><a href="#diary">Diary</a></li>
                     <li><a href="#lifestyle">Lifestyle</a></li>
                     <li><a href="#lifestyle">Elevate</a></li>
