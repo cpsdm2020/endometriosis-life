@@ -76,7 +76,7 @@
         .box {
             width: 380px;
             height: 280px;
-            border: 8px solid transparent;   /* Changed: border now transparent */
+            border: 8px solid transparent;
             border-radius: 20px;
             background: transparent;
             display: flex;
@@ -84,7 +84,7 @@
             justify-content: center;
             transition: all 0.3s ease;
             cursor: pointer;
-            text-decoration: none;            /* Removes underline from the entire link */
+            text-decoration: none;
         }
 
         .box:hover {
@@ -99,7 +99,7 @@
             margin: 0;
             padding: 20px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-            text-decoration: none;            /* Extra safety: no underline on text */
+            text-decoration: none;
         }
 
         /* ================= NAV ================= */
@@ -184,12 +184,12 @@
             font-size: 15px;
         }
 
-        /* ================= DONATE BUTTON ================= */
+        /* ================= DONATE BUTTON - NOW LEFT-ALIGNED ================= */
         .donate-fixed {
             position: fixed;
             bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 20px;                  /* Moved to the far left */
+            transform: none;             /* Removes centering */
             z-index: 1000;
             background: transparent;
             padding: 8px 15px;
@@ -264,8 +264,11 @@
                 display: none;
             }
 
+            /* On mobile: center the donate box again for better visibility */
             .donate-fixed {
                 bottom: 15px;
+                left: 50%;
+                transform: translateX(-50%);
                 padding: 5px 5px;
                 border-radius: 15px;
             }
@@ -387,7 +390,7 @@
 
             document.addEventListener('click', e => {
                 if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(d => d.classList.remove('open'));
+                    dropdowns.forEach(d => d.classList.remove('open');
                 }
             });
         });
