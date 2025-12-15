@@ -156,7 +156,7 @@
     <div class="content">
         <p><a href="index.html" class="back">← Back to home</a></p>
 
-        <h1>Elevate1</h1>
+        <h1>Elevate</h1>
 
         <div class="tabs">
             <button class="tab-button" data-tab="mindset">Mindset</button>
@@ -165,75 +165,58 @@
             <button class="tab-button" data-tab="inspiration">Inspiration</button>
         </div>
 
+        <!-- Mindset Tab -->
         <div id="mindset" class="tab-content">
             <p class="body-text">
-                Endometriosis can feel heavy — physically, emotionally, and mentally. But it does not define your worth, your potential, or your capacity for joy.
+                Shifting your mindset can be one of the most powerful tools in living well with endometriosis. 
+                Reframing pain, practicing self-compassion, and focusing on what you <em>can</em> control helps build resilience.
             </p>
             <p class="body-text">
-                This space is dedicated to lifting you up: mindset shifts, stories of resilience, community connection, advocacy, and inspiration that remind you of your strength.
+                Small daily practices — gratitude, affirmations, mindfulness — can reduce stress and improve your emotional well-being, even on hard days.
             </p>
             <p class="body-text">
-                Here you’ll find encouragement to reframe challenges, tools to cultivate inner peace, ways to connect with others who understand, and motivation to advocate for yourself and others.
-            </p>
-            <p class="body-text">
-                Living with a chronic illness asks so much of us. But it can also awaken deep compassion, courage, and purpose. You are more than your diagnosis. You are powerful, worthy, and capable of a meaningful, vibrant life.
-            </p>
-            <p class="body-text">
-                Let this be a reminder: you are not alone, and you are allowed to thrive — not just survive.
+                You are not broken. You are adapting, growing, and becoming stronger in ways you may not yet see.
             </p>
         </div>
 
+        <!-- Community Tab -->
         <div id="community" class="tab-content">
             <p class="body-text">
-                Endometriosis can feel heavy — physically, emotionally, and mentally. But it does not define your worth, your potential, or your capacity for joy.
+                You are not alone. Millions of women live with endometriosis, and many are ready to listen, support, and share their experiences.
             </p>
             <p class="body-text">
-                This space is dedicated to lifting you up: mindset shifts, stories of resilience, community connection, advocacy, and inspiration that remind you of your strength.
+                Connecting with others who truly understand — whether online or in person — can reduce isolation and provide practical tips, emotional validation, and hope.
             </p>
             <p class="body-text">
-                Here you’ll find encouragement to reframe challenges, tools to cultivate inner peace, ways to connect with others who understand, and motivation to advocate for yourself and others.
-            </p>
-            <p class="body-text">
-                Living with a chronic illness asks so much of us. But it can also awaken deep compassion, courage, and purpose. You are more than your diagnosis. You are powerful, worthy, and capable of a meaningful, vibrant life.
-            </p>
-            <p class="body-text">
-                Let this be a reminder: you are not alone, and you are allowed to thrive — not just survive.
+                Support groups, forums, and social media communities can become lifelines on difficult days.
             </p>
         </div>
 
+        <!-- Advocacy Tab -->
         <div id="advocacy" class="tab-content">
             <p class="body-text">
-                Endometriosis can feel heavy — physically, emotionally, and mentally. But it does not define your worth, your potential, or your capacity for joy.
+                Advocating for yourself starts with knowing your rights and trusting your experience. 
+                Speak up in medical appointments, ask questions, and seek specialists when needed.
             </p>
             <p class="body-text">
-                This space is dedicated to lifting you up: mindset shifts, stories of resilience, community connection, advocacy, and inspiration that remind you of your strength.
+                On a larger scale, raising awareness, sharing your story, and supporting research helps improve care for everyone with endometriosis.
             </p>
             <p class="body-text">
-                Here you’ll find encouragement to reframe challenges, tools to cultivate inner peace, ways to connect with others who understand, and motivation to advocate for yourself and others.
-            </p>
-            <p class="body-text">
-                Living with a chronic illness asks so much of us. But it can also awaken deep compassion, courage, and purpose. You are more than your diagnosis. You are powerful, worthy, and capable of a meaningful, vibrant life.
-            </p>
-            <p class="body-text">
-                Let this be a reminder: you are not alone, and you are allowed to thrive — not just survive.
+                Your voice matters — both in the doctor’s office and in the world.
             </p>
         </div>
 
+        <!-- Inspiration Tab -->
         <div id="inspiration" class="tab-content">
             <p class="body-text">
-                Endometriosis can feel heavy — physically, emotionally, and mentally. But it does not define your worth, your potential, or your capacity for joy.
+                Women with endometriosis are achieving dreams, building families, creating art, running businesses, and living fully — despite the challenges.
             </p>
             <p class="body-text">
-                This space is dedicated to lifting you up: mindset shifts, stories of resilience, community connection, advocacy, and inspiration that remind you of your strength.
+                Their stories remind us that pain does not erase possibility. 
+                Joy, love, success, and purpose are still available to you.
             </p>
             <p class="body-text">
-                Here you’ll find encouragement to reframe challenges, tools to cultivate inner peace, ways to connect with others who understand, and motivation to advocate for yourself and others.
-            </p>
-            <p class="body-text">
-                Living with a chronic illness asks so much of us. But it can also awaken deep compassion, courage, and purpose. You are more than your diagnosis. You are powerful, worthy, and capable of a meaningful, vibrant life.
-            </p>
-            <p class="body-text">
-                Let this be a reminder: you are not alone, and you are allowed to thrive — not just survive.
+                Let their courage fuel yours. You are capable of more than you know.
             </p>
         </div>
 
@@ -250,11 +233,9 @@
         const tabContents = document.querySelectorAll('.tab-content');
 
         function activateTab(tabId) {
-            // Remove active from all
             tabButtons.forEach(btn => btn.classList.remove('active'));
             tabContents.forEach(content => content.classList.remove('active'));
 
-            // Add active to the target
             const targetButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
             const targetContent = document.getElementById(tabId);
 
@@ -264,7 +245,6 @@
             }
         }
 
-        // Click handler
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const tabId = button.getAttribute('data-tab');
@@ -276,15 +256,13 @@
             });
         });
 
-        // On load: activate tab from URL or default to the first one
         window.addEventListener('load', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const tab = urlParams.get('tab');
 
-            if (tab) {
+            if (tab && document.getElementById(tab)) {
                 activateTab(tab);
             } else {
-                // Default: activate the first tab (Mindset)
                 activateTab('mindset');
             }
         });
