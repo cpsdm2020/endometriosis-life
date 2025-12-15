@@ -100,6 +100,18 @@
 
         .dropdown-toggle {
             cursor: pointer;
+            position: relative; /* Needed for the ::after pseudo-element */
+        }
+
+        /* NEW: Invisible bridge to eliminate hover gap */
+        .dropdown-toggle::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -20px; /* Extend downward by 20px (adjust if needed, 15-30px is usually enough) */
+            width: 100%;
+            height: 20px; /* Matches the bottom offset */
+            background: transparent; /* Fully invisible */
         }
 
         .dropdown-menu {
@@ -218,7 +230,7 @@
 
     <header>
         <div class="hero-content">
-            <h1>Endometriosis Life1</h1>
+            <h1>Endometriosis Life</h1>
             <nav>
                 <ul>
                     <li class="dropdown">
