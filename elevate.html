@@ -159,13 +159,13 @@
         <h1>Elevate</h1>
 
         <div class="tabs">
-            <button class="tab-button active" data-tab="mindset">Mindset</button>
+            <button class="tab-button" data-tab="mindset">Mindset</button>
             <button class="tab-button" data-tab="community">Community</button>
             <button class="tab-button" data-tab="advocacy">Advocacy</button>
             <button class="tab-button" data-tab="inspiration">Inspiration</button>
         </div>
 
-        <div id="mindset" class="tab-content active">
+        <div id="mindset" class="tab-content">
             <p class="body-text">
                 Endometriosis can feel heavy — physically, emotionally, and mentally. But it does not define your worth, your potential, or your capacity for joy.
             </p>
@@ -246,15 +246,15 @@
     </div>
 
     <script>
-        // Get all buttons and contents once
         const tabButtons = document.querySelectorAll('.tab-button');
         const tabContents = document.querySelectorAll('.tab-content');
 
-        // Function to activate a specific tab
         function activateTab(tabId) {
+            // Remove active from all
             tabButtons.forEach(btn => btn.classList.remove('active'));
             tabContents.forEach(content => content.classList.remove('active'));
 
+            // Add active to the target
             const targetButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
             const targetContent = document.getElementById(tabId);
 
@@ -264,28 +264,29 @@
             }
         }
 
-        // Click handler for tabs
+        // Click handler
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const tabId = button.getAttribute('data-tab');
                 activateTab(tabId);
 
-                // Update URL with query parameter
                 const url = new URL(window.location);
                 url.searchParams.set('tab', tabId);
                 history.pushState(null, '', url);
             });
         });
 
-        // On page load: check for ?tab= parameter and activate correct tab
+        // On load: activate tab from URL or default to the first one
         window.addEventListener('load', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const tab = urlParams.get('tab');
 
             if (tab) {
                 activateTab(tab);
+            } else {
+                // Default: activate the first tab (Mindset)
+                activateTab('mindset');
             }
-            // If no parameter, default is Mindset (already active in HTML)
         });
     </script>
 </body>
