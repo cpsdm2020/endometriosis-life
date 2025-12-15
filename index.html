@@ -17,7 +17,7 @@
             font-family: 'Square Peg', cursive;
             background: url('back.jpeg') center/cover no-repeat fixed;
             min-height: 100vh;
-            color: #3B3B3B; /*#3B3B3B*/
+            color: #3B3B3B;
         }
 
         /* Visual overlay only (never blocks clicks) */
@@ -45,7 +45,8 @@
 
         header {
             min-height: 100vh;
-            display: flex-start;
+            display: flex;
+            align-items: flex-start;     /* Changed from flex-start (typo) to proper value */
             justify-content: center;
             padding-top: 1px;
             overflow: visible;
@@ -197,10 +198,10 @@
                     <li class="dropdown">
                         <a href="guide.html" class="dropdown-toggle">Guide</a>
                         <div class="dropdown-menu">
-                            <a href="guide.html">Symptoms</a>
-                            <a href="guide.html">Causes</a>
-                            <a href="guide.html">Diagnosis</a>
-                            <a href="guide.html">Treatment</a>
+                            <a href="guide.html#symptoms">Symptoms</a>
+                            <a href="guide.html#causes">Causes</a>
+                            <a href="guide.html#diagnosis">Diagnosis</a>
+                            <a href="guide.html#treatment">Treatment</a>
                         </div>
                     </li>
 
@@ -239,12 +240,11 @@
     </header>
 
     <section id="contact">
-        We'd love to hear from you</br>
-            <a href="mailto:info@endometriosis-life.com"
-               style="font-family: 'Roboto', sans-serif;font-size: 15px; color: #3B3B3B;">
-                info@endometriosis-life.com
-            </a>
-        </p>
+        We'd love to hear from you<br>
+        <a href="mailto:info@endometriosis-life.com"
+           style="font-family: 'Roboto', sans-serif; font-size: 15px; color: #3B3B3B;">
+            info@endometriosis-life.com
+        </a>
     </section>
 
     <script>
