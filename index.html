@@ -238,7 +238,7 @@
             transform: scale(1.08);
         }
 
-        /* NEW: Social fixed box (mirrored on the right) */
+        /* Social fixed box (mirrored on the right) */
         .social-fixed {
             position: fixed;
             bottom: 30px;
@@ -331,9 +331,9 @@
                 margin-bottom: 10px;
             }
 
-            /* Mobile adjustment for the new social box (stacked below donate on small screens) */
+            /* Mobile: X box on top of donate box */
             .social-fixed {
-                bottom: 100px; /* Places it above the donate box on mobile */
+                bottom: 90px; /* Higher than donate (which is at 15px) */
                 left: 50%;
                 right: auto;
                 transform: translateX(-50%);
@@ -423,6 +423,14 @@
         </a>
     </section>
 
+    <!-- X box moved here so it renders on top on mobile -->
+    <div class="social-fixed">
+        <p class="social-text">Follow on X</p>
+        <a href="https://x.com/Sophie_endolife" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/X_logo_2023_%28black%29.png" alt="Follow on X" width="60" height="60" style="border-radius: 10px;">
+        </a>
+    </div>
+
     <div class="donate-fixed">
         <p class="donate-text">❤️ Support ❤️</p>
         <form action="https://www.paypal.com/donate" method="post" target="_top">
@@ -430,14 +438,6 @@
             <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate with PayPal button" />
             <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
         </form>
-    </div>
-
-    <!-- NEW: X (Twitter) fixed box -->
-    <div class="social-fixed">
-        <p class="social-text">Follow on X</p>
-        <a href="https://x.com/Sophie_endolife" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/X_logo_2023_%28black%29.png" alt="Follow on X" width="60" height="60" style="border-radius: 10px;">
-        </a>
     </div>
 
     <script>
