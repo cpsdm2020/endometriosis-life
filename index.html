@@ -116,7 +116,6 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.4s ease, visibility 0.4s ease;
-            pointer-events: auto; /* Ensure mouse clicks work */
         }
 
         .dropdown.open .dropdown-menu {
@@ -132,10 +131,11 @@
             color: #e8ba66;
             font-weight: bold;
             text-decoration: none;
+            transition: background 0.3s ease; /* Smooth hover */
         }
 
         .dropdown-menu a:hover {
-            background: #f0f0f0;
+            background: #f0f0f0; /* Light shade on hover - same for all */
         }
 
         /* Contact section */
