@@ -263,7 +263,7 @@
             line-height: 1.2;
         }
 
-        /* Hover effects */
+        /* Hover effects for desktop */
         .social-fixed a img:hover, .instagram-fixed a img:hover {
             transform: scale(1.08);
         }
@@ -271,19 +271,53 @@
             transform: scale(1.08);
         }
 
-        /* Mobile bottom bar - fixed at bottom */
-        .bottom-bar {
+        /* Mobile bottom bar - normal flow, placed in footer */
+        .mobile-bottom-bar {
             display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
             background: rgba(255,255,255,0.7);
             backdrop-filter: blur(10px);
-            padding: 12px 0;
-            z-index: 1000;
+            padding: 20px 0;
             justify-content: space-around;
             align-items: center;
+        }
+
+        /* Uniform small boxes on mobile */
+        .mobile-bottom-bar > div {
+            width: 90px;
+            height: 90px;
+            padding: 8px;
+            background: transparent;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .mobile-bottom-bar > div:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-bottom-bar .instagram-text,
+        .mobile-bottom-bar .social-text,
+        .mobile-bottom-bar .donate-text {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .mobile-bottom-bar img,
+        .mobile-bottom-bar input[type="image"] {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.2s ease;
+        }
+
+        .mobile-bottom-bar img:hover,
+        .mobile-bottom-bar input[type="image"]:hover {
+            transform: scale(1.08);
         }
 
         /* ================= MOBILE ================= */
@@ -332,53 +366,14 @@
                 display: none;
             }
 
-            /* Hide desktop stacked boxes on mobile */
+            /* Hide desktop fixed boxes on mobile */
             .instagram-fixed, .social-fixed, .donate-fixed {
                 display: none;
             }
 
-            /* Show the fixed bottom bar on mobile */
-            .bottom-bar {
+            /* Show the mobile bar in normal flow */
+            .mobile-bottom-bar {
                 display: flex;
-            }
-
-            /* Uniform small boxes on mobile */
-            .bottom-bar > div {
-                width: 90px;
-                height: 90px;
-                padding: 8px;
-                background: transparent;
-                border-radius: 20px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                transition: transform 0.2s ease;
-            }
-
-            .bottom-bar > div:hover {
-                transform: scale(1.05);
-            }
-
-            .bottom-bar .instagram-text,
-            .bottom-bar .social-text,
-            .bottom-bar .donate-text {
-                font-size: 16px;
-                margin-bottom: 6px;
-            }
-
-            .bottom-bar img,
-            .bottom-bar input[type="image"] {
-                width: 40px;
-                height: 40px;
-                transition: transform 0.2s ease;
-            }
-
-            .bottom-bar img:hover,
-            .bottom-bar input[type="image"]:hover {
-                transform: scale(1.08);
             }
         }
     </style>
@@ -457,7 +452,7 @@
         </a>
     </section>
 
-    <!-- Desktop: stacked vertically on left -->
+    <!-- Desktop: stacked vertically on left (fixed while scrolling) -->
     <div class="instagram-fixed">
         <p class="instagram-text">Me on Instagram</p>
         <a href="https://www.instagram.com/Sophie_endolife" target="_blank">
@@ -481,8 +476,8 @@
         </form>
     </div>
 
-    <!-- Mobile: horizontal fixed bar at bottom -->
-    <div class="bottom-bar">
+    <!-- Mobile only: horizontal bar at the very bottom of the page (scroll to see) -->
+    <div class="mobile-bottom-bar">
         <div class="instagram-fixed">
             <p class="instagram-text">Instagram</p>
             <a href="https://www.instagram.com/Sophie_endolife" target="_blank">
