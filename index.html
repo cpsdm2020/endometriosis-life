@@ -277,12 +277,17 @@
             background: rgba(255,255,255,0.7);
             backdrop-filter: blur(10px);
             padding: 20px 0;
+        }
+
+        .mobile-bottom-bar-inner {
+            display: flex;
             justify-content: space-around;
             align-items: center;
         }
 
         /* Uniform small boxes on mobile */
-        .mobile-bottom-bar > div {
+        .mobile-bottom-bar > div,
+        .mobile-bottom-bar-inner > div {
             width: 90px;
             height: 90px;
             padding: 8px;
@@ -297,7 +302,8 @@
             transition: transform 0.2s ease;
         }
 
-        .mobile-bottom-bar > div:hover {
+        .mobile-bottom-bar > div:hover,
+        .mobile-bottom-bar-inner > div:hover {
             transform: scale(1.05);
         }
 
@@ -347,19 +353,30 @@
                 font-size: 50px;
             }
 
+            /* Fixed: Make nav items vertical */
             nav ul {
+                display: flex;
                 flex-direction: column;
-                gap: 15px;
+                align-items: center;
+                gap: 20px;
             }
 
             nav ul li {
+                display: block;
                 margin: 0;
+            }
+
+            nav ul li a {
+                font-size: 40px; /* Slightly larger for better touch */
             }
 
             .dropdown-menu {
                 position: static;
                 transform: none;
                 box-shadow: none;
+                background: rgba(255,255,255,0.5);
+                border-radius: 15px;
+                padding: 10px;
             }
 
             .dropdown-toggle::after {
@@ -373,7 +390,7 @@
 
             /* Show the mobile bar in normal flow */
             .mobile-bottom-bar {
-                display: flex;
+                display: block;
             }
         }
     </style>
@@ -478,27 +495,29 @@
 
     <!-- Mobile only: horizontal bar at the very bottom of the page (scroll to see) -->
     <div class="mobile-bottom-bar">
-        <div class="instagram-fixed">
-            <p class="instagram-text">Instagram</p>
-            <a href="https://www.instagram.com/Sophie_endolife" target="_blank">
-                <img src="https://www.iconpacks.net/icons/2/free-instagram-logo-icon-3497-thumb.png" alt="Follow on Instagram" style="border-radius: 10px;">
-            </a>
-        </div>
+        <div class="mobile-bottom-bar-inner">
+            <div class="instagram-fixed">
+                <p class="instagram-text">Instagram</p>
+                <a href="https://www.instagram.com/Sophie_endolife" target="_blank">
+                    <img src="https://www.iconpacks.net/icons/2/free-instagram-logo-icon-3497-thumb.png" alt="Follow on Instagram" style="border-radius: 10px;">
+                </a>
+            </div>
 
-        <div class="social-fixed">
-            <p class="social-text">X</p>
-            <a href="https://x.com/Sophie_endolife" target="_blank">
-                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/x-social-media-black-icon.png" alt="Follow on X" style="border-radius: 10px;">
-            </a>
-        </div>
+            <div class="social-fixed">
+                <p class="social-text">X</p>
+                <a href="https://x.com/Sophie_endolife" target="_blank">
+                    <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/x-social-media-black-icon.png" alt="Follow on X" style="border-radius: 10px;">
+                </a>
+            </div>
 
-        <div class="donate-fixed">
-            <p class="donate-text">❤️Support❤️</p>
-            <form action="https://www.paypal.com/donate" method="post" target="_top">
-                <input type="hidden" name="hosted_button_id" value="ELEXPMBEHT7DG" />
-                <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate with PayPal button" />
-                <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
-            </form>
+            <div class="donate-fixed">
+                <p class="donate-text">❤️Support❤️</p>
+                <form action="https://www.paypal.com/donate" method="post" target="_top">
+                    <input type="hidden" name="hosted_button_id" value="ELEXPMBEHT7DG" />
+                    <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate with PayPal button" />
+                    <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
+                </form>
+            </div>
         </div>
     </div>
 
