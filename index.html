@@ -83,23 +83,24 @@
     }
 
     .box {
-        width: 250px;
-        height: 160px;
-        border: 15px solid transparent;
-        border-radius: 20px;
-        background: transparent;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.5s ease;
-        cursor: pointer;
-        text-decoration: none;
+    width: 250px;
+    height: 160px;
+    border: 15px solid transparent;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);  /* Subtle white overlay - always visible */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(230, 57, 70, 0.25);  /* Permanent soft shadow */
     }
-
+    
     .box:hover {
         transform: translateY(-10px);
-        /*box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);*/
-        background: rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.3);   /* Slightly stronger on hover */
+        box-shadow: 0 15px 35px rgba(230, 57, 70, 0.4);  /* Stronger shadow on hover */
     }
     .box h2 {
         font-size: 35px;
@@ -213,7 +214,7 @@
         left: 20px;
         z-index: 1000;
         background: transparent;
-        padding: 8px 15px;
+        padding: 1px 1px;
         border-radius: 20px;
         box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
         text-align: center;
@@ -233,7 +234,7 @@
         left: 20px;
         z-index: 1000;
         background: transparent;
-        padding: 8px 15px;
+        padding: 1px 1px;
         border-radius: 20px;
         box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
         text-align: center;
@@ -248,7 +249,7 @@
         left: 20px;
         z-index: 1000;
         background: transparent;
-        padding: 8px 15px;
+        padding: 1px 1px;
         border-radius: 20px;
         box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
         text-align: center;
