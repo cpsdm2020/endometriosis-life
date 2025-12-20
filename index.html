@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,476 +5,476 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Endometriosis Life</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex&display=swap" rel="stylesheet">
 
-    <style>
-        /* ================= BASE ================= */
-        body {
-            margin: 0;
-            font-family: 'Square Peg', cursive;
-            background: url('back.jpeg') center/cover no-repeat fixed;
-            min-height: 100vh;
-            color: #AA336A;
-        }
+<style>
+    /* ================= BASE ================= */
+    body {
+        margin: 0;
+        font-family: 'Google Sans Flex', sans-serif;
+        background: url('back.jpeg') center/cover no-repeat fixed;
+        min-height: 100vh;
+        color: #AA336A;
+    }
 
-        .background-overlay {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(to bottom,
-                rgba(255, 255, 255, 0.00) 0%,
-                rgba(255, 255, 255, 0.01) 20%,
-                rgba(255, 255, 255, 0.05) 40%,
-                rgba(255, 255, 255, 0.15) 60%,
-                rgba(255, 255, 255, 0.65) 80%,
-                rgba(255, 255, 255, 0.85) 100%
-            );
-            pointer-events: none;
-            z-index: 0;
-        }
+    .background-overlay {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.00) 0%,
+            rgba(255, 255, 255, 0.01) 20%,
+            rgba(255, 255, 255, 0.05) 40%,
+            rgba(255, 255, 255, 0.15) 60%,
+            rgba(255, 255, 255, 0.65) 80%,
+            rgba(255, 255, 255, 0.85) 100%
+        );
+        pointer-events: none;
+        z-index: 0;
+    }
 
-        /* ================= LAYOUT ================= */
-        header, section {
-            position: relative;
-            z-index: 10;
-        }
+    /* ================= LAYOUT ================= */
+    header, section {
+        position: relative;
+        z-index: 10;
+    }
 
+    header {
+        min-height: 100vh;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 40px 20px 0;
+        overflow: visible;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 155px;
+        margin-bottom: 0px;
+        font-weight: lighter;
+        text-shadow: 
+            -1px -1px 0 #D4AF37,
+            1px -1px 0 #D4AF37,
+            -1px 1px 0 #D4AF37,
+            1px 1px 0 #D4AF37,
+            -0.5px 0 0 #D4AF37,
+            0.5px 0 0 #D4AF37,
+            0 -0.5px 0 #D4AF37,
+            0 0.5px 0 #D4AF37,
+            2px 2px 4px rgba(0,0,0,.5);
+        letter-spacing: -2px;  
+    }
+
+    /* ================= THREE BOXES - CLOSER TOGETHER ================= */
+    .boxes-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 80px;
+        padding: 0 20px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .box {
+        width: 250px;
+        height: 160px;
+        border: 15px solid transparent;
+        border-radius: 20px;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s ease;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
+    }
+    .box h2 {
+        font-size: 62px;
+        color: #AA336A;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+        text-shadow: 
+            -0.5px -0.5px 0 #D4AF37,
+            0.5px -0.5px 0 #D4AF37,
+            -0.5px 0.5px 0 #D4AF37,
+            0.5px 0.5px 0 #D4AF37,
+            1px 1px 3px rgba(0,0,0,0.2);
+        text-decoration: none;
+    }
+
+    /* ================= NAV ================= */
+    nav {
+        position: relative;
+        z-index: 100000;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li {
+        display: inline-block;
+        margin: 0 20px;
+        position: relative;
+    }
+
+    nav ul li a {
+        font-size: 35px;
+        color: #AA336A;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 15px 10px;
+        display: block;
+        cursor: pointer;
+    }
+    
+    nav > ul > li > a.dropdown-toggle,
+    nav > ul > li > a {
+        color: #AA336A !important;
+        -webkit-text-stroke: 0.5px #D4AF37;
+        paint-order: stroke fill;
+    }
+
+    /* ================= DROPDOWN ================= */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-toggle::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 100%;
+        height: 1px;
+        background: transparent;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: transparent;
+        min-width: 100px;
+        padding: 0px 0;
+        box-shadow: 5px 5px 5px rgba(0,0,0,.05);
+        display: none;
+        z-index: 2147483647;
+        pointer-events: auto;
+        border-radius: 20px;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown.open .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu a {
+        display: block;
+        padding: 1px 1px;
+        font-size: 25px;
+        color: #AA336A;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover {
+        background: #f0f0f0;
+    }
+
+    /* ================= CONTACT ================= */
+    #contact {
+        text-align: center;
+        padding: 150px 0;
+        font-size: 25px;
+    }
+
+    /* ================= SOCIAL / DONATE BOXES (DESKTOP ONLY) ================= */
+    .donate-fixed {
+        position: fixed;
+        bottom: 30px;
+        left: 20px;
+        z-index: 1000;
+        background: transparent;
+        padding: 8px 15px;
+        border-radius: 20px;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        max-width: 90%;
+    }
+
+    .donate-text {
+        margin: 0 0 12px 0;
+        font-size: 28px;
+        color: #AA336A;
+        line-height: 1.2;
+    }
+
+    .social-fixed {
+        position: fixed;
+        bottom: 160px;
+        left: 20px;
+        z-index: 1000;
+        background: transparent;
+        padding: 8px 15px;
+        border-radius: 20px;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        max-width: 90%;
+        width: fit-content;
+        min-width: 140px;
+    }
+
+    .instagram-fixed {
+        position: fixed;
+        bottom: 300px;
+        left: 20px;
+        z-index: 1000;
+        background: transparent;
+        padding: 8px 15px;
+        border-radius: 20px;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        max-width: 90%;
+        width: fit-content;
+        min-width: 140px;
+    }
+
+    .social-text, .instagram-text {
+        margin: 0 0 12px 0;
+        font-size: 28px;
+        color: #AA336A;
+        line-height: 1.2;
+    }
+
+    /* Hover effects for desktop */
+    .social-fixed a img:hover, .instagram-fixed a img:hover {
+        transform: scale(1.08);
+    }
+    .donate-fixed input[type="image"]:hover {
+        transform: scale(1.08);
+    }
+
+    /* ================= MOBILE ================= */
+    @media (max-width: 500px) {
         header {
-            min-height: 100vh;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 40px 20px 0;
-            overflow: visible;
-        }
-
-        .hero-content {
-            text-align: center;
+            padding-top: 20px;
         }
 
         header h1 {
-            font-size: 155px;
-            margin-bottom: 0px;
-            font-weight: lighter;
-            text-shadow: 
-                -1px -1px 0 #D4AF37,
-                1px -1px 0 #D4AF37,
-                -1px 1px 0 #D4AF37,
-                1px 1px 0 #D4AF37,
-                -0.5px 0 0 #D4AF37,
-                0.5px 0 0 #D4AF37,
-                0 -0.5px 0 #D4AF37,
-                0 0.5px 0 #D4AF37,
-                2px 2px 4px rgba(0,0,0,.5);
-            letter-spacing: -2px;  
+            font-size: 60px;
+            margin-bottom: 15px;
         }
 
-        /* ================= THREE BOXES - CLOSER TOGETHER ================= */
         .boxes-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 80px;
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            margin-top: 50px;
         }
 
         .box {
-            width: 250px;
-            height: 160px;
-            border: 15px solid transparent;
-            border-radius: 20px;
-            background: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.5s ease;
-            cursor: pointer;
-            text-decoration: none;
+            width: 160px;
+            height: 120px;
         }
 
-        .box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
-        }
         .box h2 {
-            font-size: 62px;
-            color: #AA336A;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-            text-shadow: 
-                -0.5px -0.5px 0 #D4AF37,
-                0.5px -0.5px 0 #D4AF37,
-                -0.5px 0.5px 0 #D4AF37,
-                0.5px 0.5px 0 #D4AF37,
-                1px 1px 3px rgba(0,0,0,0.2);
-            text-decoration: none;
+            font-size: 50px;
         }
 
-        /* ================= NAV ================= */
-        nav {
-            position: relative;
-            z-index: 100000;
-        }
-
+        /* Navigation vertical and centered */
         nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
         }
 
         nav ul li {
-            display: inline-block;
-            margin: 0 20px;
-            position: relative;
+            display: block;
+            margin: 0;
         }
 
         nav ul li a {
-            font-size: 35px;
-            color: #AA336A;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 15px 10px;
-            display: block;
-            cursor: pointer;
-        }
-        
-        nav > ul > li > a.dropdown-toggle,
-        nav > ul > li > a {
-            color: #AA336A !important;
-            -webkit-text-stroke: 0.5px #D4AF37;
-            paint-order: stroke fill;
-        }
-
-        /* ================= DROPDOWN ================= */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-toggle::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -1px;
-            width: 100%;
-            height: 1px;
-            background: transparent;
+            font-size: 48px;
         }
 
         .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: transparent;
-            min-width: 100px;
-            padding: 0px 0;
-            box-shadow: 5px 5px 5px rgba(0,0,0,.05);
-            display: none;
-            z-index: 2147483647;
-            pointer-events: auto;
+            position: static;
+            transform: none;
+            box-shadow: none;
+            background: rgba(255,255,255,0.7);
             border-radius: 20px;
-        }
-
-        .dropdown:hover .dropdown-menu,
-        .dropdown.open .dropdown-menu {
-            display: block;
+            padding: 20px;
+            margin-top: 15px;
         }
 
         .dropdown-menu a {
-            display: block;
-            padding: 1px 1px;
-            font-size: 25px;
-            color: #AA336A;
-            text-decoration: none;
-            white-space: nowrap;
+            font-size: 35px;
+            padding: 10px 0;
         }
 
-        .dropdown-menu a:hover {
-            background: #f0f0f0;
+        .dropdown-toggle::after {
+            display: none;
         }
 
-        /* ================= CONTACT ================= */
+        /* Hide all social/donate boxes on mobile */
+        .instagram-fixed, .social-fixed, .donate-fixed {
+            display: none !important;
+        }
+
+        /* Larger contact text on mobile */
         #contact {
-            text-align: center;
-            padding: 150px 0;
-            font-size: 25px;
+            font-size: 40px;
+            padding: 100px 20px 100px;
         }
-
-        /* ================= SOCIAL / DONATE BOXES (DESKTOP ONLY) ================= */
-        .donate-fixed {
-            position: fixed;
-            bottom: 30px;
-            left: 20px;
-            z-index: 1000;
-            background: transparent;
-            padding: 8px 15px;
-            border-radius: 20px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-            text-align: center;
-            max-width: 90%;
-        }
-
-        .donate-text {
-            margin: 0 0 12px 0;
-            font-size: 28px;
-            color: #AA336A;
-            line-height: 1.2;
-        }
-
-        .social-fixed {
-            position: fixed;
-            bottom: 160px;
-            left: 20px;
-            z-index: 1000;
-            background: transparent;
-            padding: 8px 15px;
-            border-radius: 20px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-            text-align: center;
-            max-width: 90%;
-            width: fit-content;
-            min-width: 140px;
-        }
-
-        .instagram-fixed {
-            position: fixed;
-            bottom: 300px;
-            left: 20px;
-            z-index: 1000;
-            background: transparent;
-            padding: 8px 15px;
-            border-radius: 20px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-            text-align: center;
-            max-width: 90%;
-            width: fit-content;
-            min-width: 140px;
-        }
-
-        .social-text, .instagram-text {
-            margin: 0 0 12px 0;
-            font-size: 28px;
-            color: #AA336A;
-            line-height: 1.2;
-        }
-
-        /* Hover effects for desktop */
-        .social-fixed a img:hover, .instagram-fixed a img:hover {
-            transform: scale(1.08);
-        }
-        .donate-fixed input[type="image"]:hover {
-            transform: scale(1.08);
-        }
-
-        /* ================= MOBILE ================= */
-        @media (max-width: 500px) {
-            header {
-                padding-top: 20px;
-            }
-
-            header h1 {
-                font-size: 60px;
-                margin-bottom: 15px;
-            }
-
-            .boxes-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 40px;
-                margin-top: 50px;
-            }
-
-            .box {
-                width: 160px;
-                height: 120px;
-            }
-
-            .box h2 {
-                font-size: 50px;
-            }
-
-            /* Navigation vertical and centered */
-            nav ul {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
-            }
-
-            nav ul li {
-                display: block;
-                margin: 0;
-            }
-
-            nav ul li a {
-                font-size: 48px;
-            }
-
-            .dropdown-menu {
-                position: static;
-                transform: none;
-                box-shadow: none;
-                background: rgba(255,255,255,0.7);
-                border-radius: 20px;
-                padding: 20px;
-                margin-top: 15px;
-            }
-
-            .dropdown-menu a {
-                font-size: 35px;
-                padding: 10px 0;
-            }
-
-            .dropdown-toggle::after {
-                display: none;
-            }
-
-            /* Hide all social/donate boxes on mobile */
-            .instagram-fixed, .social-fixed, .donate-fixed {
-                display: none !important;
-            }
-
-            /* Larger contact text on mobile */
-            #contact {
-                font-size: 40px;
-                padding: 100px 20px 100px;
-            }
-        }
-    </style>
-</head>
+    }
+</style></head>
 <body>
 
-    <div class="background-overlay"></div>
+<div class="background-overlay"></div>
 
-    <header>
-        <div class="hero-content">
-            <h1>Endometriosis Life</h1>
+<header>
+    <div class="hero-content">
+        <h1>Endometriosis Life</h1>
 
-            <nav>
-                <ul>
-                    <li class="dropdown">
-                        <a href="guide.html" class="dropdown-toggle">Guide</a>
-                        <div class="dropdown-menu">
-                            <a href="guide.html?tab=symptoms">Symptoms</a>
-                            <a href="guide.html?tab=causes">Causes</a>
-                            <a href="guide.html?tab=diagnosis">Diagnosis</a>
-                            <a href="guide.html?tab=treatment">Treatment</a>
-                        </div>
-                    </li>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                    <a href="guide.html" class="dropdown-toggle">Guide</a>
+                    <div class="dropdown-menu">
+                        <a href="guide.html?tab=symptoms">Symptoms</a>
+                        <a href="guide.html?tab=causes">Causes</a>
+                        <a href="guide.html?tab=diagnosis">Diagnosis</a>
+                        <a href="guide.html?tab=treatment">Treatment</a>
+                    </div>
+                </li>
 
-                    <li class="dropdown">
-                        <a href="journal.html" class="dropdown-toggle">Journal</a>
-                        <div class="dropdown-menu">
-                            <a href="journal.html?tab=2026">2026</a>
-                            <a href="journal.html?tab=2025">2025</a>
-                        </div>
-                    </li>
+                <li class="dropdown">
+                    <a href="journal.html" class="dropdown-toggle">Journal</a>
+                    <div class="dropdown-menu">
+                        <a href="journal.html?tab=2026">2026</a>
+                        <a href="journal.html?tab=2025">2025</a>
+                    </div>
+                </li>
 
-                    <li class="dropdown">
-                        <a href="lifestyle.html" class="dropdown-toggle">Lifestyle</a>
-                        <div class="dropdown-menu">
-                            <a href="lifestyle.html?tab=diet">Diet</a>
-                            <a href="lifestyle.html?tab=exercise">Exercise</a>
-                            <a href="lifestyle.html?tab=sleep">Sleep</a>
-                            <a href="lifestyle.html?tab=stress">Stress</a>
-                        </div>
-                    </li>
+                <li class="dropdown">
+                    <a href="lifestyle.html" class="dropdown-toggle">Lifestyle</a>
+                    <div class="dropdown-menu">
+                        <a href="lifestyle.html?tab=diet">Diet</a>
+                        <a href="lifestyle.html?tab=exercise">Exercise</a>
+                        <a href="lifestyle.html?tab=sleep">Sleep</a>
+                        <a href="lifestyle.html?tab=stress">Stress</a>
+                    </div>
+                </li>
 
-                    <li class="dropdown">
-                        <a href="elevate.html" class="dropdown-toggle">Elevate</a>
-                        <div class="dropdown-menu">
-                            <a href="elevate.html?tab=mindset">Mindset</a>
-                            <a href="elevate.html?tab=community">Community</a>
-                            <a href="elevate.html?tab=advocacy">Advocacy</a>
-                            <a href="elevate.html?tab=inspiration">Inspiration</a>
-                        </div>
-                    </li>
+                <li class="dropdown">
+                    <a href="elevate.html" class="dropdown-toggle">Elevate</a>
+                    <div class="dropdown-menu">
+                        <a href="elevate.html?tab=mindset">Mindset</a>
+                        <a href="elevate.html?tab=community">Community</a>
+                        <a href="elevate.html?tab=advocacy">Advocacy</a>
+                        <a href="elevate.html?tab=inspiration">Inspiration</a>
+                    </div>
+                </li>
 
-                    <li><a href="about.html">About</a></li>
-                </ul>
-            </nav>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
 
-            <div class="boxes-container">
-                <a href="news.html" class="box">
-                    <h2>News</h2>
-                </a>
-                <a href="book.html" class="box">
-                    <h2>My Book</h2>
-                </a>
-                <a href="curiosities.html" class="box">
-                    <h2>Curiosities</h2>
-                </a>
-            </div>
+        <div class="boxes-container">
+            <a href="news.html" class="box">
+                <h2>News</h2>
+            </a>
+            <a href="book.html" class="box">
+                <h2>My Book</h2>
+            </a>
+            <a href="curiosities.html" class="box">
+                <h2>Curiosities</h2>
+            </a>
         </div>
-    </header>
-
-    <section id="contact">
-        I'd love to hear from you<br>
-        <a href="mailto:info@endometriosis-life.com"
-           style="font-family: 'Roboto', sans-serif; font-size: 10px; color: #AA336A;">
-            info@endometriosis-life.com
-        </a>
-    </section>
-
-    <!-- Desktop only: stacked vertically on left (fixed while scrolling) -->
-    <div class="instagram-fixed">
-        <p class="instagram-text">Me on Instagram</p>
-        <a href="https://www.instagram.com/Sophie_endolife" target="_blank">
-            <img src="https://www.iconpacks.net/icons/2/free-instagram-logo-icon-3497-thumb.png" alt="Follow on Instagram" width="60" height="60" style="border-radius: 10px;">
-        </a>
     </div>
+</header>
 
-    <div class="social-fixed">
-        <p class="social-text">Follow Me on X</p>
-        <a href="https://x.com/Sophie_endolife" target="_blank">
-            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/x-social-media-black-icon.png" alt="Follow on X" width="60" height="60" style="border-radius: 10px;">
-        </a>
-    </div>
+<section id="contact">
+    I'd love to hear from you
 
-    <div class="donate-fixed">
-        <p class="donate-text">❤️ Support ❤️</p>
-        <form action="https://www.paypal.com/donate" method="post" target="_top">
-            <input type="hidden" name="hosted_button_id" value="ELEXPMBEHT7DG" />
-            <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate with PayPal button" />
-            <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
-        </form>
-    </div>
+    <a href="mailto:info@endometriosis-life.com"
+       style="font-family: 'Google Sans Flex', sans-serif; font-size: 10px; color: #AA336A;">
+        info@endometriosis-life.com
+    </a>
+</section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const dropdowns = document.querySelectorAll('.dropdown');
+<!-- Desktop only: stacked vertically on left (fixed while scrolling) -->
+<div class="instagram-fixed">
+    <p class="instagram-text">Me on Instagram</p>
+    <a href="https://www.instagram.com/Sophie_endolife" target="_blank">
+        <img src="https://www.iconpacks.net/icons/2/free-instagram-logo-icon-3497-thumb.png" alt="Follow on Instagram" width="60" height="60" style="border-radius: 10px;">
+    </a>
+</div>
 
-            dropdowns.forEach(dropdown => {
-                const toggle = dropdown.querySelector('.dropdown-toggle');
+<div class="social-fixed">
+    <p class="social-text">Follow Me on X</p>
+    <a href="https://x.com/Sophie_endolife" target="_blank">
+        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/x-social-media-black-icon.png" alt="Follow on X" width="60" height="60" style="border-radius: 10px;">
+    </a>
+</div>
 
-                toggle.addEventListener('click', e => {
-                    e.preventDefault();
-                    dropdowns.forEach(d => {
-                        if (d !== dropdown) d.classList.remove('open');
-                    });
-                    dropdown.classList.toggle('open');
+<div class="donate-fixed">
+    <p class="donate-text"> Support </p>
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+        <input type="hidden" name="hosted_button_id" value="ELEXPMBEHT7DG" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate with PayPal button" />
+        <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        dropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+
+            toggle.addEventListener('click', e => {
+                e.preventDefault();
+                dropdowns.forEach(d => {
+                    if (d !== dropdown) d.classList.remove('open');
                 });
-
-                dropdown.addEventListener('mouseleave', () => {
-                    setTimeout(() => {
-                        if (!dropdown.matches(':hover')) {
-                            dropdown.classList.remove('open');
-                        }
-                    }, 300);
-                });
+                dropdown.classList.toggle('open');
             });
 
-            document.addEventListener('click', e => {
-                if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(d => d.classList.remove('open'));
-                }
+            dropdown.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                    if (!dropdown.matches(':hover')) {
+                        dropdown.classList.remove('open');
+                    }
+                }, 300);
             });
         });
-    </script>
-</body>
+
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.dropdown')) {
+                dropdowns.forEach(d => d.classList.remove('open'));
+            }
+        });
+    });
+</script></body>
 </html>
+
