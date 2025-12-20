@@ -94,7 +94,7 @@
     transition: all 0.5s ease;
     cursor: pointer;
     text-decoration: none;
-    box-shadow: 0 8px 25px rgba(230, 57, 70, 0.25);  /* Permanent soft shadow */
+    box-shadow: 0 8px 25px rgba(230, 57, 70, 0.1);  /* Permanent soft shadow */
     }
     
     .box:hover {
@@ -208,55 +208,53 @@
     }
 
     /* ================= SOCIAL / DONATE BOXES (DESKTOP ONLY) ================= */
+    .instagram-fixed,
+    .social-fixed,
     .donate-fixed {
         position: fixed;
-        bottom: 30px;
         left: 20px;
         z-index: 1000;
         background: transparent;
-        padding: 1px 1px;
+        padding: 12px 15px;
         border-radius: 20px;
         box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
         text-align: center;
-        max-width: 90%;
+        width: 140px;
+        height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
     }
-
+    
+    .instagram-fixed { bottom: 300px; }
+    .social-fixed     { bottom: 160px; }
+    .donate-fixed     { bottom: 30px;  }
+    
+    .instagram-text,
+    .social-text,
     .donate-text {
-        margin: 0 0 12px 0;
-        font-size: 10px;
+        margin: 0 0 10px 0;
+        font-size: 24px;
         color: #AA336A;
         line-height: 1.2;
     }
-
-    .social-fixed {
-        position: fixed;
-        bottom: 160px;
-        left: 20px;
-        z-index: 1000;
-        background: transparent;
-        padding: 1px 1px;
-        border-radius: 20px;
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-        text-align: center;
-        max-width: 90%;
-        width: fit-content;
-        min-width: 140px;
+    
+    .instagram-fixed a img,
+    .social-fixed a img,
+    .donate-fixed input[type="image"] {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
     }
-
-    .instagram-fixed {
-        position: fixed;
-        bottom: 300px;
-        left: 20px;
-        z-index: 1000;
-        background: transparent;
-        padding: 1px 1px;
-        border-radius: 20px;
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-        text-align: center;
-        max-width: 90%;
-        width: fit-content;
-        min-width: 140px;
-    }
+    
+        .donate-text {
+            margin: 0 0 12px 0;
+            font-size: 10px;
+            color: #AA336A;
+            line-height: 1.2;
+        }
 
     .social-text, .instagram-text {
         margin: 0 0 12px 0;
