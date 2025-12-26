@@ -126,6 +126,15 @@
             display: inline-block;
         }
 
+        /* Top back link styling */
+        a.top-back {
+            font-size: 20px;
+            color: #3B3B3B;
+            text-decoration: underline;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+
         @media (max-width: 500px) {
             h1 {
                 font-size: 50px;
@@ -151,12 +160,19 @@
                 font-size: 18px;
                 padding: 0 10px;
             }
+
+            a.top-back {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="content">
-        <p><a href="index.html" class="back">← Back to home</a></p>
+        
+        <!-- Top Back to Home Link -->
+        <p><a href="index.html" class="back top-back">← Back to home</a></p>
 
         <h1>Journal</h1>
 
