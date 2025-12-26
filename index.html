@@ -490,7 +490,7 @@
                             <li><a href="about.html">About</a></li>
                         </ul>
 
-                        <!-- Mobile version of the three boxes -->
+                        <!-- Mobile version of the three boxes - moved outside the <ul> to prevent collapse issues -->
                         <div class="mobile-boxes">
                             <a href="store.html" class="mobile-box-link">Store</a>
                             <a href="book.html" class="mobile-box-link">My Book</a>
@@ -608,11 +608,12 @@
                 }
             });
 
-            // Mobile dropdowns (Guide, Journal, etc.)
+            // Mobile dropdowns (Guide, Journal, etc.) - only toggle the specific one
             document.querySelectorAll('.dropdown-mobile > a').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    link.parentElement.classList.toggle('open');
+                    const parentLi = link.parentElement;
+                    parentLi.classList.toggle('open');
                 });
             });
 
