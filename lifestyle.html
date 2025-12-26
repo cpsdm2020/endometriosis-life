@@ -119,6 +119,15 @@
             display: inline-block;
         }
 
+        /* Top back link styling */
+        a.top-back {
+            font-size: 20px;
+            color: #3B3B3B;
+            text-decoration: underline;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+
         @media (max-width: 500px) {
             h1 {
                 font-size: 50px;
@@ -144,24 +153,31 @@
                 font-size: 18px;
                 padding: 0 10px;
             }
+
+            a.top-back {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="content">
-        <p><a href="index.html" class="back">← Back to home</a></p>
+        
+        <!-- Top Back to Home Link -->
+        <p><a href="index.html" class="back top-back">← Back to home</a></p>
 
         <h1>Lifestyle</h1>
 
         <div class="tabs">
-            <button class="tab-button" data-tab="diet">Diet Tips</button>
+            <button class="tab-button active" data-tab="diet">Diet Tips</button>
             <button class="tab-button" data-tab="exercise">Exercise</button>
             <button class="tab-button" data-tab="sleep">Sleep</button>
             <button class="tab-button" data-tab="stress">Stress Management</button>
         </div>
 
         <!-- Diet Tab -->
-        <div id="diet" class="tab-content">
+        <div id="diet" class="tab-content active">
             <p class="body-text">
                 Lifestyle changes have been one of the most powerful tools in managing my endometriosis — not as a cure, but as a way to reduce inflammation, balance hormones, and improve daily quality of life.
             </p>
