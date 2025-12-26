@@ -29,7 +29,7 @@
                 rgba(255, 255, 255, 0.15) 40%,
                 rgba(255, 255, 255, 0.35) 60%,
                 rgba(255, 255, 255, 0.55) 80%,
-                rgba(255, 255, 255, 0.85) 100%
+                rgba(255, 255, 0.85) 100%
             );
             pointer-events: none;
             z-index: 0;
@@ -124,6 +124,15 @@
             display: inline-block;
         }
 
+        /* Top back link styling */
+        a.top-back {
+            font-size: 20px;
+            color: #3B3B3B;
+            text-decoration: underline;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+
         @media (max-width: 500px) {
             h1 {
                 font-size: 50px;
@@ -149,24 +158,31 @@
                 font-size: 18px;
                 padding: 0 10px;
             }
+
+            a.top-back {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="content">
-        <p><a href="index.html" class="back">← Back to home</a></p>
+        
+        <!-- Top Back to Home Link -->
+        <p><a href="index.html" class="back top-back">← Back to home</a></p>
 
         <h1>Elevate</h1>
 
         <div class="tabs">
-            <button class="tab-button" data-tab="mindset">Mindset</button>
+            <button class="tab-button active" data-tab="mindset">Mindset</button>
             <button class="tab-button" data-tab="community">Community</button>
             <button class="tab-button" data-tab="advocacy">Advocacy</button>
             <button class="tab-button" data-tab="inspiration">Inspiration</button>
         </div>
 
         <!-- Mindset Tab -->
-        <div id="mindset" class="tab-content">
+        <div id="mindset" class="tab-content active">
             <p class="body-text">
                 Shifting your mindset can be one of the most powerful tools in living well with endometriosis. 
                 Reframing pain, practicing self-compassion, and focusing on what you <em>can</em> control helps build resilience.
