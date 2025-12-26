@@ -430,6 +430,34 @@
                 font-size: 10px;
                 padding: 100px 20px 100px;
             }
+
+            /* ---------- NEW: Fixed title on mobile ---------- */
+            .title-wrapper h1 {
+                position: fixed;
+                top: 70px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 10000;
+                margin: 0;
+                font-size: 30px;
+                background: rgba(255, 255, 255, 0.85);
+                padding: 8px 20px;
+                border-radius: 15px;
+                backdrop-filter: blur(5px);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            header {
+                padding-top: 140px !important; /* Space for fixed title + breathing room */
+            }
+
+            .background-overlay {
+                z-index: 1;
+            }
+
+            .menu-overlay {
+                z-index: 100000;
+            }
         }
     </style>
 </head>
@@ -439,7 +467,9 @@
 
     <header>
         <div class="hero-content">
-            <h1>Endometriosis Life</h1>
+            <div class="title-wrapper">
+                <h1>Endometriosis Life</h1>
+            </div>
 
             <nav class="mobile-nav">
                 <!-- Hamburger Button - visible only on mobile -->
