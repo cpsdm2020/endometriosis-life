@@ -5,254 +5,346 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Endometriosis Life</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex&display=swap" rel="stylesheet">
 
-<style>
-    /* ================= BASE ================= */
-    body {
-        margin: 0;
-        font-family: 'Google Sans Flex', sans-serif;
-        background: url('back.jpeg') center/cover no-repeat fixed;
-        min-height: 100vh;
-        color: #AA336A;
-    }
+    <style>
+        /* ================= BASE ================= */
+        body {
+            margin: 0;
+            font-family: 'Google Sans Flex', sans-serif;
+            background: url('back.jpeg') center/cover no-repeat fixed;
+            min-height: 100vh;
+            color: #AA336A;
+        }
 
-    .background-overlay {
-        position: fixed;
-        inset: 0;
-        background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.00) 0%,
-            rgba(255, 255, 255, 0.01) 20%,
-            rgba(255, 255, 255, 0.05) 40%,
-            rgba(255, 255, 255, 0.15) 60%,
-            rgba(255, 255, 255, 0.65) 80%,
-            rgba(255, 255, 255, 0.85) 100%
-        );
-        pointer-events: none;
-        z-index: 0;
-    }
+        .background-overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                rgba(255, 255, 255, 0.00) 0%,
+                rgba(255, 255, 255, 0.01) 20%,
+                rgba(255, 255, 255, 0.05) 40%,
+                rgba(255, 255, 255, 0.15) 60%,
+                rgba(255, 255, 255, 0.65) 80%,
+                rgba(255, 255, 255, 0.85) 100%
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
 
-    /* ================= LAYOUT ================= */
-    header, section {
-        position: relative;
-        z-index: 10;
-    }
+        /* ================= LAYOUT ================= */
+        header, section {
+            position: relative;
+            z-index: 10;
+        }
 
-    header {
-        min-height: 100vh;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 40px 20px 0;
-        overflow: visible;
-    }
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 20px 0;
+            overflow: visible;
+        }
 
-    .hero-content {
-        text-align: center;
-    }
+        .hero-content {
+            text-align: center;
+        }
 
-    header h1 {
-        font-size: 125px;
-        margin-bottom: 0px;
-        font-weight: lighter;
-       /* text-shadow: 
-            -1px -1px 0 #D4AF37,
-            1px -1px 0 #D4AF37,
-            -1px 1px 0 #D4AF37,
-            1px 1px 0 #D4AF37,
-            -0.5px 0 0 #D4AF37,
-            0.5px 0 0 #D4AF37,
-            0 -0.5px 0 #D4AF37,
-            0 0.5px 0 #D4AF37,
-            2px 2px 4px rgba(0,0,0,.5); */
-        letter-spacing: -2px;  
-    }
+        header h1 {
+            font-size: 125px;
+            margin-bottom: 0px;
+            font-weight: lighter;
+            letter-spacing: -2px;  
+        }
 
-    /* ================= THREE BOXES - CLOSER TOGETHER ================= */
-    .boxes-container {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-        margin-top: 80px;
-        padding: 0 20px;
-        position: relative;
-        z-index: 10;
-    }
+        /* ================= THREE BOXES - CLOSER TOGETHER ================= */
+        .boxes-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 80px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
 
-    .box {
-    width: 250px;
-    height: 160px;
-    border: 15px solid transparent;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
-    cursor: pointer;
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.02);  /* Subtle white overlay - always visible */
-    box-shadow: 0 15px 35px rgba(230, 57, 70, 0.1);  /* Permanent soft shadow */
-    }
-    
-    .box:hover {
-        transform: translateY(-10px);
-        background: rgba(255, 255, 255, 0.3);   /* Slightly stronger on hover */
-        box-shadow: 0 15px 35px rgba(230, 57, 70, 0.4);  /* Stronger shadow on hover */
-    }
-    .box h2 {
-        font-size: 35px;
-        color: #AA336A;
-        text-align: center;
-        margin: 0;
-        padding: 20px;
-       /* text-shadow: 
-            -0.5px -0.5px 0 #D4AF37,
-            0.5px -0.5px 0 #D4AF37,
-            -0.5px 0.5px 0 #D4AF37,
-            0.5px 0.5px 0 #D4AF37,
-            1px 1px 3px rgba(0,0,0,0.2); */
-        text-decoration: none;
-    }
+        .box {
+            width: 250px;
+            height: 160px;
+            border: 15px solid transparent;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.02);
+            box-shadow: 0 15px 35px rgba(230, 57, 70, 0.1);
+        }
+        
+        .box:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(230, 57, 70, 0.4);
+        }
+        .box h2 {
+            font-size: 35px;
+            color: #AA336A;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            text-decoration: none;
+        }
 
-    /* ================= NAV ================= */
-    nav {
-        position: relative;
-        z-index: 100000;
-    }
+        /* ================= NAV ================= */
+        nav {
+            position: relative;
+            z-index: 100000;
+        }
 
-    nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+        /* Desktop navigation */
+        .desktop-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: block;
+        }
 
-    nav ul li {
-        display: inline-block;
-        margin: 0 20px;
-        position: relative;
-    }
+        .desktop-nav li {
+            display: inline-block;
+            margin: 0 20px;
+            position: relative;
+        }
 
-    nav ul li a {
-        font-size: 25px;
-        color: #AA336A;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 15px 10px;
-        display: block;
-        cursor: pointer;
-    }
-    
-    nav > ul > li > a.dropdown-toggle,
-    nav > ul > li > a {
-        color: #AA336A !important;
-        /*-webkit-text-stroke: 0.5px #D4AF37;*/
-        paint-order: stroke fill;
-    }
+        .desktop-nav li a {
+            font-size: 25px;
+            color: #AA336A;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 15px 10px;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .desktop-nav > li > a.dropdown-toggle,
+        .desktop-nav > li > a {
+            color: #AA336A !important;
+        }
 
-    /* ================= DROPDOWN ================= */
-    .dropdown {
-        position: relative;
-    }
+        /* ================= DROPDOWN (DESKTOP) ================= */
+        .dropdown {
+            position: relative;
+        }
 
-    .dropdown-toggle::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -1px;
-        width: 100%;
-        height: 1px;
-        background: transparent;
-    }
+        .dropdown-toggle::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 100%;
+            height: 1px;
+            background: transparent;
+        }
 
-    .dropdown-menu {
-        position: absolute;
-        top: 80%;
-        left: 50%;
-        transform: translateX(-50%);
-        background: transparent;
-        min-width: 100px;
-        padding: 0px 0;
-        box-shadow: 5px 5px 5px rgba(0,0,0,.05);
-        display: none;
-        z-index: 2147483647;
-        pointer-events: auto;
-        border-radius: 20px;
-    }
+        .dropdown-menu {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: transparent;
+            min-width: 100px;
+            padding: 0px 0;
+            box-shadow: 5px 5px 5px rgba(0,0,0,.05);
+            display: none;
+            z-index: 2147483647;
+            pointer-events: auto;
+            border-radius: 20px;
+        }
 
-    .dropdown:hover .dropdown-menu,
-    .dropdown.open .dropdown-menu {
-        display: block;
-    }
+        .dropdown:hover .dropdown-menu,
+        .dropdown.open .dropdown-menu {
+            display: block;
+        }
 
-    .dropdown-menu a {
-        display: block;
-        padding: 1px 1px;
-        font-size: 15px;
-        color: #AA336A;
-        text-decoration: none;
-        white-space: nowrap;
-    }
+        .dropdown-menu a {
+            display: block;
+            padding: 1px 1px;
+            font-size: 15px;
+            color: #AA336A;
+            text-decoration: none;
+            white-space: nowrap;
+        }
 
-    .dropdown-menu a:hover {
-        background: #f0f0f0;
-    }
+        .dropdown-menu a:hover {
+            background: #f0f0f0;
+        }
 
-    /* ================= CONTACT ================= */
-    #contact {
-        text-align: center;
-        padding: 150px 0;
-        font-size: 10px;
-    }
+        /* ================= HAMBURGER & MOBILE MENU ================= */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            padding: 8px;
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            z-index: 100001;
+        }
 
-    /* ================= SOCIAL / DONATE BOXES (DESKTOP ONLY) ================= */
-    .instagram-fixed,
-    .social-fixed,
-    .donate-fixed {
-        position: fixed;
-        left: 20px;
-        z-index: 1000;
-        background: transparent;
-        padding: 12px 15px;
-        border-radius: 20px;
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-        text-align: center;
-        width: 100px;
-        height: 75px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
-    }
-    
-    .instagram-fixed { bottom: 190px; }
-    .social-fixed     { bottom: 110px; }
-    .donate-fixed     { bottom: 30px;  }
-    
-    .instagram-text,
-    .social-text,
-    .donate-text {
-        margin: 0 0 10px 0;
-        font-size: 24px;
-        color: #AA336A;
-        line-height: 1.2;
-    }
-    
-    .instagram-fixed a img,
-    .social-fixed a img {
-        width: 50px;
-        height: 50px;
-        object-fit: contain; 
-    }
-    .donate-fixed input[type="image"] {
-        width: 70px;
-        height: 100px;
-        object-fit: contain; 
-    }
-    
+        .hamburger span {
+            width: 100%;
+            height: 4px;
+            background: #AA336A;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 100000;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .mobile-menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 60px 0;
+        }
+
+        .mobile-menu-list li {
+            margin: 25px 0;
+        }
+
+        .mobile-menu-list a {
+            font-size: 28px;
+            color: #AA336A;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .submenu {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .dropdown-mobile.open .submenu {
+            display: block;
+        }
+
+        .submenu a {
+            display: block;
+            font-size: 20px;
+            margin: 12px 0;
+            font-weight: normal;
+        }
+
+        .mobile-boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .mobile-box-link {
+            font-size: 24px;
+            color: #AA336A;
+            text-decoration: none;
+            padding: 15px;
+            background: rgba(170, 51, 106, 0.1);
+            border-radius: 15px;
+        }
+
+        /* ================= CONTACT ================= */
+        #contact {
+            text-align: center;
+            padding: 150px 0;
+            font-size: 10px;
+        }
+
+        /* ================= SOCIAL / DONATE BOXES (DESKTOP ONLY) ================= */
+        .instagram-fixed,
+        .social-fixed,
+        .donate-fixed {
+            position: fixed;
+            left: 20px;
+            z-index: 1000;
+            background: transparent;
+            padding: 12px 15px;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            width: 100px;
+            height: 75px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        
+        .instagram-fixed { bottom: 190px; }
+        .social-fixed     { bottom: 110px; }
+        .donate-fixed     { bottom: 30px;  }
+        
+        .instagram-text,
+        .social-text,
+        .donate-text {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            color: #AA336A;
+            line-height: 1.2;
+        }
+        
+        .instagram-fixed a img,
+        .social-fixed a img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain; 
+        }
+        .donate-fixed input[type="image"] {
+            width: 70px;
+            height: 100px;
+            object-fit: contain; 
+        }
+        
         .donate-text {
             margin: 0 0 1px 0;
             font-size: 10px;
@@ -260,222 +352,283 @@
             line-height: 1.2;
         }
 
-    .social-text, .instagram-text {
-        margin: 0 0 12px 0;
-        font-size: 10px;
-        color: #AA336A;
-        line-height: 1.2;
-    }
-
-    /* Hover effects for desktop */
-    .social-fixed a img:hover, .instagram-fixed a img:hover {
-        transform: scale(1.5);
-    }
-    .donate-fixed input[type="image"]:hover {
-            transform: scale(1.2);
-    }
-
-    /* ================= MOBILE ================= */
-    @media (max-width: 500px) {
-        header {
-            padding-top: 20px;
-        }
-
-        header h1 {
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        .boxes-container {
-            flex-direction: column;
-            align-items: center;
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .box {
-            width: 160px;
-            height: 120px;
-        }
-
-        .box h2 {
-            font-size: 20px;
-        }
-
-        /* Navigation vertical and centered */
-        nav ul {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
-
-        nav ul li {
-            display: block;
-            margin: 0;
-        }
-
-        nav ul li a {
-            font-size: 20px;
-        }
-
-        .dropdown-menu {
-            position: static;
-            transform: none;
-            box-shadow: none;
-            background: rgba(255,255,255,0.7);
-            border-radius: 20px;
-            padding: 5px;
-            margin-top: 2px;
-        }
-
-        .dropdown-menu a {
-            font-size: 15px;
-            padding: 2px 0;
-        }
-
-        .dropdown-toggle::after {
-            display: none;
-        }
-
-        /* Hide all social/donate boxes on mobile */
-        .instagram-fixed, .social-fixed, .donate-fixed {
-            display: none !important;
-        }
-
-        /* Larger contact text on mobile */
-        #contact {
+        .social-text, .instagram-text {
+            margin: 0 0 12px 0;
             font-size: 10px;
-            padding: 100px 20px 100px;
+            color: #AA336A;
+            line-height: 1.2;
         }
-    }
-</style></head>
+
+        /* Hover effects for desktop */
+        .social-fixed a img:hover, .instagram-fixed a img:hover {
+            transform: scale(1.5);
+        }
+        .donate-fixed input[type="image"]:hover {
+            transform: scale(1.2);
+        }
+
+        /* ================= MOBILE ================= */
+        @media (max-width: 500px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .desktop-nav {
+                display: none !important;
+            }
+
+            header {
+                padding-top: 80px; /* Space for hamburger */
+            }
+
+            header h1 {
+                font-size: 30px;
+                margin-bottom: 15px;
+            }
+
+            .boxes-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+                margin-top: 50px;
+            }
+
+            .box {
+                width: 160px;
+                height: 120px;
+            }
+
+            .box h2 {
+                font-size: 20px;
+            }
+
+            /* Hide all social/donate boxes on mobile */
+            .instagram-fixed, .social-fixed, .donate-fixed {
+                display: none !important;
+            }
+
+            /* Larger contact text on mobile */
+            #contact {
+                font-size: 10px;
+                padding: 100px 20px 100px;
+            }
+        }
+    </style>
+</head>
 <body>
 
-<div class="background-overlay"></div>
+    <div class="background-overlay"></div>
 
-<header>
-    <div class="hero-content">
-        <h1>Endometriosis Life</h1>
+    <header>
+        <div class="hero-content">
+            <h1>Endometriosis Life</h1>
 
-        <nav>
-            <ul>
-                <li class="dropdown">
-                    <a href="guide.html" class="dropdown-toggle">Guide</a>
-                    <div class="dropdown-menu">
-                        <a href="guide.html?tab=symptoms">Symptoms</a>
-                        <a href="guide.html?tab=causes">Causes</a>
-                        <a href="guide.html?tab=diagnosis">Diagnosis</a>
-                        <a href="guide.html?tab=treatment">Treatment</a>
+            <nav class="mobile-nav">
+                <!-- Hamburger Button - visible only on mobile -->
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Mobile menu overlay -->
+                <div class="menu-overlay" id="menuOverlay">
+                    <div class="menu-content">
+                        <ul class="mobile-menu-list">
+                            <li class="dropdown-mobile">
+                                <a href="guide.html">Guide ▾</a>
+                                <div class="submenu">
+                                    <a href="guide.html?tab=symptoms">Symptoms</a>
+                                    <a href="guide.html?tab=causes">Causes</a>
+                                    <a href="guide.html?tab=diagnosis">Diagnosis</a>
+                                    <a href="guide.html?tab=treatment">Treatment</a>
+                                </div>
+                            </li>
+
+                            <li class="dropdown-mobile">
+                                <a href="journal.html">Journal ▾</a>
+                                <div class="submenu">
+                                    <a href="journal.html?tab=2026">2026</a>
+                                    <a href="journal.html?tab=2025">2025</a>
+                                </div>
+                            </li>
+
+                            <li class="dropdown-mobile">
+                                <a href="lifestyle.html">Lifestyle ▾</a>
+                                <div class="submenu">
+                                    <a href="lifestyle.html?tab=diet">Diet</a>
+                                    <a href="lifestyle.html?tab=exercise">Exercise</a>
+                                    <a href="lifestyle.html?tab=sleep">Sleep</a>
+                                    <a href="lifestyle.html?tab=stress">Stress</a>
+                                </div>
+                            </li>
+
+                            <li class="dropdown-mobile">
+                                <a href="elevate.html">Elevate ▾</a>
+                                <div class="submenu">
+                                    <a href="elevate.html?tab=mindset">Mindset</a>
+                                    <a href="elevate.html?tab=community">Community</a>
+                                    <a href="elevate.html?tab=advocacy">Advocacy</a>
+                                    <a href="elevate.html?tab=inspiration">Inspiration</a>
+                                </div>
+                            </li>
+
+                            <li><a href="about.html">About</a></li>
+                        </ul>
+
+                        <!-- Mobile version of the three boxes -->
+                        <div class="mobile-boxes">
+                            <a href="news.html" class="mobile-box-link">News</a>
+                            <a href="book.html" class="mobile-box-link">My Book</a>
+                            <a href="curiosities.html" class="mobile-box-link">Curiosities</a>
+                        </div>
                     </div>
-                </li>
+                </div>
 
-                <li class="dropdown">
-                    <a href="journal.html" class="dropdown-toggle">Journal</a>
-                    <div class="dropdown-menu">
-                        <a href="journal.html?tab=2026">2026</a>
-                        <a href="journal.html?tab=2025">2025</a>
-                    </div>
-                </li>
+                <!-- Desktop horizontal navigation -->
+                <ul class="desktop-nav">
+                    <li class="dropdown">
+                        <a href="guide.html" class="dropdown-toggle">Guide</a>
+                        <div class="dropdown-menu">
+                            <a href="guide.html?tab=symptoms">Symptoms</a>
+                            <a href="guide.html?tab=causes">Causes</a>
+                            <a href="guide.html?tab=diagnosis">Diagnosis</a>
+                            <a href="guide.html?tab=treatment">Treatment</a>
+                        </div>
+                    </li>
 
-                <li class="dropdown">
-                    <a href="lifestyle.html" class="dropdown-toggle">Lifestyle</a>
-                    <div class="dropdown-menu">
-                        <a href="lifestyle.html?tab=diet">Diet</a>
-                        <a href="lifestyle.html?tab=exercise">Exercise</a>
-                        <a href="lifestyle.html?tab=sleep">Sleep</a>
-                        <a href="lifestyle.html?tab=stress">Stress</a>
-                    </div>
-                </li>
+                    <li class="dropdown">
+                        <a href="journal.html" class="dropdown-toggle">Journal</a>
+                        <div class="dropdown-menu">
+                            <a href="journal.html?tab=2026">2026</a>
+                            <a href="journal.html?tab=2025">2025</a>
+                        </div>
+                    </li>
 
-                <li class="dropdown">
-                    <a href="elevate.html" class="dropdown-toggle">Elevate</a>
-                    <div class="dropdown-menu">
-                        <a href="elevate.html?tab=mindset">Mindset</a>
-                        <a href="elevate.html?tab=community">Community</a>
-                        <a href="elevate.html?tab=advocacy">Advocacy</a>
-                        <a href="elevate.html?tab=inspiration">Inspiration</a>
-                    </div>
-                </li>
+                    <li class="dropdown">
+                        <a href="lifestyle.html" class="dropdown-toggle">Lifestyle</a>
+                        <div class="dropdown-menu">
+                            <a href="lifestyle.html?tab=diet">Diet</a>
+                            <a href="lifestyle.html?tab=exercise">Exercise</a>
+                            <a href="lifestyle.html?tab=sleep">Sleep</a>
+                            <a href="lifestyle.html?tab=stress">Stress</a>
+                        </div>
+                    </li>
 
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
+                    <li class="dropdown">
+                        <a href="elevate.html" class="dropdown-toggle">Elevate</a>
+                        <div class="dropdown-menu">
+                            <a href="elevate.html?tab=mindset">Mindset</a>
+                            <a href="elevate.html?tab=community">Community</a>
+                            <a href="elevate.html?tab=advocacy">Advocacy</a>
+                            <a href="elevate.html?tab=inspiration">Inspiration</a>
+                        </div>
+                    </li>
 
-        <div class="boxes-container">
-            <a href="news.html" class="box">
-                <h2>News</h2>
-            </a>
-            <a href="book.html" class="box">
-                <h2>My Book</h2>
-            </a>
-            <a href="curiosities.html" class="box">
-                <h2>Curiosities</h2>
-            </a>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+
+            <div class="boxes-container">
+                <a href="news.html" class="box">
+                    <h2>News</h2>
+                </a>
+                <a href="book.html" class="box">
+                    <h2>My Book</h2>
+                </a>
+                <a href="curiosities.html" class="box">
+                    <h2>Curiosities</h2>
+                </a>
+            </div>
         </div>
+    </header>
+
+    <section id="contact">
+        I'd love to hear from you
+
+        <a href="mailto:info@endometriosis-life.com"
+           style="font-family: 'Google Sans Flex', sans-serif; font-size: 10px; color: #AA336A;">
+            info@endometriosis-life.com
+        </a>
+    </section>
+
+    <!-- Desktop only: stacked vertically on left (fixed while scrolling) -->
+    <div class="instagram-fixed">
+        <a href="https://www.instagram.com/Sophie_endolife" target="_blank">
+            <img src="https://www.iconpacks.net/icons/2/free-instagram-logo-icon-3497-thumb.png" alt="Follow on Instagram" width="60" height="60" style="border-radius: 10px;">
+        </a>
     </div>
-</header>
 
-<section id="contact">
-    I'd love to hear from you
+    <div class="social-fixed">
+        <a href="https://x.com/Sophie_endolife" target="_blank">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/x-social-media-black-icon.png" alt="Follow on X" width="60" height="60" style="border-radius: 10px;">
+        </a>
+    </div>
 
-    <a href="mailto:info@endometriosis-life.com"
-       style="font-family: 'Google Sans Flex', sans-serif; font-size: 10px; color: #AA336A;">
-        info@endometriosis-life.com
-    </a>
-</section>
+    <div class="donate-fixed">
+        <form action="https://www.paypal.com/donate" method="post" target="_blank">
+            <input type="hidden" name="hosted_button_id" value="ELEXPMBEHT7DG" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate with PayPal button" />
+            <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+    </div>
 
-<!-- Desktop only: stacked vertically on left (fixed while scrolling) -->
-<div class="instagram-fixed">
-    <a href="https://www.instagram.com/Sophie_endolife" target="_blank">
-        <img src="https://www.iconpacks.net/icons/2/free-instagram-logo-icon-3497-thumb.png" alt="Follow on Instagram" width="60" height="60" style="border-radius: 10px;">
-    </a>
-</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const menuOverlay = document.getElementById('menuOverlay');
 
-<div class="social-fixed">
-    <a href="https://x.com/Sophie_endolife" target="_blank">
-        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/x-social-media-black-icon.png" alt="Follow on X" width="60" height="60" style="border-radius: 10px;">
-    </a>
-</div>
+            // Toggle mobile menu
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                menuOverlay.classList.toggle('open');
+            });
 
-<div class="donate-fixed">
-    <form action="https://www.paypal.com/donate" method="post" target="_blank">
-        <input type="hidden" name="hosted_button_id" value="ELEXPMBEHT7DG" />
-        <input type="image" src="https://www.paypalobjects.com/en_US/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate with PayPal button" />
-        <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
-    </form>
-</div>
+            // Close menu when clicking outside content
+            menuOverlay.addEventListener('click', (e) => {
+                if (e.target === menuOverlay) {
+                    hamburger.classList.remove('active');
+                    menuOverlay.classList.remove('open');
+                }
+            });
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const dropdowns = document.querySelectorAll('.dropdown');
-
-        dropdowns.forEach(dropdown => {
-            const toggle = dropdown.querySelector('.dropdown-toggle');
-
-            toggle.addEventListener('click', e => {
-                e.preventDefault();
-                dropdowns.forEach(d => {
-                    if (d !== dropdown) d.classList.remove('open');
+            // Mobile dropdowns (Guide, Journal, etc.)
+            document.querySelectorAll('.dropdown-mobile > a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle('open');
                 });
-                dropdown.classList.toggle('open');
             });
 
-            dropdown.addEventListener('mouseleave', () => {
-                setTimeout(() => {
-                    if (!dropdown.matches(':hover')) {
-                        dropdown.classList.remove('open');
-                    }
-                }, 300);
+            // Desktop dropdowns (original functionality)
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+
+                toggle.addEventListener('click', e => {
+                    e.preventDefault();
+                    dropdowns.forEach(d => {
+                        if (d !== dropdown) d.classList.remove('open');
+                    });
+                    dropdown.classList.toggle('open');
+                });
+
+                dropdown.addEventListener('mouseleave', () => {
+                    setTimeout(() => {
+                        if (!dropdown.matches(':hover')) {
+                            dropdown.classList.remove('open');
+                        }
+                    }, 300);
+                });
+            });
+
+            document.addEventListener('click', e => {
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(d => d.classList.remove('open'));
+                }
             });
         });
-
-        document.addEventListener('click', e => {
-            if (!e.target.closest('.dropdown')) {
-                dropdowns.forEach(d => d.classList.remove('open'));
-            }
-        });
-    });
-</script></body>
+    </script>
+</body>
 </html>
-
