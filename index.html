@@ -239,7 +239,7 @@
         .menu-overlay.open {
             opacity: 1;
             visibility: visible;
-            background: #ffffff;
+            background: #ffffff; /* Fully opaque white when open */
         }
 
         .menu-content {
@@ -485,6 +485,7 @@
                             <li><a href="about.html">About</a></li>
                         </ul>
 
+                        <!-- Mobile version of the three boxes -->
                         <div class="mobile-boxes">
                             <a href="store.html" class="mobile-box-link">Store</a>
                             <a href="book.html" class="mobile-box-link">My Book</a>
@@ -537,7 +538,7 @@
                 </ul>
             </nav>
 
-            <!-- Three boxes - visible only on desktop now -->
+            <!-- Three boxes - now hidden on mobile via CSS -->
             <div class="boxes-container">
                 <a href="store.html" class="box">
                     <h2>Store</h2>
@@ -603,7 +604,7 @@
                 }
             });
 
-            // Mobile dropdowns - only toggle the clicked one
+            // Mobile dropdowns (Guide, Journal, etc.) - only toggle the specific one
             document.querySelectorAll('.dropdown-mobile > a').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
