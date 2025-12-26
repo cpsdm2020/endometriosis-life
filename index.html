@@ -239,7 +239,7 @@
         .menu-overlay.open {
             opacity: 1;
             visibility: visible;
-            background: #ffffff; /* Fully opaque white when open */
+            background: #ffffff;
         }
 
         .menu-content {
@@ -247,12 +247,17 @@
             max-width: 400px;
             text-align: center;
             padding: 20px;
+            min-height: calc(100vh - 100px); /* Ensures enough height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Pushes boxes to bottom */
         }
 
         .mobile-menu-list {
             list-style: none;
             padding: 0;
             margin: 1px 0 60px 0;
+            flex-grow: 1; /* Allows list to take available space */
         }
 
         .mobile-menu-list li {
@@ -287,6 +292,7 @@
             flex-direction: column;
             gap: 20px;
             margin-top: 40px;
+            margin-bottom: 40px; /* Extra bottom space */
         }
 
         .mobile-box-link {
@@ -490,7 +496,6 @@
                             <li><a href="about.html">About</a></li>
                         </ul>
 
-                        <!-- Mobile version of the three boxes - moved outside the <ul> to prevent collapse issues -->
                         <div class="mobile-boxes">
                             <a href="store.html" class="mobile-box-link">Store</a>
                             <a href="book.html" class="mobile-box-link">My Book</a>
@@ -608,7 +613,7 @@
                 }
             });
 
-            // Mobile dropdowns (Guide, Journal, etc.) - only toggle the specific one
+            // Mobile dropdowns - only toggle the clicked one
             document.querySelectorAll('.dropdown-mobile > a').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -642,7 +647,7 @@
 
             document.addEventListener('click', e => {
                 if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(d => d.classList.remove('open'));
+                    dropdowns.forEach(d => d.classList.remove('open');
                 }
             });
         });
