@@ -314,10 +314,10 @@
             left: 50%;
             transform: translateX(-50%);
             width: 85%;
-            max-width: 250px; /* Shorter on mobile */
+            max-width: 250px;
             z-index: 9999;
             padding: 2px 2px;
-            display: none; /* Hidden by default (shown only on mobile via media query) */
+            display: none;
         }
 
         .mobile-search {
@@ -376,6 +376,57 @@
         .social-fixed     { bottom: 110px; }
         .donate-fixed     { bottom: 30px;  }
 
+        /* ================= SEARCH RESULTS (NEW) ================= */
+        #searchResults {
+            display: none;
+            margin: 40px auto;
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(170, 51, 106, 0.2);
+            text-align: left;
+            z-index: 30;
+            position: relative;
+        }
+
+        #searchResults h3 {
+            color: #AA336A;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        #resultsList {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        #resultsList li {
+            margin: 15px 0;
+        }
+
+        #resultsList a {
+            color: #AA336A;
+            font-size: 22px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #resultsList a:hover {
+            text-decoration: underline;
+        }
+
+        #clearResults {
+            background: none;
+            border: none;
+            color: #AA336A;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+
         /* ================= MOBILE ================= */
         @media (max-width: 500px) {
             .hamburger {
@@ -391,7 +442,7 @@
             }
 
             .mobile-search-container {
-                display: block !important; /* Show mobile search only on mobile */
+                display: block !important;
             }
 
             header {
@@ -427,6 +478,15 @@
                 background: transparent;
                 padding: 0 0;
                 white-space: nowrap;
+            }
+
+            #searchResults {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            #resultsList a {
+                font-size: 20px;
             }
         }
     </style>
@@ -548,9 +608,16 @@
                 </ul>
             </nav>
 
-            <!-- Desktop search bar (only visible on desktop) -->
+            <!-- Desktop search bar -->
             <div class="desktop-search-container">
                 <input type="text" id="desktopSearch" class="desktop-search" placeholder="Search the site...">
+            </div>
+
+            <!-- Search Results Container (new) -->
+            <div id="searchResults">
+                <h3>Search Results for "<span id="resultQuery"></span>"</h3>
+                <ul id="resultsList"></ul>
+                <button id="clearResults">✕ Clear results</button>
             </div>
 
             <div class="boxes-container">
@@ -604,7 +671,7 @@
         const desktopSearch = document.getElementById('desktopSearch');
         const mobileSearch = document.getElementById('mobileSearch');
 
-        // Dramatically expanded search keyword → URL mapping (over 2200 entries)
+        // Your full search map (unchanged)
         const searchMap = {
             // Core pages
             "store": "store.html",
@@ -646,7 +713,7 @@
             "endo life": "guide.html",
             "endometriosis life": "guide.html",
             "what is endo": "guide.html",
-            "endometreosis": "guide.html", // common misspelling
+            "endometreosis": "guide.html",
             "endometrosis": "guide.html",
             "endrometriosis": "guide.html",
 
@@ -799,7 +866,6 @@
             "fertility": "journal.html?tab=2025#resveratrol",
             "stress": "journal.html?tab=2025#resveratrol",
             "estrogen": "journal.html?tab=2025#resveratrol",
-            
 
             // Lifestyle - Diet
             "diet": "lifestyle.html?tab=diet",
@@ -898,7 +964,7 @@
             "motivation": "elevate.html?tab=inspiration",
             "inspirational stories": "elevate.html?tab=inspiration",
 
-            // Additional massive expansions (hundreds more for high coverage)
+            // Additional massive expansions
             "chronic illness": "guide.html",
             "women's health": "guide.html",
             "gynecology": "guide.html",
@@ -942,7 +1008,7 @@
             "doctor": "guide.html?tab=diagnosis",
             "specialist": "guide.html?tab=diagnosis",
             "excision specialist": "guide.html?tab=treatment",
-            "nancy's nook": "guide.html?tab=treatment", // common reference
+            "nancy's nook": "guide.html?tab=treatment",
             "pelvic pt": "lifestyle.html?tab=exercise",
             "physical therapy": "lifestyle.html?tab=exercise",
             "heat therapy": "lifestyle.html",
@@ -967,7 +1033,6 @@
             "raise awareness": "elevate.html?tab=advocacy",
             "motivational": "elevate.html?tab=inspiration",
             "hope": "elevate.html?tab=inspiration",
-            // ... (continued with hundreds more similar variations for coverage)
             "endometriosis pain relief": "guide.html?tab=treatment",
             "natural pain relief": "lifestyle.html",
             "essential oils": "lifestyle.html",
@@ -976,43 +1041,99 @@
             "pain diary": "journal.html",
             "flare up": "guide.html?tab=symptoms",
             "flares": "guide.html?tab=symptoms",
-            "endo flare": "guide.html?tab=symptoms",
-            // And many more – the list is exhaustive for common queries
+            "endo flare": "guide.html?tab=symptoms"
         };
 
         function performSearch(query) {
             if (!query) return;
             const lowerQuery = query.toLowerCase().trim();
 
-            if (searchMap[lowerQuery]) {
-                window.location.href = searchMap[lowerQuery];
-                return;
-            }
+            const matches = [];
 
+            // Collect all keyword matches
             for (const [key, url] of Object.entries(searchMap)) {
                 if (key.includes(lowerQuery) || lowerQuery.includes(key)) {
-                    window.location.href = url;
-                    return;
+                    if (!matches.some(m => m.url === url)) {
+                        let title = key.charAt(0).toUpperCase() + key.slice(1);
+                        if (url.includes('?tab=')) {
+                            const tab = new URLSearchParams(url.split('?')[1]).get('tab');
+                            title = title.replace(new RegExp(tab, 'gi'), '') + ' ' + tab.charAt(0).toUpperCase() + tab.slice(1).replace('-', ' ');
+                        }
+                        if (url.includes('#')) {
+                            const anchor = url.split('#')[1].replace(/-/g, ' ');
+                            title += ' → ' + anchor.charAt(0).toUpperCase() + anchor.slice(1);
+                        }
+                        matches.push({ title: title.trim(), url: url });
+                    }
                 }
             }
 
-            alert("Sorry, no results found for '" + query + "'. Try keywords like 'symptoms', 'diet', 'book', etc.");
+            // Prioritize exact match if exists
+            if (searchMap[lowerQuery]) {
+                const exactUrl = searchMap[lowerQuery];
+                const exactTitle = lowerQuery.charAt(0).toUpperCase() + lowerQuery.slice(1);
+                matches.unshift({ title: exactTitle, url: exactUrl });
+                matches = matches.filter((m, i, arr) => arr.findIndex(x => x.url === m.url) === i);
+            }
+
+            const resultsContainer = document.getElementById('searchResults');
+            const resultsList = document.getElementById('resultsList');
+            const resultQuery = document.getElementById('resultQuery');
+
+            resultsList.innerHTML = '';
+
+            if (matches.length > 0) {
+                resultQuery.textContent = query;
+                matches.forEach(match => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="${match.url}">${match.title}</a>`;
+                    resultsList.appendChild(li);
+                });
+                resultsContainer.style.display = 'block';
+                resultsContainer.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                resultQuery.textContent = query;
+                resultsList.innerHTML = '<li>No results found. Try keywords like "pain", "diet", or "green tea".</li>';
+                resultsContainer.style.display = 'block';
+            }
         }
 
-        // Bind search on Enter (unchanged)
+        // Bind search on Enter
         if (desktopSearch) {
             desktopSearch.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') performSearch(desktopSearch.value);
+                if (e.key === 'Enter') {
+                    performSearch(desktopSearch.value);
+                }
             });
         }
 
         if (mobileSearch) {
             mobileSearch.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') performSearch(mobileSearch.value);
+                if (e.key === 'Enter') {
+                    performSearch(mobileSearch.value);
+                }
             });
         }
 
-        // Hamburger menu (unchanged)
+        // Clear results button
+        document.getElementById('clearResults').addEventListener('click', () => {
+            document.getElementById('searchResults').style.display = 'none';
+            if (desktopSearch) desktopSearch.value = '';
+            if (mobileSearch) mobileSearch.value = '';
+        });
+
+        // Close results when clicking outside
+        document.addEventListener('click', (e) => {
+            const results = document.getElementById('searchResults');
+            const searchInputs = [desktopSearch, mobileSearch].filter(Boolean);
+            if (results.style.display === 'block' &&
+                !results.contains(e.target) &&
+                !searchInputs.some(input => input.contains(e.target))) {
+                results.style.display = 'none';
+            }
+        });
+
+        // Hamburger menu
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             menuOverlay.classList.toggle('open');
@@ -1027,7 +1148,7 @@
             }
         });
 
-        // Mobile dropdowns (unchanged)
+        // Mobile dropdowns
         document.querySelectorAll('.dropdown-mobile > a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1035,7 +1156,7 @@
             });
         });
 
-        // Desktop dropdowns (unchanged)
+        // Desktop dropdowns
         const dropdowns = document.querySelectorAll('.dropdown');
         dropdowns.forEach(dropdown => {
             const toggle = dropdown.querySelector('.dropdown-toggle');
@@ -1046,6 +1167,6 @@
             });
         });
     });
-</script>
+    </script>
 </body>
 </html>
