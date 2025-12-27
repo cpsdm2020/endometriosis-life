@@ -134,6 +134,15 @@
             margin-bottom: 5px;
             display: inline-block;
         }
+        .source-link {
+            color: #3B3B3B;           /* Matches your main text color */
+            text-decoration: none;    /* Removes the underline */
+        }
+
+.source-link:hover {
+    text-decoration: underline;  /* Optional: subtle underline on hover for usability */
+    opacity: 0.8;                /* Or slight fade if you prefer */
+}
 
         @media (max-width: 500px) {
             h1 {
@@ -216,9 +225,12 @@
         <p class="body-text">
            📖 Source:<br>
             Nutrients Journal (2025) – MDPI<br>
-            <a href="https://www.mdpi.com/2072-6643/17/13/2068" target="_blank" rel="noopener noreferrer">
-            https://www.mdpi.com/2072-6643/17/13/2068
-            </a>
+            <a href="https://www.mdpi.com/2072-6643/17/13/2068" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="source-link">
+                [1]
+            </a></sup>
         </p>
             
         </div>
