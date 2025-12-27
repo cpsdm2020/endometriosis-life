@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curiosities - Endometriosis Life</title>
+    <title>FAQ - Endometriosis Life</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..1000&family=Square+Peg&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -91,6 +91,63 @@
             margin-top: 5px;
         }
 
+        /* Accordion styles */
+        .accordion {
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: left;
+        }
+
+        .accordion-item {
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-question {
+            width: 100%;
+            padding: 20px 25px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: 'Google Sans Flex', sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            color: #3B3B3B;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-question::after {
+            content: '+';
+            font-size: 28px;
+            color: #AA336A;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-question::after {
+            content: '−';
+        }
+
+        .accordion-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            padding: 0 25px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #3B3B3B;
+        }
+
+        .accordion-item.active .accordion-answer {
+            max-height: 500px; /* Sufficient for longer answers */
+            padding: 20px 25px;
+        }
+
         @media (max-width: 500px) {
             h1 {
                 font-size: 50px;
@@ -105,6 +162,15 @@
             a.top-back {
                 font-size: 18px;
                 margin-bottom: 30px;
+            }
+
+            .accordion-question {
+                font-size: 18px;
+                padding: 15px 20px;
+            }
+
+            .accordion-answer {
+                font-size: 16px;
             }
         }
     </style>
@@ -121,9 +187,60 @@
             Straight questions need simple answers.
         </p>
 
-        <!-- Add your FAQ items here using additional .body-text paragraphs or lists as needed -->
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-question">What is endometriosis?</button>
+                <div class="accordion-answer">
+                    <p>Endometriosis is a chronic condition where tissue similar to the lining of the uterus grows outside the uterus, often on the ovaries, fallopian tubes, or pelvic lining. This tissue behaves like normal endometrial tissue—it thickens, breaks down, and bleeds with each menstrual cycle—but it has no way to exit the body, leading to inflammation, pain, and scar tissue.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-question">What are the most common symptoms?</button>
+                <div class="accordion-answer">
+                    <p>The main symptom is pelvic pain, often much worse than normal period cramps. Other common symptoms include painful periods, pain during or after intercourse, pain with bowel movements or urination (especially during periods), heavy menstrual bleeding, infertility, fatigue, bloating, and nausea.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-question">How is endometriosis diagnosed?</button>
+                <div class="accordion-answer">
+                    <p>Diagnosis usually starts with a review of symptoms and a pelvic exam. Imaging tests like ultrasound or MRI can help identify cysts. However, the only definitive way to diagnose endometriosis is through laparoscopy—a minimally invasive surgery where a camera is inserted to view and possibly biopsy the tissue.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-question">Is there a cure for endometriosis?</button>
+                <div class="accordion-answer">
+                    <p>There is currently no cure for endometriosis, but it can be effectively managed. Treatments include pain medication, hormonal therapies (like birth control pills), and surgery to remove the abnormal tissue. Symptoms often improve after menopause, but management is key to improving quality of life.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-question">Can women with endometriosis get pregnant?</button>
+                <div class="accordion-answer">
+                    <p>Yes—many women with endometriosis can and do get pregnant naturally. However, it can make conception more difficult for some (affecting about 30-50% of those with infertility issues). Treatments like fertility medications or assisted reproductive technologies (e.g., IVF) can help. Early consultation with a specialist is recommended if pregnancy is a goal.</p>
+                </div>
+            </div>
+        </div>
 
         <p class="back-wrapper"><a href="index.html" class="back">← Back to home</a></p>
     </div>
+
+    <script>
+        const questions = document.querySelectorAll('.accordion-question');
+
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+
+                // Close other items (optional - remove if you want multiple open)
+                // document.querySelectorAll('.accordion-item').forEach(other => {
+                //     if (other !== item) other.classList.remove('active');
+                // });
+            });
+        });
+    </script>
 </body>
 </html>
