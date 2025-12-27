@@ -6,20 +6,24 @@
     <title>Curiosities - Endometriosis Life</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..1000&family=Square+Peg&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        /* Shared base styles - consistent across all pages */
         body {
             margin: 0;
-            font-family: 'Square Peg', cursive;
+            font-family: 'Google Sans Flex', sans-serif;
             background: url('back.jpeg') center/cover no-repeat fixed;
             min-height: 100vh;
             color: #3B3B3B;
+            position: relative;
+            text-align: center;
+            padding: 20px 20px;
         }
 
-        /* Essential overlay - matches your index.html exactly */
-        .background-overlay {
-            position: fixed;
-            inset: 0;
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to bottom,
                 rgba(255, 255, 255, 0.00) 0%,
                 rgba(255, 255, 255, 0.01) 20%,
@@ -34,61 +38,92 @@
 
         .content {
             position: relative;
-            z-index: 10;
-            padding: 120px 40px 40px;
-            text-align: center;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         h1 {
-            font-size: 40px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,.3);
+            font-family: 'Square Peg', cursive;
+            font-size: 60px;
+            margin-bottom: 80px;
         }
 
-        p {
-            font-size: 20px;
-            max-width: 900px;
-            margin: 30px auto;
-            line-height: 1.4;
-        }
-
-        a {
-            color: #AA336A;
+        h1 a {
+            color: #3B3B3B;
             text-decoration: none;
+        }
+
+        .body-text {
+            font-family: 'Google Sans Flex', sans-serif;
             font-size: 20px;
+            line-height: 1.8;
+            margin: 30px auto;
+            max-width: 700px;
+            font-weight: 400;
+            color: #3B3B3B;
         }
 
-        a:hover {
-            text-decoration: underline;
+        /* Top back link styling */
+        a.top-back {
+            font-size: 15px;
+            color: #3B3B3B;
+            text-decoration: none;
+            margin-bottom: 5px;
+            display: inline-block;
         }
 
-        /* Mobile adjustments */
+        a.back {
+            font-size: 15px;
+            color: #3B3B3B;
+            text-decoration: none;
+            margin-top: 80px;
+            display: inline-block;
+        }
+
+        a.back:hover,
+        a.top-back:hover {
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-wrapper {
+            margin-top: 5px;
+        }
+
         @media (max-width: 500px) {
-            h1 { 
-                font-size: 70px; 
+            h1 {
+                font-size: 50px;
+                margin-bottom: 50px;
             }
-            p { 
-                font-size: 36px; 
+
+            .body-text {
+                font-size: 18px;
+                padding: 0 10px;
             }
-            a { 
-                font-size: 32px; 
-            }
-            .content { 
-                padding-top: 80px; 
+
+            a.top-back {
+                font-size: 18px;
+                margin-bottom: 30px;
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- This overlay fixes the white/invisible text issue on GitHub Pages -->
-    <div class="background-overlay"></div>
-
     <div class="content">
-        <h1>FAQ</h1>
-        <p>Straight questions need simple answers</p>
-        <p><a href="index.html">← Back to Home</a></p>
-    </div>
+        
+        <!-- Top Back to Home Link -->
+        <p><a href="index.html" class="back top-back">← Back to home</a></p>
 
+        <h1><a href="index.html">FAQ</a></h1>
+
+        <p class="body-text">
+            Straight questions need simple answers.
+        </p>
+
+        <!-- Add your FAQ items here using additional .body-text paragraphs or lists as needed -->
+
+        <p class="back-wrapper"><a href="index.html" class="back">← Back to home</a></p>
+    </div>
 </body>
 </html>
