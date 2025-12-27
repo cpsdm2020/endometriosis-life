@@ -51,6 +51,7 @@
 
         .hero-content {
             text-align: center;
+            width: 100%;
         }
 
         header h1 {
@@ -60,13 +61,38 @@
             letter-spacing: -2px;  
         }
 
-        /* ================= THREE BOXES - CLOSER TOGETHER ================= */
+        /* ================= SEARCH BAR (DESKTOP) ================= */
+        .desktop-search-container {
+            max-width: 800px;
+            margin: 60px auto 40px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .desktop-search {
+            width: 100%;
+            padding: 18px 30px;
+            font-size: 22px;
+            font-family: 'Google Sans Flex', sans-serif;
+            border: 3px solid #AA336A;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.85);
+            color: #AA336A;
+            outline: none;
+            box-shadow: 0 10px 30px rgba(170, 51, 106, 0.15);
+        }
+
+        .desktop-search::placeholder {
+            color: rgba(170, 51, 106, 0.6);
+        }
+
+        /* ================= THREE BOXES ================= */
         .boxes-container {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin-top: 80px;
             padding: 0 20px;
             position: relative;
             z-index: 10;
@@ -98,7 +124,6 @@
             text-align: center;
             margin: 0;
             padding: 20px;
-            text-decoration: none;
         }
 
         /* ================= NAV ================= */
@@ -107,7 +132,6 @@
             z-index: 100000;
         }
 
-        /* Desktop navigation */
         .desktop-nav {
             list-style: none;
             padding: 0;
@@ -130,25 +154,10 @@
             display: block;
             cursor: pointer;
         }
-        
-        .desktop-nav > li > a.dropdown-toggle,
-        .desktop-nav > li > a {
-            color: #AA336A !important;
-        }
 
         /* ================= DROPDOWN (DESKTOP) ================= */
         .dropdown {
             position: relative;
-        }
-
-        .dropdown-toggle::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -1px;
-            width: 100%;
-            height: 1px;
-            background: transparent;
         }
 
         .dropdown-menu {
@@ -239,7 +248,7 @@
         .menu-overlay.open {
             opacity: 1;
             visibility: visible;
-            background: #ffffff; /* Fully opaque white when open */
+            background: #ffffff;
         }
 
         .menu-content {
@@ -298,7 +307,35 @@
             border-radius: 15px;
         }
 
-        /* Prevent body scroll when mobile menu is open */
+        /* ================= MOBILE SEARCH BAR ================= */
+        .mobile-search-container {
+            position: fixed;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            z-index: 9999;
+            padding: 0 10px;
+        }
+
+        .mobile-search {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 18px;
+            font-family: 'Google Sans Flex', sans-serif;
+            border: 3px solid #AA336A;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #AA336A;
+            outline: none;
+            box-shadow: 0 8px 20px rgba(170, 51, 106, 0.2);
+        }
+
+        .mobile-search::placeholder {
+            color: rgba(170, 51, 106, 0.6);
+        }
+
         body.menu-open {
             overflow: hidden;
             height: 100vh;
@@ -373,7 +410,6 @@
             line-height: 1.2;
         }
 
-        /* Hover effects for desktop */
         .social-fixed a img:hover, .instagram-fixed a img:hover {
             transform: scale(1.5);
         }
@@ -391,8 +427,12 @@
                 display: none !important;
             }
 
+            .desktop-search-container {
+                display: none !important;
+            }
+
             header {
-                padding-top: 1px; /* Space for hamburger */
+                padding-top: 140px !important;
             }
 
             header h1 {
@@ -401,37 +441,18 @@
             }
 
             .boxes-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 40px;
-                margin-top: 50px;
-            }
-
-            .box {
-                width: 160px;
-                height: 120px;
-            }
-
-            .box h2 {
-                font-size: 20px;
-            }
-            /* Hide the three main boxes completely on mobile */
-            .boxes-container {
                 display: none !important;
             }
 
-            /* Hide all social/donate boxes on mobile */
             .instagram-fixed, .social-fixed, .donate-fixed {
                 display: none !important;
             }
 
-            /* Larger contact text on mobile */
             #contact {
                 font-size: 10px;
                 padding: 100px 20px 100px;
             }
 
-            /* ---------- NEW: Fixed title on mobile ---------- */
             .title-wrapper h1 {
                 position: fixed;
                 top: 22px;
@@ -440,16 +461,10 @@
                 z-index: 10000;
                 margin: 0;
                 font-size: 30px;
-                background: transparent; /*rgba(255, 255, 255, 0.85);*/
+                background: transparent;
                 padding: 0 0;
                 white-space: nowrap;
                 border-radius: 1px;
-                /*backdrop-filter: blur(5px);
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);*/
-            }
-
-            header {
-                padding-top: 140px !important; /* Space for fixed title + breathing room */
             }
 
             .background-overlay {
@@ -466,6 +481,11 @@
 
     <div class="background-overlay"></div>
 
+    <!-- Mobile fixed search bar -->
+    <div class="mobile-search-container">
+        <input type="text" id="mobileSearch" class="mobile-search" placeholder="Search the site...">
+    </div>
+
     <header>
         <div class="hero-content">
             <div class="title-wrapper">
@@ -473,7 +493,7 @@
             </div>
 
             <nav class="mobile-nav">
-                <!-- Hamburger Button - visible only on mobile -->
+                <!-- Hamburger Button -->
                 <div class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
@@ -525,7 +545,6 @@
                             <li><a href="about.html">About</a></li>
                         </ul>
 
-                        <!-- Mobile version of the three boxes - moved outside the <ul> to prevent collapse issues -->
                         <div class="mobile-boxes">
                             <a href="store.html" class="mobile-box-link">Store</a>
                             <a href="book.html" class="mobile-box-link">My Book</a>
@@ -578,6 +597,11 @@
                 </ul>
             </nav>
 
+            <!-- Desktop search bar (right above the boxes) -->
+            <div class="desktop-search-container">
+                <input type="text" id="desktopSearch" class="desktop-search" placeholder="Search the site...">
+            </div>
+
             <div class="boxes-container">
                 <a href="store.html" class="box">
                     <h2>Store</h2>
@@ -601,7 +625,7 @@
         </a>
     </section>
 
-    <!-- Desktop only: stacked vertically on left (fixed while scrolling) -->
+    <!-- Desktop social/donate fixed boxes -->
     <div class="instagram-fixed">
         <a href="https://www.instagram.com/Sophie_endolife" target="_blank">
             <img src="https://www.iconpacks.net/icons/2/free-instagram-logo-icon-3497-thumb.png" alt="Follow on Instagram" width="60" height="60" style="border-radius: 10px;">
@@ -626,15 +650,116 @@
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.getElementById('hamburger');
             const menuOverlay = document.getElementById('menuOverlay');
+            const desktopSearch = document.getElementById('desktopSearch');
+            const mobileSearch = document.getElementById('mobileSearch');
 
-            // Toggle mobile menu
+            // Search keyword → URL mapping
+            const searchMap = {
+                // Main pages
+                "store": "store.html",
+                "shop": "store.html",
+                "merch": "store.html",
+
+                "book": "book.html",
+                "my book": "book.html",
+
+                "faq": "FAQ.html",
+                "questions": "FAQ.html",
+
+                "about": "about.html",
+
+                // Guide tabs
+                "symptoms": "guide.html?tab=symptoms",
+                "pain": "guide.html?tab=symptoms",
+                "bleeding": "guide.html?tab=symptoms",
+
+                "causes": "guide.html?tab=causes",
+                "why": "guide.html?tab=causes",
+
+                "diagnosis": "guide.html?tab=diagnosis",
+                "diagnose": "guide.html?tab=diagnosis",
+                "test": "guide.html?tab=diagnosis",
+
+                "treatment": "guide.html?tab=treatment",
+                "treat": "guide.html?tab=treatment",
+                "surgery": "guide.html?tab=treatment",
+                "medication": "guide.html?tab=treatment",
+
+                // Journal
+                "journal": "journal.html",
+                "2025": "journal.html?tab=2025",
+                "2026": "journal.html?tab=2026",
+
+                // Lifestyle
+                "diet": "lifestyle.html?tab=diet",
+                "food": "lifestyle.html?tab=diet",
+                "nutrition": "lifestyle.html?tab=diet",
+
+                "exercise": "lifestyle.html?tab=exercise",
+                "movement": "lifestyle.html?tab=exercise",
+                "workout": "lifestyle.html?tab=exercise",
+
+                "sleep": "lifestyle.html?tab=sleep",
+                "rest": "lifestyle.html?tab=sleep",
+
+                "stress": "lifestyle.html?tab=stress",
+                "anxiety": "lifestyle.html?tab=stress",
+
+                // Elevate
+                "mindset": "elevate.html?tab=mindset",
+                "mental": "elevate.html?tab=mindset",
+
+                "community": "elevate.html?tab=community",
+                "support": "elevate.html?tab=community",
+
+                "advocacy": "elevate.html?tab=advocacy",
+                "awareness": "elevate.html?tab=advocacy",
+
+                "inspiration": "elevate.html?tab=inspiration",
+                "stories": "elevate.html?tab=inspiration"
+            };
+
+            function performSearch(query) {
+                if (!query) return;
+                const lowerQuery = query.toLowerCase().trim();
+
+                if (searchMap[lowerQuery]) {
+                    window.location.href = searchMap[lowerQuery];
+                    return;
+                }
+
+                // Fallback: if no exact match, try partial match
+                for (const [key, url] of Object.entries(searchMap)) {
+                    if (key.includes(lowerQuery) || lowerQuery.includes(key)) {
+                        window.location.href = url;
+                        return;
+                    }
+                }
+
+                // If nothing found, you can redirect to a generic page or alert
+                alert("Sorry, no results found for '" + query + "'. Try keywords like 'symptoms', 'diet', 'book', etc.");
+            }
+
+            // Bind Enter key on both search inputs
+            desktopSearch.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch(desktopSearch.value);
+                }
+            });
+
+            mobileSearch.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch(mobileSearch.value);
+                }
+            });
+
+            // Hamburger menu logic (unchanged)
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('active');
                 menuOverlay.classList.toggle('open');
                 document.body.classList.toggle('menu-open');
             });
 
-            // Close menu when clicking outside content
             menuOverlay.addEventListener('click', (e) => {
                 if (e.target === menuOverlay) {
                     hamburger.classList.remove('active');
@@ -643,7 +768,7 @@
                 }
             });
 
-            // Mobile dropdowns (Guide, Journal, etc.) - only toggle the specific one
+            // Mobile dropdowns
             document.querySelectorAll('.dropdown-mobile > a').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -652,9 +777,8 @@
                 });
             });
 
-            // Desktop dropdowns (original functionality)
+            // Desktop dropdowns
             const dropdowns = document.querySelectorAll('.dropdown');
-
             dropdowns.forEach(dropdown => {
                 const toggle = dropdown.querySelector('.dropdown-toggle');
 
