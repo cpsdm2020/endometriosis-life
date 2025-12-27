@@ -1,1 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sessions - Endometriosis Life</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&display=swap&family=Square+Peg&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            margin: 0; 
+            font-family: 'Google Sans Flex', sans-serif; 
+            background: url('back.jpeg') center/cover no-repeat fixed; 
+            min-height: 100vh; 
+            color: #3B3B3B; 
+        }
+        .content { 
+            padding: 50px 20px; 
+            text-align: center; 
+            font-size: 20px; 
+            position: relative; 
+            z-index: 10; 
+        }
+        h1 {
+            font-family: 'Square Peg', cursive;
+            font-size: 60px;
+            margin-bottom: 10px;
+            color: #AA336A;
+        }
+        h2 {
+            font-size: 32px;
+            margin: 40px 0 20px;
+            color: #AA336A;
+        }
+        p {
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+        a { 
+            color: #AA336A; 
+            text-decoration: none; 
+        }
+        a:hover { 
+            text-decoration: underline; 
+        }
 
+        /* Calendly embed containers */
+        .calendly-container {
+            max-width: 800px;
+            width: 90vw;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .calendly-inline-widget {
+            min-width: 320px;
+            height: 750px; /* Adjust if needed */
+        }
+
+        @media (max-width: 600px) {
+            .calendly-inline-widget {
+                height: 900px;
+            }
+        }
+    </style>
+    <!-- Calendly global script (required once) -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</head>
+<body>
+    <div class="content">
+        <h1>Book a Session</h1>
+        <p>I offer personalized coaching sessions to support you on your endometriosis journey.</p>
+        <p>Choose the option that feels right for you:</p>
+
+        <h2>Free 30-Minute Initial Consultation</h2>
+        <p>A gentle, no-obligation conversation to see how I can support you.</p>
+
+        <div class="calendly-container">
+            <!-- REPLACE THE data-url VALUE WITH YOUR ACTUAL CALENDLY LINK FOR THE FREE 30MIN EVENT -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/cpsdm2020/30min" style="min-width:320px;height:750px;"></div>
+        </div>
+
+        <h2>60-Minute Paid Coaching Session – €49.90</h2>
+        <p>Deep-dive support, guidance, and practical tools tailored to your needs.</p>
+        <p>(Payment securely processed at booking via Stripe/PayPal)</p>
+
+        <div class="calendly-container">
+            <!-- REPLACE THE data-url VALUE WITH YOUR ACTUAL CALENDLY LINK FOR THE PAID 60MIN EVENT -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/cpsdm2020/new-meeting" style="min-width:320px;height:750px;"></div>
+        </div>
+
+        <p><a href="index.html">← Back to Home</a></p>
+    </div>
+</body>
+</html>
