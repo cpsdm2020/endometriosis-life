@@ -308,7 +308,7 @@
         }
 
         /* ================= MOBILE SEARCH BAR ================= */
-        .mobile-search- {
+        .mobile-search-container {
             position: fixed;
             top: 80px;
             left: 45%;
@@ -320,8 +320,8 @@
             display: none;
         }
 
-        /* NEW: Hide search bar when menu is open */
-        .mobile-search-.menu-open {
+        /* Hide search bar when menu is open */
+        .mobile-search-container.menu-open {
             display: none !important;
         }
 
@@ -442,11 +442,11 @@
                 display: none !important;
             }
 
-            .desktop-search- {
+            .desktop-search-container {
                 display: none !important;
             }
 
-            .mobile-search- {
+            .mobile-search-container {
                 display: block !important;
             }
 
@@ -618,13 +618,14 @@
                 <input type="text" id="desktopSearch" class="desktop-search" placeholder="Search the site...">
             </div>
 
-            <!-- Search Results Container (new) -->
+            <!-- Search Results Container -->
             <div id="searchResults">
                 <h3>Search Results for "<span id="resultQuery"></span>"</h3>
                 <ul id="resultsList"></ul>
                 <button id="clearResults">✕ Clear results</button>
             </div>
 
+            <!-- Three main boxes (FAQ first, then My Book, then Store) -->
             <div class="boxes-container">
                 <a href="FAQ.html" class="box">
                     <h2>FAQ</h2>
@@ -1486,7 +1487,7 @@
                 const exactUrl = searchMap[lowerQuery];
                 const exactTitle = lowerQuery.charAt(0).toUpperCase() + lowerQuery.slice(1);
                 matches.unshift({ title: exactTitle, url: exactUrl });
-                // Remove duplicates again after unshift
+                // Remove duplicates
                 const seen = new Set();
                 matches = matches.filter(item => {
                     if (seen.has(item.url)) return false;
