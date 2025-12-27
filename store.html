@@ -4,124 +4,264 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store - Endometriosis Life</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..1000&family=Square+Peg&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap" rel="stylesheet">
     <style>
-        /* Shared base styles - consistent with About/Journal/Guide/Lifestyle/Elevate */
-        body {
-            margin: 0;
-            font-family: 'Google Sans Flex', sans-serif;
-            background: url('back.jpeg') center/cover no-repeat fixed;
-            min-height: 100vh;
-            color: #3B3B3B;
+        body { 
+            margin: 0; 
+            font-family: 'Square Peg', cursive; 
+            background: url('back.jpeg') center/cover no-repeat fixed; 
+            min-height: 100vh; 
+            color: #3B3B3B; 
+        }
+        .content { 
+            padding: 50px 20px; 
+            text-align: center; 
+            font-size: 20px; 
+            position: relative; 
+            z-index: 10; 
+        }
+        a { 
+            color: #AA336A; 
+            text-decoration: none; 
+        }
+        a:hover { 
+            text-decoration: underline; 
+        }
+
+        /* Carousel container - more transparent */
+        .carousel-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.7); /* More transparent */
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             position: relative;
+            overflow: hidden;
+        }
+
+        .carousel {
+            display: flex;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            gap: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
             text-align: center;
-            padding: 20px 20px;
         }
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom,
-                rgba(255, 255, 255, 0.00) 0%,
-                rgba(255, 255, 255, 0.01) 20%,
-                rgba(255, 255, 255, 0.15) 40%,
-                rgba(255, 255, 255, 0.35) 60%,
-                rgba(255, 255, 255, 0.55) 80%,
-                rgba(255, 255, 255, 0.85) 100%
-            );
-            pointer-events: none;
-            z-index: 0;
+        .slide img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 10px;
         }
 
-        .content {
-            position: relative;
-            z-index: 1;
-            max-width: 1000px;
-            margin: 0 auto;
+        .product-info {
+            margin-top: 20px;
+            font-size: 28px;
         }
 
-        h1 {
+        .buy-button {
+            margin-top: 25px;
+        }
+
+        .buy-button button {
+            background-color: #AA336A;
+            color: white;
+            border: none;
+            padding: 12px 30px;
             font-family: 'Square Peg', cursive;
-            font-size: 60px;
-            margin-bottom: 80px;
+            font-size: 28px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
         }
 
-        h1 a {
-            color: #3B3B3B;
-            text-decoration: none;
+        .buy-button button:hover {
+            background-color: #8f2b58;
         }
 
-        .body-text {
-            font-family: 'Google Sans Flex', sans-serif;
-            font-size: 20px;
-            line-height: 1.8;
-            margin: 30px auto;
-            max-width: 700px;
-            font-weight: 400;
-            color: #3B3B3B;
+        /* Navigation arrows */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(170, 51, 106, 0.7);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Top back link styling */
-        a.top-back {
-            font-size: 15px;
-            color: #3B3B3B;
-            text-decoration: none;
-            margin-bottom: 5px;
-            display: inline-block;
+        .prev-arrow {
+            left: 10px;
         }
 
-        a.back {
-            font-size: 15px;
-            color: #3B3B3B;
-            text-decoration: none;
-            margin-top: 80px;
-            display: inline-block;
+        .next-arrow {
+            right: 10px;
         }
 
-        a.back:hover,
-        a.top-back:hover {
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
+        /* Dots navigation */
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
         }
 
-        .back-wrapper {
-            margin-top: 5px;
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
-        @media (max-width: 500px) {
-            h1 {
-                font-size: 50px;
-                margin-bottom: 50px;
-            }
-
-            .body-text {
-                font-size: 18px;
-                padding: 0 10px;
-            }
-
-            a.top-back {
-                font-size: 18px;
-                margin-bottom: 30px;
-            }
+        .dot.active {
+            background: #AA336A;
         }
     </style>
 </head>
 <body>
     <div class="content">
-        
-        <!-- Top Back to Home Link -->
-        <p><a href="index.html" class="back top-back">← Back to home</a></p>
+        <h1>Store</h1>
+        <p>Treat yourself with the most adequate personalized item.</p>
 
-        <h1><a href="index.html">Store</a></h1>
+        <div class="carousel-container">
+            <button class="nav-arrow prev-arrow" onclick="scrollCarousel(-1)">‹</button>
+            <button class="nav-arrow next-arrow" onclick="scrollCarousel(1)">›</button>
 
-        <p class="body-text">
-            Treat yourself with the most adequate personalized item.
-        </p>
+            <div class="carousel" id="carousel">
+                <!-- Product 1 -->
+                <div class="slide">
+                    <img src="store-1.01.jpg" alt="Product 1">
+                    <div class="product-info">
+                        <p>a gentle gift for you!</p>
+                        <p>29.90€</p>
+                    </div>
+                    <div class="buy-button">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_xclick">
+                            <input type="hidden" name="business" value="cpsdm2020@gmail.com">
+                            <input type="hidden" name="item_name" value="Product 1 - a gentle gift for you!">
+                            <input type="hidden" name="amount" value="29.90">
+                            <input type="hidden" name="currency_code" value="EUR">
+                            <input type="hidden" name="no_shipping" value="1">
+                            <button type="submit">Buy Now</button>
+                        </form>
+                    </div>
+                </div>
 
-        <p class="back-wrapper"><a href="index.html" class="back">← Back to home</a></p>
+                <!-- Product 2 -->
+                <div class="slide">
+                    <img src="store-1.02.jpg" alt="Product 2">
+                    <div class="product-info">
+                        <p>treat yourself</p>
+                        <p>19.90€</p>
+                    </div>
+                    <div class="buy-button">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_xclick">
+                            <input type="hidden" name="business" value="cpsdm2020@gmail.com">
+                            <input type="hidden" name="item_name" value="Product 2 - treat yourself">
+                            <input type="hidden" name="amount" value="19.90">
+                            <input type="hidden" name="currency_code" value="EUR">
+                            <input type="hidden" name="no_shipping" value="1">
+                            <button type="submit">Buy Now</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="slide">
+                    <img src="store-1.03.jpg" alt="Product 3">
+                    <div class="product-info">
+                        <p>for the times</p>
+                        <p>9.90€</p>
+                    </div>
+                    <div class="buy-button">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_xclick">
+                            <input type="hidden" name="business" value="cpsdm2020@gmail.com">
+                            <input type="hidden" name="item_name" value="Product 3 - for the times">
+                            <input type="hidden" name="amount" value="9.90">
+                            <input type="hidden" name="currency_code" value="EUR">
+                            <input type="hidden" name="no_shipping" value="1">
+                            <button type="submit">Buy Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dots-container">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+            </div>
+        </div>
+
+        <p><a href="index.html">← Back to Home</a></p>
     </div>
+
+    <script>
+        const carousel = document.getElementById('carousel');
+        const slides = carousel.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+
+        function updateDots() {
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function scrollCarousel(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = slides.length - 1;
+            if (currentIndex >= slides.length) currentIndex = 0;
+            carousel.scrollTo({
+                left: slides[currentIndex].offsetLeft,
+                behavior: 'smooth'
+            });
+            updateDots();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            carousel.scrollTo({
+                left: slides[index].offsetLeft,
+                behavior: 'smooth'
+            });
+            updateDots();
+        }
+
+        // Auto-update active dot on manual scroll/swipe
+        carousel.addEventListener('scroll', () => {
+            const scrollLeft = carousel.scrollLeft;
+            const slideWidth = slides[0].offsetWidth + 20; // including gap
+            currentIndex = Math.round(scrollLeft / slideWidth);
+            updateDots();
+        });
+    </script>
 </body>
 </html>
