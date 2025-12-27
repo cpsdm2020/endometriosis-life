@@ -6,12 +6,12 @@
     <title>Guide - Endometriosis Life</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Square+Peg&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..1000&family=Square+Peg&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Shared base styles - same as about.html */
+        /* Base styles - fully matched to journal.html */
         body {
-            margin: 0; 
-            font-family: 'Square Peg', cursive;
+            margin: 0;
+            font-family: 'Google Sans Flex', sans-serif;
             background: url('back.jpeg') center/cover no-repeat fixed;
             min-height: 100vh;
             color: #3B3B3B;
@@ -20,7 +20,6 @@
             padding: 20px 20px;
         }
 
-        /* Same scroll degrade effect as about.html */
         body::before {
             content: '';
             position: absolute;
@@ -45,6 +44,7 @@
         }
 
         h1 {
+            font-family: 'Square Peg', cursive;
             font-size: 60px;
             margin-bottom: 80px;
         }
@@ -94,7 +94,6 @@
             background: #3B3B3B;
         }
 
-        /* Tab content */
         .tab-content {
             display: none;
             text-align: left;
@@ -115,6 +114,7 @@
         }
 
         .signature {
+            font-family: 'Square Peg', cursive;
             font-size: 36px;
             margin: 80px 0;
             line-height: 1.1;
@@ -137,7 +137,17 @@
             display: inline-block;
         }
 
-        /* New rule to center the images */
+        .source-link {
+            color: #3B3B3B;
+            text-decoration: none;
+        }
+
+        .source-link:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
+        /* Center images */
         .centered-img {
             display: block;
             margin: 40px auto;
@@ -146,7 +156,6 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Mobile adjustments */
         @media (max-width: 500px) {
             h1 {
                 font-size: 50px;
@@ -177,6 +186,10 @@
                 font-size: 18px;
                 margin-bottom: 30px;
             }
+
+            h2 {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
@@ -200,12 +213,13 @@
         <div id="symptoms" class="tab-content active">
             <p class="body-text">
                 <strong>What is Endometriosis ?</strong>  
-                </p>
+            </p>
             <p class="body-text">
                 Endometriosis is a chronic condition that affects around 176 MILLION women worldwide — about 1 in 10 women and girls of reproductive age, according to the World Health Organization (2025).
             </p>
             <p class="body-text">
-                It occurs when tissue similar to the lining of the uterus (the endometrium) grows outside the uterus — commonly on the ovaries, fallopian tubes, bowel, bladder, or pelvic lining. This tissue behaves like normal endometrium: it thickens and responds to hormones during the menstrual cycle. But because it has no way to leave the body, it can cause inflammation, irritation, scarring, and adhesions, making organs stick together painfully.            </p>
+                It occurs when tissue similar to the lining of the uterus (the endometrium) grows outside the uterus — commonly on the ovaries, fallopian tubes, bowel, bladder, or pelvic lining. This tissue behaves like normal endometrium: it thickens and responds to hormones during the menstrual cycle. But because it has no way to leave the body, it can cause inflammation, irritation, scarring, and adhesions, making organs stick together painfully.
+            </p>
             <img src="1.2-symptoms.jpg" alt="Symptoms of Endometriosis" class="centered-img">
             <p class="body-text">
                 <strong>Pain: the most common — and misunderstood — symptom</strong>
@@ -378,7 +392,6 @@
             <p class="body-text">
                 The more we understand these mechanisms, the closer we get to treatments that are gentler, more effective, and focused on healing — not just symptom suppression.
             </p>
-            
         </div>
 
         <!-- Diagnosis Tab -->
@@ -519,7 +532,7 @@
             </p>
             <p class="body-text">
                 Mental and emotional health support is not optional — it is essential. Living with chronic pain affects mood, identity, relationships, and self-trust. Being supported emotionally is part of healing, not a sign of weakness.
-            
+            </p>
             <p class="body-text">
                 <strong>The role of holistic care</strong>
             </p>
@@ -573,7 +586,7 @@
                 const tabId = button.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
 
-                // Update URL with query parameter instead of hash (to avoid scrolling)
+                // Update URL with query parameter
                 const url = new URL(window.location);
                 url.searchParams.set('tab', tabId);
                 history.pushState(null, '', url);
@@ -588,7 +601,7 @@
             if (tab) {
                 const targetButton = document.querySelector(`.tab-button[data-tab="${tab}"]`);
                 if (targetButton) {
-                    // Remove active from default (Symptoms)
+                    // Remove active from default
                     document.querySelector('.tab-button.active').classList.remove('active');
                     document.querySelector('.tab-content.active').classList.remove('active');
 
@@ -597,7 +610,6 @@
                     document.getElementById(tab).classList.add('active');
                 }
             }
-            // If no tab parameter, Symptoms remains active by default
         });
     </script>
 </body>
