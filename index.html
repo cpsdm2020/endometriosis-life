@@ -1481,11 +1481,14 @@
         function performSearch(query) {
             if (!query) return;
             const lowerQuery = query.toLowerCase().trim();
-
+            const queryWords = lowerQuery.split(/\s+/); // split query into words
+        
             const matches = [];
-
+        
             for (const [key, url] of Object.entries(searchMap)) {
-                if (key.includes(lowerQuery) || lowerQuery.includes(key)) {
+                const lowerKey = key.toLowerCase();
+                // Match if ANY query word appears in the key
+                if (queryWords.some(word => lowerKey.includes(word))) {
                     if (!matches.some(m => m.url === url)) {
                         let title = key.charAt(0).toUpperCase() + key.slice(1);
                         if (url.includes('?tab=')) {
@@ -1496,11 +1499,13 @@
                     }
                 }
             }
-
+        
+            // Prioritize exact match on full phrase
             if (searchMap[lowerQuery]) {
                 const exactUrl = searchMap[lowerQuery];
                 const exactTitle = lowerQuery.charAt(0).toUpperCase() + lowerQuery.slice(1);
                 matches.unshift({ title: exactTitle, url: exactUrl });
+                // Remove duplicates
                 const seen = new Set();
                 matches = matches.filter(item => {
                     if (seen.has(item.url)) return false;
@@ -1508,13 +1513,13 @@
                     return true;
                 });
             }
-
+        
             const resultsContainer = document.getElementById('searchResults');
             const resultsList = document.getElementById('resultsList');
             const resultQuery = document.getElementById('resultQuery');
-
+        
             resultsList.innerHTML = '';
-
+        
             if (matches.length > 0) {
                 resultQuery.textContent = query;
                 matches.forEach(match => {
