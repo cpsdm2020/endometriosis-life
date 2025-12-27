@@ -61,7 +61,7 @@
             letter-spacing: -2px;  
         }
 
-        /* ================= SEARCH BAR (DESKTOP) ================= */
+        /* ================= DESKTOP SEARCH BAR ================= */
         .desktop-search-container {
             max-width: 800px;
             margin: 60px auto 40px auto;
@@ -313,10 +313,11 @@
             top: 70px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
-            max-width: 400px;
+            width: 85%;
+            max-width: 320px; /* Shorter on mobile */
             z-index: 9999;
             padding: 0 10px;
+            display: none; /* Hidden by default (shown only on mobile via media query) */
         }
 
         .mobile-search {
@@ -374,48 +375,6 @@
         .instagram-fixed { bottom: 190px; }
         .social-fixed     { bottom: 110px; }
         .donate-fixed     { bottom: 30px;  }
-        
-        .instagram-text,
-        .social-text,
-        .donate-text {
-            margin: 0 0 10px 0;
-            font-size: 24px;
-            color: #AA336A;
-            line-height: 1.2;
-        }
-        
-        .instagram-fixed a img,
-        .social-fixed a img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain; 
-        }
-        .donate-fixed input[type="image"] {
-            width: 70px;
-            height: 100px;
-            object-fit: contain; 
-        }
-        
-        .donate-text {
-            margin: 0 0 1px 0;
-            font-size: 10px;
-            color: #AA336A;
-            line-height: 1.2;
-        }
-
-        .social-text, .instagram-text {
-            margin: 0 0 12px 0;
-            font-size: 10px;
-            color: #AA336A;
-            line-height: 1.2;
-        }
-
-        .social-fixed a img:hover, .instagram-fixed a img:hover {
-            transform: scale(1.5);
-        }
-        .donate-fixed input[type="image"]:hover {
-            transform: scale(1.2);
-        }
 
         /* ================= MOBILE ================= */
         @media (max-width: 500px) {
@@ -429,6 +388,10 @@
 
             .desktop-search-container {
                 display: none !important;
+            }
+
+            .mobile-search-container {
+                display: block !important; /* Show mobile search only on mobile */
             }
 
             header {
@@ -464,15 +427,6 @@
                 background: transparent;
                 padding: 0 0;
                 white-space: nowrap;
-                border-radius: 1px;
-            }
-
-            .background-overlay {
-                z-index: 1;
-            }
-
-            .menu-overlay {
-                z-index: 100000;
             }
         }
     </style>
@@ -481,7 +435,7 @@
 
     <div class="background-overlay"></div>
 
-    <!-- Mobile fixed search bar -->
+    <!-- Mobile fixed search bar (visible only on mobile) -->
     <div class="mobile-search-container">
         <input type="text" id="mobileSearch" class="mobile-search" placeholder="Search the site...">
     </div>
@@ -493,14 +447,12 @@
             </div>
 
             <nav class="mobile-nav">
-                <!-- Hamburger Button -->
                 <div class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
 
-                <!-- Mobile menu overlay -->
                 <div class="menu-overlay" id="menuOverlay">
                     <div class="menu-content">
                         <ul class="mobile-menu-list">
@@ -553,7 +505,6 @@
                     </div>
                 </div>
 
-                <!-- Desktop horizontal navigation -->
                 <ul class="desktop-nav">
                     <li class="dropdown">
                         <a href="guide.html" class="dropdown-toggle">Guide</a>
@@ -597,7 +548,7 @@
                 </ul>
             </nav>
 
-            <!-- Desktop search bar (right above the boxes) -->
+            <!-- Desktop search bar (only visible on desktop) -->
             <div class="desktop-search-container">
                 <input type="text" id="desktopSearch" class="desktop-search" placeholder="Search the site...">
             </div>
@@ -655,7 +606,6 @@
 
             // Search keyword → URL mapping
             const searchMap = {
-                // Main pages
                 "store": "store.html",
                 "shop": "store.html",
                 "merch": "store.html",
@@ -668,7 +618,6 @@
 
                 "about": "about.html",
 
-                // Guide tabs
                 "symptoms": "guide.html?tab=symptoms",
                 "pain": "guide.html?tab=symptoms",
                 "bleeding": "guide.html?tab=symptoms",
@@ -685,12 +634,10 @@
                 "surgery": "guide.html?tab=treatment",
                 "medication": "guide.html?tab=treatment",
 
-                // Journal
                 "journal": "journal.html",
                 "2025": "journal.html?tab=2025",
                 "2026": "journal.html?tab=2026",
 
-                // Lifestyle
                 "diet": "lifestyle.html?tab=diet",
                 "food": "lifestyle.html?tab=diet",
                 "nutrition": "lifestyle.html?tab=diet",
@@ -705,7 +652,6 @@
                 "stress": "lifestyle.html?tab=stress",
                 "anxiety": "lifestyle.html?tab=stress",
 
-                // Elevate
                 "mindset": "elevate.html?tab=mindset",
                 "mental": "elevate.html?tab=mindset",
 
@@ -728,7 +674,6 @@
                     return;
                 }
 
-                // Fallback: if no exact match, try partial match
                 for (const [key, url] of Object.entries(searchMap)) {
                     if (key.includes(lowerQuery) || lowerQuery.includes(key)) {
                         window.location.href = url;
@@ -736,24 +681,23 @@
                     }
                 }
 
-                // If nothing found, you can redirect to a generic page or alert
                 alert("Sorry, no results found for '" + query + "'. Try keywords like 'symptoms', 'diet', 'book', etc.");
             }
 
-            // Bind Enter key on both search inputs
-            desktopSearch.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    performSearch(desktopSearch.value);
-                }
-            });
+            // Bind search on Enter
+            if (desktopSearch) {
+                desktopSearch.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') performSearch(desktopSearch.value);
+                });
+            }
 
-            mobileSearch.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    performSearch(mobileSearch.value);
-                }
-            });
+            if (mobileSearch) {
+                mobileSearch.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') performSearch(mobileSearch.value);
+                });
+            }
 
-            // Hamburger menu logic (unchanged)
+            // Hamburger menu
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('active');
                 menuOverlay.classList.toggle('open');
@@ -772,8 +716,7 @@
             document.querySelectorAll('.dropdown-mobile > a').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const parentLi = link.parentElement;
-                    parentLi.classList.toggle('open');
+                    link.parentElement.classList.toggle('open');
                 });
             });
 
@@ -781,28 +724,11 @@
             const dropdowns = document.querySelectorAll('.dropdown');
             dropdowns.forEach(dropdown => {
                 const toggle = dropdown.querySelector('.dropdown-toggle');
-
                 toggle.addEventListener('click', e => {
                     e.preventDefault();
-                    dropdowns.forEach(d => {
-                        if (d !== dropdown) d.classList.remove('open');
-                    });
+                    dropdowns.forEach(d => d !== dropdown && d.classList.remove('open'));
                     dropdown.classList.toggle('open');
                 });
-
-                dropdown.addEventListener('mouseleave', () => {
-                    setTimeout(() => {
-                        if (!dropdown.matches(':hover')) {
-                            dropdown.classList.remove('open');
-                        }
-                    }, 300);
-                });
-            });
-
-            document.addEventListener('click', e => {
-                if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(d => d.classList.remove('open'));
-                }
             });
         });
     </script>
