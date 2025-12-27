@@ -320,7 +320,6 @@
             display: none;
         }
 
-        /* Hide search bar when menu is open */
         .mobile-search-container.menu-open {
             display: none !important;
         }
@@ -381,7 +380,7 @@
         .social-fixed     { bottom: 110px; }
         .donate-fixed     { bottom: 30px;  }
 
-        /* ================= SEARCH RESULTS (NEW) ================= */
+        /* ================= SEARCH RESULTS ================= */
         #searchResults {
             display: none;
             margin: 40px auto;
@@ -560,6 +559,7 @@
                             </li>
 
                             <li><a href="about.html">About</a></li>
+                            <li><a href="FAQ.html">FAQ</a></li> <!-- Added FAQ next to About -->
                         </ul>
 
                         <div class="mobile-boxes">
@@ -610,6 +610,7 @@
                     </li>
 
                     <li><a href="about.html">About</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li> <!-- Added FAQ next to About -->
                 </ul>
             </nav>
 
@@ -625,7 +626,7 @@
                 <button id="clearResults">✕ Clear results</button>
             </div>
 
-            <!-- Three main boxes (FAQ first, then My Book, then Store) -->
+            <!-- Three main boxes -->
             <div class="boxes-container">
                 <a href="FAQ.html" class="box">
                     <h2>FAQ</h2>
@@ -1482,12 +1483,10 @@
                 }
             }
 
-            // Prioritize exact match
             if (searchMap[lowerQuery]) {
                 const exactUrl = searchMap[lowerQuery];
                 const exactTitle = lowerQuery.charAt(0).toUpperCase() + lowerQuery.slice(1);
                 matches.unshift({ title: exactTitle, url: exactUrl });
-                // Remove duplicates
                 const seen = new Set();
                 matches = matches.filter(item => {
                     if (seen.has(item.url)) return false;
@@ -1518,31 +1517,24 @@
             }
         }
 
-        // Bind search on Enter
         if (desktopSearch) {
             desktopSearch.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    performSearch(desktopSearch.value);
-                }
+                if (e.key === 'Enter') performSearch(desktopSearch.value);
             });
         }
 
         if (mobileSearch) {
             mobileSearch.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    performSearch(mobileSearch.value);
-                }
+                if (e.key === 'Enter') performSearch(mobileSearch.value);
             });
         }
 
-        // Clear results button
         document.getElementById('clearResults').addEventListener('click', () => {
             document.getElementById('searchResults').style.display = 'none';
             if (desktopSearch) desktopSearch.value = '';
             if (mobileSearch) mobileSearch.value = '';
         });
 
-        // Close results when clicking outside
         document.addEventListener('click', (e) => {
             const results = document.getElementById('searchResults');
             const searchInputs = [desktopSearch, mobileSearch].filter(Boolean);
@@ -1553,7 +1545,6 @@
             }
         });
 
-        // Hamburger menu
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             menuOverlay.classList.toggle('open');
@@ -1570,7 +1561,6 @@
             }
         });
 
-        // Mobile dropdowns
         document.querySelectorAll('.dropdown-mobile > a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1578,7 +1568,6 @@
             });
         });
 
-        // Desktop dropdowns
         const dropdowns = document.querySelectorAll('.dropdown');
         dropdowns.forEach(dropdown => {
             const toggle = dropdown.querySelector('.dropdown-toggle');
