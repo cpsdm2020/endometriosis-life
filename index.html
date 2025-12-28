@@ -310,6 +310,59 @@
             background: rgba(170, 51, 106, 0.1);
             border-radius: 15px;
         }
+                /* ================= MOBILE SWIPE CAROUSEL ================= */
+        .mobile-swipe-carousel {
+            width: 90%;
+            max-width: 400px;
+            margin: 40px auto 20px auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(170, 51, 106, 0.2);
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: 300%; /* 3 images */
+            transition: transform 0.4s ease;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch; /* Smooth on iOS */
+        }
+
+        .carousel-track img {
+            width: 100%;
+            height: auto;
+            flex: 0 0 100%;
+            object-fit: cover;
+            scroll-snap-align: start;
+        }
+
+        /* Dots below carousel */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(170, 51, 106, 0.4);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #AA336A;
+        }
+
+        /* Optional: Hide on desktop (extra safety) */
+        @media (min-width: 501px) {
+            .mobile-swipe-carousel {
+                display: none;
+            }
+        }
 
         /* ================= MOBILE SEARCH BAR ================= */
         .mobile-search-container {
