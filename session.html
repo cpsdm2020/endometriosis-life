@@ -96,11 +96,6 @@
             background: #8e2b56;
         }
 
-        button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
         .price {
             font-size: 24px;
             font-weight: bold;
@@ -115,13 +110,9 @@
             margin-top: 20px;
             text-align: center;
             font-size: 18px;
-        }
-
-        .error {
-            color: red;
-            font-weight: bold;
-            margin-top: 20px;
-            text-align: center;
+            padding: 15px;
+            background: rgba(0, 255, 0, 0.1);
+            border-radius: 10px;
         }
 
         @media (max-width: 600px) {
@@ -143,21 +134,21 @@
         <div class="booking-container">
             <div class="booking-form">
                 <h3 style="text-align:center; color:#AA336A;">Free 30-Min Consultation</h3>
-                <form id="freeForm" action="https://formspree.io/f/xpwaajya" method="POST">
+                <form id="freeForm">
                     <label for="free-name">Your Name *</label>
-                    <input type="text" id="free-name" name="name" required>
+                    <input type="text" id="free-name" required>
 
                     <label for="free-email">Your Email *</label>
-                    <input type="email" id="free-email" name="_replyto" required>
+                    <input type="email" id="free-email" required>
 
                     <label for="free-tel">Phone Number (optional)</label>
-                    <input type="tel" id="free-tel" name="phone">
+                    <input type="tel" id="free-tel">
 
                     <label for="free-date">Preferred Date *</label>
-                    <input type="date" id="free-date" name="date" required>
+                    <input type="date" id="free-date" required>
 
                     <label for="free-time">Preferred Time (30 min slot) *</label>
-                    <select id="free-time" name="time" required>
+                    <select id="free-time" required>
                         <option value="">Select a time</option>
                         <option value="09:00">9:00 AM</option>
                         <option value="10:00">10:00 AM</option>
@@ -168,9 +159,7 @@
                     </select>
 
                     <label for="free-notes">Any notes or questions?</label>
-                    <textarea id="free-notes" name="notes" rows="4"></textarea>
-
-                    <input type="hidden" name="session_type" value="Free 30-Min Initial Consultation">
+                    <textarea id="free-notes" rows="4"></textarea>
 
                     <button type="submit">Request Booking</button>
                     <div id="free-message"></div>
@@ -186,21 +175,21 @@
             <div class="booking-form">
                 <h3 style="text-align:center; color:#AA336A;">60-Min Coaching Session</h3>
                 <div class="price">€59.90</div>
-                <form id="paidForm" action="https://formspree.io/f/xpwaajya" method="POST">
+                <form id="paidForm">
                     <label for="paid-name">Your Name *</label>
-                    <input type="text" id="paid-name" name="name" required>
+                    <input type="text" id="paid-name" required>
 
                     <label for="paid-email">Your Email *</label>
-                    <input type="email" id="paid-email" name="_replyto" required>
+                    <input type="email" id="paid-email" required>
 
                     <label for="paid-tel">Phone Number (optional)</label>
-                    <input type="tel" id="paid-tel" name="phone">
+                    <input type="tel" id="paid-tel">
 
                     <label for="paid-date">Preferred Date *</label>
-                    <input type="date" id="paid-date" name="date" required>
+                    <input type="date" id="paid-date" required>
 
                     <label for="paid-time">Preferred Time (60 min slot) *</label>
-                    <select id="paid-time" name="time" required>
+                    <select id="paid-time" required>
                         <option value="">Select a time</option>
                         <option value="09:00">9:00 AM</option>
                         <option value="10:30">10:30 AM</option>
@@ -209,9 +198,7 @@
                     </select>
 
                     <label for="paid-notes">Any notes or questions?</label>
-                    <textarea id="paid-notes" name="notes" rows="4"></textarea>
-
-                    <input type="hidden" name="session_type" value="60-Min Coaching Session (€59.90)">
+                    <textarea id="paid-notes" rows="4"></textarea>
 
                     <button type="submit">Request Booking</button>
                     <div id="paid-message"></div>
@@ -223,7 +210,7 @@
     </div>
 
     <script>
-        // Disable past dates
+        // Disable past dates (today is December 28, 2025)
         function disablePastDates() {
             const today = new Date();
             const yyyy = today.getFullYear();
@@ -240,14 +227,106 @@
         }
         disablePastDates();
 
-        // Success message after submission (Formspree handles redirect prevention with AJAX-like feel)
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function() {
-                const messageDiv = this.querySelector('div[id$="-message"]');
-                setTimeout(() => {
-                    messageDiv.innerHTML = '<div class="success">Thank you! Your request has been sent.<br>You will receive a confirmation email shortly, and I will get back to you soon.</div>';
-                }, 1000);
-            });
+        // Helper to format date nicely
+        function formatDate(dateStr) {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateStr).toLocaleDateString(undefined, options);
+        }
+
+        // Free form submission
+        document.getElementById('freeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('free-name').value.trim();
+            const email = document.getElementById('free-email').value.trim();
+            const tel = document.getElementById('free-tel').value.trim();
+            const date = document.getElementById('free-date').value;
+            const time = document.getElementById('free-time').value;
+            const notes = document.getElementById('free-notes').value.trim();
+
+            const niceDate = formatDate(date);
+
+            // Email to YOU (the host)
+            const hostSubject = encodeURIComponent('New Booking Request: Free 30-Min Consultation');
+            const hostBody = encodeURIComponent(
+                `New booking request received!\n\n` +
+                `Session: Free 30-Min Initial Consultation\n` +
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Phone: ${tel || 'Not provided'}\n` +
+                `Preferred Date: ${niceDate} (${date})\n` +
+                `Preferred Time: ${time}\n\n` +
+                `Notes:\n${notes || 'None'}`
+            );
+
+            // Invisible link to send email to you
+            const hostMailto = `mailto:info@endometriosis-life.com?subject=${hostSubject}&body=${hostBody}`;
+            const hostLink = document.createElement('a');
+            hostLink.href = hostMailto;
+            hostLink.style.display = 'none';
+            document.body.appendChild(hostLink);
+            hostLink.click();
+            document.body.removeChild(hostLink);
+
+            // Show success message to visitor
+            document.getElementById('free-message').innerHTML = 
+                `<div class="success">
+                    Thank you, ${name}!<br><br>
+                    Your request for a <strong>Free 30-Min Consultation</strong> on<br>
+                    <strong>${niceDate} at ${time}</strong><br><br>
+                    has been received.<br>
+                    I will review it and confirm with you very soon via email.
+                </div>`;
+
+            this.reset();
+        });
+
+        // Paid form submission
+        document.getElementById('paidForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('paid-name').value.trim();
+            const email = document.getElementById('paid-email').value.trim();
+            const tel = document.getElementById('paid-tel').value.trim();
+            const date = document.getElementById('paid-date').value;
+            const time = document.getElementById('paid-time').value;
+            const notes = document.getElementById('paid-notes').value.trim();
+
+            const niceDate = formatDate(date);
+
+            // Email to YOU (the host)
+            const hostSubject = encodeURIComponent('New Booking Request: 60-Min Coaching Session (€59.90)');
+            const hostBody = encodeURIComponent(
+                `New paid booking request received!\n\n` +
+                `Session: 60-Min Coaching Session (€59.90)\n` +
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Phone: ${tel || 'Not provided'}\n` +
+                `Preferred Date: ${niceDate} (${date})\n` +
+                `Preferred Time: ${time}\n\n` +
+                `Notes:\n${notes || 'None'}\n\n` +
+                `Next step: Confirm availability and send payment link.`
+            );
+
+            const hostMailto = `mailto:info@endometriosis-life.com?subject=${hostSubject}&body=${hostBody}`;
+            const hostLink = document.createElement('a');
+            hostLink.href = hostMailto;
+            hostLink.style.display = 'none';
+            document.body.appendChild(hostLink);
+            hostLink.click();
+            document.body.removeChild(hostLink);
+
+            // Show success message to visitor
+            document.getElementById('paid-message').innerHTML = 
+                `<div class="success">
+                    Thank you, ${name}!<br><br>
+                    Your request for a <strong>60-Min Coaching Session (€59.90)</strong> on<br>
+                    <strong>${niceDate} at ${time}</strong><br><br>
+                    has been received.<br>
+                    I will confirm availability and send you a secure payment link very soon.
+                </div>`;
+
+            this.reset();
         });
     </script>
 </body>
