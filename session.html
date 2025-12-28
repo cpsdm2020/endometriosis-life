@@ -47,10 +47,10 @@
         .booking-container {
             max-width: 800px;
             width: 90vw;
-            margin: 40px auto;
+            margin: 60px auto;
             background: rgba(255, 255, 255, 0.7);
             border-radius: 20px;
-            padding: 30px 20px;
+            padding: 40px 30px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             text-align: left;
         }
@@ -84,24 +84,16 @@
             background: #AA336A;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 14px 20px;
             border-radius: 8px;
             font-size: 18px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 30px;
             width: 100%;
         }
 
         button:hover {
             background: #8e2b56;
-        }
-
-        .price {
-            font-size: 24px;
-            font-weight: bold;
-            color: #AA336A;
-            margin: 20px 0;
-            text-align: center;
         }
 
         .success {
@@ -110,14 +102,18 @@
             margin-top: 20px;
             text-align: center;
             font-size: 18px;
-            padding: 15px;
+            padding: 20px;
             background: rgba(0, 255, 0, 0.1);
             border-radius: 10px;
+            line-height: 1.6;
         }
 
         @media (max-width: 600px) {
             .booking-form {
                 padding: 0 10px;
+            }
+            h1 {
+                font-size: 50px;
             }
         }
     </style>
@@ -125,11 +121,10 @@
 <body>
     <div class="content">
         <h1>Book a Session</h1>
-        <p>I offer personalized coaching sessions to support you on your endometriosis journey.</p>
-        <p>Choose the option that feels right for you:</p>
+        <p>I offer a gentle, no-obligation initial consultation to support you on your endometriosis journey.</p>
 
-        <h2>Free 30 Minutes Initial Consultation</h2>
-        <p>A gentle, no-obligation conversation to see how I can support you.</p>
+        <h2>Free 30-Minute Initial Consultation</h2>
+        <p>A safe space to talk, ask questions, and see how I can help you.</p>
 
         <div class="booking-container">
             <div class="booking-form">
@@ -140,9 +135,6 @@
 
                     <label for="free-email">Your Email *</label>
                     <input type="email" id="free-email" required>
-
-                    <label for="free-tel">Phone Number (optional)</label>
-                    <input type="tel" id="free-tel">
 
                     <label for="free-date">Preferred Date *</label>
                     <input type="date" id="free-date" required>
@@ -156,6 +148,7 @@
                         <option value="14:00">2:00 PM</option>
                         <option value="15:00">3:00 PM</option>
                         <option value="16:00">4:00 PM</option>
+                        <!-- Add or remove slots as needed -->
                     </select>
 
                     <label for="free-notes">Any notes or questions?</label>
@@ -167,50 +160,11 @@
             </div>
         </div>
 
-        <h2>60 Minutes Coaching Session – €59.90</h2>
-        <p>Deep-dive support, guidance, and practical tools tailored to your needs.</p>
-        <p>(Payment will be required after confirmation. You will receive a payment link via email.)</p>
-
-        <div class="booking-container">
-            <div class="booking-form">
-                <h3 style="text-align:center; color:#AA336A;">60-Min Coaching Session</h3>
-                <div class="price">€59.90</div>
-                <form id="paidForm">
-                    <label for="paid-name">Your Name *</label>
-                    <input type="text" id="paid-name" required>
-
-                    <label for="paid-email">Your Email *</label>
-                    <input type="email" id="paid-email" required>
-
-                    <label for="paid-tel">Phone Number (optional)</label>
-                    <input type="tel" id="paid-tel">
-
-                    <label for="paid-date">Preferred Date *</label>
-                    <input type="date" id="paid-date" required>
-
-                    <label for="paid-time">Preferred Time (60 min slot) *</label>
-                    <select id="paid-time" required>
-                        <option value="">Select a time</option>
-                        <option value="09:00">9:00 AM</option>
-                        <option value="10:30">10:30 AM</option>
-                        <option value="14:00">2:00 PM</option>
-                        <option value="15:30">3:30 PM</option>
-                    </select>
-
-                    <label for="paid-notes">Any notes or questions?</label>
-                    <textarea id="paid-notes" rows="4"></textarea>
-
-                    <button type="submit">Request Booking</button>
-                    <div id="paid-message"></div>
-                </form>
-            </div>
-        </div>
-
         <p><a href="index.html">← Back to Home</a></p>
     </div>
 
     <script>
-        // Disable past dates (today is December 28, 2025)
+        // Disable past dates
         function disablePastDates() {
             const today = new Date();
             const yyyy = today.getFullYear();
@@ -227,13 +181,13 @@
         }
         disablePastDates();
 
-        // Helper to format date nicely
+        // Format date nicely (e.g., Sunday, December 28, 2025)
         function formatDate(dateStr) {
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             return new Date(dateStr).toLocaleDateString(undefined, options);
         }
 
-        // Free form submission
+        // Form submission
         document.getElementById('freeForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -246,8 +200,8 @@
 
             const niceDate = formatDate(date);
 
-            // Email to YOU (the host)
-            const hostSubject = encodeURIComponent('New Booking Request: Free 30-Min Consultation');
+            // Email to you (the host)
+            const hostSubject = encodeURIComponent('New Booking Request: Free 30-Min Initial Consultation');
             const hostBody = encodeURIComponent(
                 `New booking request received!\n\n` +
                 `Session: Free 30-Min Initial Consultation\n` +
@@ -259,7 +213,7 @@
                 `Notes:\n${notes || 'None'}`
             );
 
-            // Invisible link to send email to you
+            // Create and click invisible mailto link
             const hostMailto = `mailto:info@endometriosis-life.com?subject=${hostSubject}&body=${hostBody}`;
             const hostLink = document.createElement('a');
             hostLink.href = hostMailto;
@@ -268,64 +222,17 @@
             hostLink.click();
             document.body.removeChild(hostLink);
 
-            // Show success message to visitor
+            // Show beautiful confirmation to the visitor
             document.getElementById('free-message').innerHTML = 
                 `<div class="success">
                     Thank you, ${name}!<br><br>
-                    Your request for a <strong>Free 30-Min Consultation</strong> on<br>
+                    Your request for a <strong>Free 30-Minute Free Consultation</strong> on<br>
                     <strong>${niceDate} at ${time}</strong><br><br>
                     has been received.<br>
-                    I will review it and confirm with you very soon via email.
+                    I will review your preferred time and confirm with you very soon via email.
                 </div>`;
 
-            this.reset();
-        });
-
-        // Paid form submission
-        document.getElementById('paidForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const name = document.getElementById('paid-name').value.trim();
-            const email = document.getElementById('paid-email').value.trim();
-            const tel = document.getElementById('paid-tel').value.trim();
-            const date = document.getElementById('paid-date').value;
-            const time = document.getElementById('paid-time').value;
-            const notes = document.getElementById('paid-notes').value.trim();
-
-            const niceDate = formatDate(date);
-
-            // Email to YOU (the host)
-            const hostSubject = encodeURIComponent('New Booking Request: 60-Min Coaching Session (€59.90)');
-            const hostBody = encodeURIComponent(
-                `New paid booking request received!\n\n` +
-                `Session: 60-Min Coaching Session (€59.90)\n` +
-                `Name: ${name}\n` +
-                `Email: ${email}\n` +
-                `Phone: ${tel || 'Not provided'}\n` +
-                `Preferred Date: ${niceDate} (${date})\n` +
-                `Preferred Time: ${time}\n\n` +
-                `Notes:\n${notes || 'None'}\n\n` +
-                `Next step: Confirm availability and send payment link.`
-            );
-
-            const hostMailto = `mailto:info@endometriosis-life.com?subject=${hostSubject}&body=${hostBody}`;
-            const hostLink = document.createElement('a');
-            hostLink.href = hostMailto;
-            hostLink.style.display = 'none';
-            document.body.appendChild(hostLink);
-            hostLink.click();
-            document.body.removeChild(hostLink);
-
-            // Show success message to visitor
-            document.getElementById('paid-message').innerHTML = 
-                `<div class="success">
-                    Thank you, ${name}!<br><br>
-                    Your request for a <strong>60-Min Coaching Session (€59.90)</strong> on<br>
-                    <strong>${niceDate} at ${time}</strong><br><br>
-                    has been received.<br>
-                    I will confirm availability and send you a secure payment link very soon.
-                </div>`;
-
+            // Reset the form
             this.reset();
         });
     </script>
