@@ -61,12 +61,13 @@
             letter-spacing: -2px;  
         }
         .hero-content h1 {
-            margin-top: 0px !important;   /* or 10px, 0px – whatever looks best to you */
+            margin-top: 0px !important;
         }
+
         /* ================= DESKTOP SEARCH BAR ================= */
         .desktop-search-container {
             max-width: 600px;
-            margin: 35px auto 5px auto !important;  /* reduced bottom margin */
+            margin: 35px auto 5px auto !important;
             padding: 20px 20px;
             position: relative;
             z-index: 20;
@@ -139,6 +140,7 @@
             padding: 0;
             margin: 0;
             display: block;
+            text-align: center;
         }
 
         .desktop-nav li {
@@ -193,161 +195,6 @@
 
         .dropdown-menu a:hover {
             background: #f0f0f0;
-        }
-
-        /* ================= HAMBURGER & MOBILE MENU ================= */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            padding: 3px;
-            position: fixed;
-            top: 17px;
-            left: 10px;
-            z-index: 100001;
-        }
-
-        .hamburger span {
-            width: 100%;
-            height: 4px;
-            background: #AA336A;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            padding-top: 20px;
-            overflow-y: auto;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-            z-index: 100000;
-        }
-        
-        .menu-overlay.open {
-            opacity: 1;
-            visibility: visible;
-            background: #ffffff;
-        }
-
-        .menu-content {
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .mobile-menu-list {
-            list-style: none;
-            padding: 0;
-            margin: 1px 0 60px 0;
-        }
-
-        .mobile-menu-list li {
-            margin: 15px 0;
-        }
-
-        .mobile-menu-list a {
-            font-size: 20px;
-            color: #AA336A;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .submenu {
-            margin-top: 10px;
-            display: none;
-        }
-
-        .dropdown-mobile.open .submenu {
-            display: block;
-        }
-
-        .submenu a {
-            display: block;
-            font-size: 20px;
-            margin: 12px 0;
-            font-weight: normal;
-        }
-
-        .mobile-boxes {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .mobile-box-link {
-            font-size: 24px;
-            color: #AA336A;
-            text-decoration: none;
-            padding: 15px;
-            background: rgba(170, 51, 106, 0.1);
-            border-radius: 15px;
-        }
-
-        /* ================= MOBILE SEARCH BAR ================= */
-        .mobile-search-container {
-            position: fixed;
-            top: 80px;
-            left: 45%;
-            transform: translateX(-50%);
-            width: 85%;
-            max-width: 220px;
-            z-index: 9999;
-            padding: 2px 2px;
-            display: none;
-        }
-
-        .mobile-search-container.menu-open {
-            display: none !important;
-        }
-
-        .mobile-search {
-            width: 100%;
-            padding: 10px 15px;
-            font-size: 15px;
-            font-family: 'Google Sans Flex', sans-serif;
-            border: 3px solid #AA336A;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.55);
-            color: #AA336A;
-            outline: none;
-            box-shadow: 0 8px 20px rgba(170, 51, 106, 0.2);
-        }
-
-        .mobile-search::placeholder {
-            color: rgba(170, 51, 106, 0.6);
-        }
-
-        body.menu-open {
-            overflow: hidden;
-            height: 100vh;
-            position: fixed;
-            width: 100%;
         }
 
         /* ================= CONTACT ================= */
@@ -433,67 +280,23 @@
             margin: 20px auto;
         }
 
-        /* ================= MOBILE ================= */
+        /* ================= MOBILE STYLES (including hamburger, menu, search, etc.) ================= */
         @media (max-width: 500px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .desktop-nav {
-                display: none !important;
-            }
-
-            .desktop-search-container {
-                display: none !important;
-            }
-
-            .mobile-search-container {
-                display: block !important;
-            }
-
-            header {
-                padding-top: 140px !important;
-            }
-
-            header h1 {
-                font-size: 30px;
-                margin-bottom: 15px;
-            }
-
-            .boxes-container {
-                display: none !important;
-            }
-
-            .instagram-fixed, .social-fixed, .donate-fixed {
-                display: none !important;
-            }
-
-            #contact {
-                font-size: 10px;
-                padding: 100px 20px 100px;
-            }
-
+            .hamburger { display: flex; }
+            .desktop-nav { display: none !important; }
+            .desktop-search-container { display: none !important; }
+            .mobile-search-container { display: block !important; }
+            header { padding-top: 140px !important; }
+            header h1 { font-size: 30px; margin-bottom: 15px; }
+            .boxes-container { display: none !important; }
+            .instagram-fixed, .social-fixed, .donate-fixed { display: none !important; }
+            #contact { font-size: 10px; padding: 100px 20px 100px; }
             .title-wrapper h1 {
-                position: fixed;
-                top: 22px;
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 10000;
-                margin: 0;
-                font-size: 30px;
-                background: transparent;
-                padding: 0 0;
-                white-space: nowrap;
+                position: fixed; top: 22px; left: 50%; transform: translateX(-50%);
+                z-index: 10000; margin: 0; font-size: 30px; background: transparent; padding: 0; white-space: nowrap;
             }
-
-            #searchResults {
-                margin: 20px auto;
-                padding: 15px;
-            }
-
-            #resultsList a {
-                font-size: 20px;
-            }
+            #searchResults { margin: 20px auto; padding: 15px; }
+            #resultsList a { font-size: 20px; }
         }
     </style>
 </head>
@@ -501,17 +304,12 @@
 
     <div class="background-overlay"></div>
 
-    <!-- Mobile fixed search bar (visible only on mobile) -->
-    <div class="mobile-search-container">
-        <input type="text" id="mobileSearch" class="mobile-search" placeholder="Search the site...">
-    </div>
-
     <header>
         <div class="hero-content">
             <div class="title-wrapper">
                 <h2>A Whole-Body Approach to Living with Endometriosis & Adenomyosis<br></h2>
             </div>
-            <!-- Desktop search bar - MOVED HERE -->
+            <!-- Desktop search bar -->
             <div class="desktop-search-container">
                 <input type="text" id="desktopSearch" class="desktop-search" placeholder="Search the site...">
             </div>
@@ -519,65 +317,8 @@
                 <h1>Endometriosis🎗️Life</h1>
             </div>
 
-            <nav class="mobile-nav">
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-
-                <div class="menu-overlay" id="menuOverlay">
-                    <div class="menu-content">
-                        <ul class="mobile-menu-list">
-                            <li class="dropdown-mobile">
-                                <a href="guide.html">Endometriosis ▾</a>
-                                <div class="submenu">
-                                    <a href="guide.html?tab=symptoms">Definition</a>
-                                    <a href="guide.html?tab=causes">Causes</a>
-                                    <a href="guide.html?tab=diagnosis">Diagnosis</a>
-                                    <a href="guide.html?tab=treatment">Treatment</a>
-                                </div>
-                            </li>
-                            
-                            <li class="dropdown-mobile">
-                                <a href="elevate.html">Adenomyosis ▾</a>
-                                <div class="submenu">
-                                    <a href="elevate.html?tab=symptoms">Definition</a>
-                                    <a href="elevate.html?tab=causes">Causes</a>
-                                    <a href="elevate.html?tab=diagnosis">Diagnosis</a>
-                                    <a href="elevate.html?tab=treatment">Treatment</a>
-                                </div>
-                            </li>
-
-                            <li class="dropdown-mobile">
-                                <a href="journal.html">Journal ▾</a>
-                                <div class="submenu">
-                                    <a href="journal.html?tab=2026">2026</a>
-                                    <a href="journal.html?tab=2025">2025</a>
-                                </div>
-                            </li>
-
-                            <li class="dropdown-mobile">
-                                <a href="lifestyle.html">Lifestyle ▾</a>
-                                <div class="submenu">
-                                    <a href="lifestyle.html?tab=diet">Diet</a>
-                                    <a href="lifestyle.html?tab=exercise">Exercise</a>
-                                    <a href="lifestyle.html?tab=sleep">Sleep</a>
-                                    <a href="lifestyle.html?tab=stress">Stress</a>
-                                </div>
-                            </li>
-                            <li><a href="FAQ.html">FAQ</a></li> <!-- Added FAQ next to About -->
-                            <li><a href="about.html">About</a></li>
-                        </ul>
-
-                        <div class="mobile-boxes">
-                            <a href="session.html" class="mobile-box-link">Coaching</a>
-                            <a href="book.html" class="mobile-box-link">My Story</a>
-                            <a href="store.html" class="mobile-box-link">Store</a>
-                        </div>
-                    </div>
-                </div>
-
+            <nav>
+                <!-- Desktop navigation -->
                 <ul class="desktop-nav">
                     <li class="dropdown">
                         <a href="guide.html" class="dropdown-toggle">Endometriosis</a>
@@ -616,7 +357,7 @@
                             <a href="lifestyle.html?tab=stress">Stress</a>
                         </div>
                     </li>
-                    <li><a href="FAQ.html">FAQ</a></li> <!-- Added FAQ next to About -->
+                    <li><a href="FAQ.html">FAQ</a></li>
                     <li><a href="about.html">About</a></li>
                 </ul>
             </nav>
@@ -630,22 +371,15 @@
 
             <!-- Three main boxes -->
             <div class="boxes-container">
-                <a href="session.html" class="box">
-                    <h2>Coaching</h2>
-                </a>
-                <a href="book.html" class="box">
-                    <h2>My Story</h2>
-                </a>
-                <a href="store.html" class="box">
-                    <h2>Store</h2>
-                </a>
+                <a href="session.html" class="box"><h2>Coaching</h2></a>
+                <a href="book.html" class="box"><h2>My Story</h2></a>
+                <a href="store.html" class="box"><h2>Store</h2></a>
             </div>
         </div>
     </header>
 
     <section id="contact">
         I'd love to hear from you
-
         <a href="mailto:info@endometriosis-life.com"
            style="font-family: 'Google Sans Flex', sans-serif; font-size: 10px; color: #AA336A;">
             info@endometriosis-life.com
@@ -672,38 +406,34 @@
             <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
         </form>
     </div>
+
     <script src="search-data.js"></script>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const hamburger = document.getElementById('hamburger');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const mobileSearchContainer = document.querySelector('.mobile-search-container');
         const desktopSearch = document.getElementById('desktopSearch');
-        const mobileSearch = document.getElementById('mobileSearch');
-    
+        let mobileSearch = null;
+
+        // Shared search function
         function performSearch(query) {
             if (!query) return;
-    
-            // Safety check — if external file failed to load
+
             if (typeof window.searchMap === 'undefined') {
-                console.error('Search map not loaded! Check if search-data.js is loaded correctly.');
+                console.error('Search map not loaded!');
                 const resultsList = document.getElementById('resultsList');
                 const resultQuery = document.getElementById('resultQuery');
                 const resultsContainer = document.getElementById('searchResults');
-    
+
                 resultQuery.textContent = query;
                 resultsList.innerHTML = '<li>Error: Search data not available.</li>';
                 resultsContainer.style.display = 'block';
                 return;
             }
-    
+
             const lowerQuery = query.toLowerCase().trim();
             const queryWords = lowerQuery.split(/\s+/);
-    
             const matches = [];
-    
-            // Use window.searchMap here!
+
             for (const [key, url] of Object.entries(window.searchMap)) {
                 const lowerKey = key.toLowerCase();
                 if (queryWords.some(word => lowerKey.includes(word))) {
@@ -711,35 +441,33 @@
                         let title = key.charAt(0).toUpperCase() + key.slice(1);
                         if (url.includes('?tab=')) {
                             const tab = new URLSearchParams(url.split('?')[1]).get('tab');
-                            title = title.replace(new RegExp(tab, 'gi'), '').trim() + ' ' + 
+                            title = title.replace(new RegExp(tab, 'gi'), '').trim() + ' ' +
                                     tab.charAt(0).toUpperCase() + tab.slice(1).replace('-', ' ');
                         }
                         matches.push({ title: title.trim(), url: url });
                     }
                 }
             }
-    
-            // Prioritize exact match
+
             if (window.searchMap[lowerQuery]) {
                 const exactUrl = window.searchMap[lowerQuery];
                 const exactTitle = lowerQuery.charAt(0).toUpperCase() + lowerQuery.slice(1);
                 matches.unshift({ title: exactTitle, url: exactUrl });
             }
-    
-            // Remove duplicate URLs
+
             const seen = new Set();
             const uniqueMatches = matches.filter(item => {
                 if (seen.has(item.url)) return false;
                 seen.add(item.url);
                 return true;
             });
-    
+
             const resultsContainer = document.getElementById('searchResults');
             const resultsList = document.getElementById('resultsList');
             const resultQuery = document.getElementById('resultQuery');
-    
+
             resultsList.innerHTML = '';
-    
+
             if (uniqueMatches.length > 0) {
                 resultQuery.textContent = query;
                 uniqueMatches.forEach(match => {
@@ -751,65 +479,36 @@
                 resultQuery.textContent = query;
                 resultsList.innerHTML = '<li>No results found. Try other keywords.</li>';
             }
-    
+
             resultsContainer.style.display = 'block';
             resultsContainer.scrollIntoView({ behavior: 'smooth' });
         }
-    
-        // Event listeners
+
+        // Desktop search
         if (desktopSearch) {
-            desktopSearch.addEventListener('keypress', (e) => {
+            desktopSearch.addEventListener('keypress', e => {
                 if (e.key === 'Enter') performSearch(desktopSearch.value);
             });
         }
-    
-        if (mobileSearch) {
-            mobileSearch.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') performSearch(mobileSearch.value);
-            });
-        }
-    
+
+        // Clear results
         document.getElementById('clearResults').addEventListener('click', () => {
             document.getElementById('searchResults').style.display = 'none';
             if (desktopSearch) desktopSearch.value = '';
             if (mobileSearch) mobileSearch.value = '';
         });
-    
-        document.addEventListener('click', (e) => {
+
+        // Click outside to close search results
+        document.addEventListener('click', e => {
             const results = document.getElementById('searchResults');
-            const searchInputs = [desktopSearch, mobileSearch].filter(Boolean);
+            const inputs = [desktopSearch, mobileSearch].filter(Boolean);
             if (results.style.display === 'block' &&
                 !results.contains(e.target) &&
-                !searchInputs.some(input => input && input.contains(e.target))) {
+                !inputs.some(input => input && input.contains(e.target))) {
                 results.style.display = 'none';
             }
         });
-    
-        // Hamburger menu
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            menuOverlay.classList.toggle('open');
-            document.body.classList.toggle('menu-open');
-            mobileSearchContainer.classList.toggle('menu-open');
-        });
-    
-        menuOverlay.addEventListener('click', (e) => {
-            if (e.target === menuOverlay) {
-                hamburger.classList.remove('active');
-                menuOverlay.classList.remove('open');
-                document.body.classList.remove('menu-open');
-                mobileSearchContainer.classList.remove('menu-open');
-            }
-        });
-    
-        // Mobile dropdowns
-        document.querySelectorAll('.dropdown-mobile > a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                link.parentElement.classList.toggle('open');
-            });
-        });
-    
+
         // Desktop dropdowns
         const dropdowns = document.querySelectorAll('.dropdown');
         dropdowns.forEach(dropdown => {
@@ -822,6 +521,67 @@
                 });
             }
         });
+
+        // === MOBILE COMPONENTS LOADING ===
+        function initMobileComponents() {
+            const hamburger = document.getElementById('hamburger');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const mobileSearchContainer = document.querySelector('.mobile-search-container');
+            mobileSearch = document.getElementById('mobileSearch');
+
+            if (!hamburger || !menuOverlay) return;
+
+            // Hamburger toggle
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                menuOverlay.classList.toggle('open');
+                document.body.classList.toggle('menu-open');
+                if (mobileSearchContainer) {
+                    mobileSearchContainer.classList.toggle('menu-open');
+                }
+            });
+
+            // Close on overlay click
+            menuOverlay.addEventListener('click', e => {
+                if (e.target === menuOverlay) {
+                    hamburger.classList.remove('active');
+                    menuOverlay.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                    if (mobileSearchContainer) {
+                        mobileSearchContainer.classList.remove('menu-open');
+                    }
+                }
+            });
+
+            // Mobile dropdowns
+            document.querySelectorAll('.dropdown-mobile > a').forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle('open');
+                });
+            });
+
+            // Mobile search
+            if (mobileSearch) {
+                mobileSearch.addEventListener('keypress', e => {
+                    if (e.key === 'Enter') performSearch(mobileSearch.value);
+                });
+            }
+        }
+
+        // Load mobile components only on mobile screens
+        if (window.innerWidth <= 500) {
+            fetch('index-m.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to load index-m.html');
+                    return response.text();
+                })
+                .then(html => {
+                    document.querySelector('nav').insertAdjacentHTML('afterbegin', html);
+                    initMobileComponents();
+                })
+                .catch(err => console.error('Error loading mobile menu:', err));
+        }
     });
     </script>
 </body>
