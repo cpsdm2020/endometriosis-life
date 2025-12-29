@@ -1,80 +1,320 @@
-<!-- index-m.html -->
-<!-- Hamburger Icon -->
-<div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Site - Mobile</title>
 
-<!-- Mobile Menu Overlay -->
-<div class="menu-overlay" id="menuOverlay">
-    <div class="menu-content">
-        <ul class="mobile-menu-list">
-            <li class="dropdown-mobile">
-                <a href="guide.html">Endometriosis ▾</a>
-                <div class="submenu">
-                    <a href="guide.html?tab=symptoms">Definition</a>
-                    <a href="guide.html?tab=causes">Causes</a>
-                    <a href="guide.html?tab=diagnosis">Diagnosis</a>
-                    <a href="guide.html?tab=treatment">Treatment</a>
-                </div>
-            </li>
-            
-        <li class="dropdown-mobile">
-            <a href="elevate.html">Adenomyosis ▾</a>
-            <div class="submenu">
-                <a href="elevate.html?tab=symptoms">Definition</a>
-                <a href="elevate.html?tab=causes">Causes</a>
-                <a href="elevate.html?tab=diagnosis">Diagnosis</a>
-                <a href="elevate.html?tab=treatment">Treatment</a>
-            </div>
-        </li>
+    <!-- Your existing stylesheets -->
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <!-- Add your mobile-specific CSS here or link externally -->
 
-        <li class="dropdown-mobile">
-            <a href="journal.html">Journal ▾</a>
-            <div class="submenu">
-                <a href="journal.html?tab=2026">2026</a>
-                <a href="journal.html?tab=2025">2025</a>
-            </div>
-        </li>
+    <style>
+        /* Hamburger and Mobile Menu Styles (keep your existing ones or add these if missing) */
+        .hamburger {
+            display: block;
+            cursor: pointer;
+            padding: 15px;
+            z-index: 1000;
+        }
 
-        <li class="dropdown-mobile">
-            <a href="lifestyle.html">Lifestyle ▾</a>
-            <div class="submenu">
-                <a href="lifestyle.html?tab=diet">Diet</a>
-                <a href="lifestyle.html?tab=exercise">Exercise</a>
-                <a href="lifestyle.html?tab=sleep">Sleep</a>
-                <a href="lifestyle.html?tab=stress">Stress</a>
-            </div>
-        </li>
-        <li><a href="FAQ.html">FAQ</a></li>
-        <li><a href="about.html">About</a></li>
-    </ul>
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: #333;
+            margin: 6px 0;
+            transition: 0.3s;
+        }
 
-    <div class="mobile-boxes">
-        <a href="session.html" class="mobile-box-link">Coaching</a>
-        <a href="book.html" class="mobile-box-link">My Story</a>
-        <a href="store.html" class="mobile-box-link">Store</a>
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            transition: left 0.4s ease;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu-overlay.active {
+            left: 0;
+        }
+
+        .mobile-menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .mobile-menu-list li {
+            margin: 20px 0;
+        }
+
+        .mobile-menu-list a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .dropdown-mobile .submenu {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .dropdown-mobile.active .submenu {
+            display: block;
+        }
+
+        .dropdown-mobile a::after {
+            content: " ▾";
+        }
+
+        .mobile-boxes {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-box-link {
+            background: #fff;
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+
+        .mobile-search-container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mobile-search {
+            width: 90%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        /* Swipeable Carousel Styles */
+        .mobile-swipe-carousel {
+            position: relative;
+            width: var(--carousel-width, 100vw);     /* Configurable */
+            height: var(--carousel-height, 400px);   /* Configurable */
+            overflow: hidden;
+            margin: 20px auto;                       /* Spacing and centering */
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .carousel-track img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hamburger Icon -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
-</div></div>
 
-<!-- Mobile Search Bar -->
-<div class="mobile-search-container">
-    <input type="text" id="mobileSearch" class="mobile-search" placeholder="Search the site...">
-</div>
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-content">
+            <ul class="mobile-menu-list">
+                <li class="dropdown-mobile">
+                    <a href="guide.html">Endometriosis ▾</a>
+                    <div class="submenu">
+                        <a href="guide.html?tab=symptoms">Definition</a>
+                        <a href="guide.html?tab=causes">Causes</a>
+                        <a href="guide.html?tab=diagnosis">Diagnosis</a>
+                        <a href="guide.html?tab=treatment">Treatment</a>
+                    </div>
+                </li>
+                
+                <li class="dropdown-mobile">
+                    <a href="elevate.html">Adenomyosis ▾</a>
+                    <div class="submenu">
+                        <a href="elevate.html?tab=symptoms">Definition</a>
+                        <a href="elevate.html?tab=causes">Causes</a>
+                        <a href="elevate.html?tab=diagnosis">Diagnosis</a>
+                        <a href="elevate.html?tab=treatment">Treatment</a>
+                    </div>
+                </li>
 
-<!-- NEW: Mobile Swipeable Image Carousel (centered, below title) -->
-<div class="mobile-swipe-carousel">
-    <div class="carousel-track">
-        <img src="images/index-m-swipe1-12.jpg" alt="Slide 1">
-        <img src="images/index-m-swipe2-1.jpg" alt="Slide 2">
-        <img src="images/index-m-swipe3-1.jpg" alt="Slide 3">
+                <li class="dropdown-mobile">
+                    <a href="journal.html">Journal ▾</a>
+                    <div class="submenu">
+                        <a href="journal.html?tab=2026">2026</a>
+                        <a href="journal.html?tab=2025">2025</a>
+                    </div>
+                </li>
+
+                <li class="dropdown-mobile">
+                    <a href="lifestyle.html">Lifestyle ▾</a>
+                    <div class="submenu">
+                        <a href="lifestyle.html?tab=diet">Diet</a>
+                        <a href="lifestyle.html?tab=exercise">Exercise</a>
+                        <a href="lifestyle.html?tab=sleep">Sleep</a>
+                        <a href="lifestyle.html?tab=stress">Stress</a>
+                    </div>
+                </li>
+                <li><a href="FAQ.html">FAQ</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+
+            <div class="mobile-boxes">
+                <a href="session.html" class="mobile-box-link">Coaching</a>
+                <a href="book.html" class="mobile-box-link">My Story</a>
+                <a href="store.html" class="mobile-box-link">Store</a>
+            </div>
+        </div>
     </div>
 
-<!-- Dots Indicator -->
-<div class="carousel-dots">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-</div></div>
+    <!-- Mobile Search Bar -->
+    <div class="mobile-search-container">
+        <input type="text" id="mobileSearch" class="mobile-search" placeholder="Search the site...">
+    </div>
 
+    <!-- Mobile Swipeable Image Carousel (configurable size) -->
+    <div class="mobile-swipe-carousel" style="--carousel-width: 100vw; --carousel-height: 400px;">
+        <div class="carousel-track">
+            <img src="images/index-m-swipe1-1.jpg" alt="Slide 1">
+            <img src="images/index-m-swipe2-1.jpg" alt="Slide 2">
+            <img src="images/index-m-swipe3-1.jpg" alt="Slide 3">
+            <!-- Add more slides here if desired -->
+        </div>
+
+        <!-- Dots Indicator -->
+        <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <!-- Add more dots for additional slides -->
+        </div>
+    </div>
+
+    <!-- Your page content continues here -->
+    <!-- ... -->
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        hamburger.addEventListener('click', () => {
+            menuOverlay.classList.toggle('active');
+        });
+
+        // Optional: Close menu when clicking a link
+        document.querySelectorAll('.mobile-menu-list a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOverlay.classList.remove('active');
+            });
+        });
+
+        // Swipeable Carousel Script
+        document.addEventListener('DOMContentLoaded', function () {
+            const carousel = document.querySelector('.mobile-swipe-carousel');
+            if (!carousel) return;
+
+            const track = carousel.querySelector('.carousel-track');
+            const slides = track.querySelectorAll('img');
+            const dots = carousel.querySelectorAll('.dot');
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            // Dynamically set track width
+            track.style.width = `${totalSlides * 100}%`;
+
+            function updateCarousel() {
+                const offset = -(currentIndex * 100) / totalSlides;
+                track.style.transform = `translateX(${offset}%)`;
+
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            // Dot clicks
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            // Touch swipe
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            carousel.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const threshold = 50;
+                if (touchEndX < touchStartX - threshold) {
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                } else if (touchEndX > touchStartX + threshold) {
+                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                }
+                updateCarousel();
+            }
+
+            // Initial setup
+            updateCarousel();
+        });
+    </script>
+</body>
+</html>
