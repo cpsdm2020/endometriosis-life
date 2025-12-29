@@ -1,384 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Site - Mobile</title>
+<!-- index-m.html -->
+<!-- Hamburger Icon -->
+<div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f9f9f9;
-        }
-
-        /* Hamburger Icon */
-        .hamburger {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 1000;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .hamburger span {
-            display: block;
-            width: 30px;
-            height: 3px;
-            background: #333;
-            margin: 6px 0;
-            transition: 0.3s;
-        }
-
-        /* Active state animation (optional X) */
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        /* Mobile Menu Overlay */
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.98);
-            transition: left 0.4s ease;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow-y: auto;
-        }
-
-        .menu-overlay.active {
-            left: 0;
-        }
-
-        .mobile-menu-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-        }
-
-        .mobile-menu-list li {
-            margin: 18px 0;
-        }
-
-        .mobile-menu-list a {
-            color: white;
-            text-decoration: none;
-            font-size: 24px;
-            display: block;
-        }
-
-        /* Dropdown toggle */
-        .dropdown-mobile > a {
-            cursor: pointer;
-        }
-
-        .dropdown-mobile > a::after {
-            content: " ▾";
-            font-size: 20px;
-        }
-
-        .dropdown-mobile.active > a::after {
-            content: " ▴";
-        }
-
-        .submenu {
-            display: none;
-            margin-top: 12px;
-        }
-
-        .dropdown-mobile.active .submenu {
-            display: block;
-        }
-
-        .submenu a {
-            font-size: 18px;
-            color: #ddd;
-            padding: 8px 0;
-            display: block;
-        }
-
-        .mobile-boxes {
-            margin-top: 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            width: 80%;
-            max-width: 300px;
-        }
-
-        .mobile-box-link {
-            background: white;
-            color: black;
-            padding: 18px;
-            text-align: center;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        /* Mobile Search Bar - Fixed Appearance */
-        .mobile-search-container {
-            padding: 80px 20px 30px;
-            text-align: center;
-            background: white;
-        }
-
-        .mobile-search {
-            width: 90%;
-            max-width: 500px;
-            padding: 16px 20px;
-            font-size: 18px;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            outline: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .mobile-search::placeholder {
-            color: #aaa;
-        }
-
-        /* Swipeable Carousel - Fully Working */
-        .mobile-swipe-carousel {
-            position: relative;
-            width: var(--carousel-width, 100vw);
-            height: var(--carousel-height, 400px);
-            overflow: hidden;
-            margin: 30px auto;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .carousel-track {
-            display: flex;
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-track img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .carousel-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 12px;
-            z-index: 10;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .dot.active {
-            background: white;
-            transform: scale(1.3);
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Hamburger Icon -->
-    <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="menu-overlay" id="menuOverlay">
-        <div class="menu-content">
-            <ul class="mobile-menu-list">
-                <li class="dropdown-mobile">
-                    <a>Endometriosis ▾</a>
-                    <div class="submenu">
-                        <a href="guide.html?tab=symptoms">Definition</a>
-                        <a href="guide.html?tab=causes">Causes</a>
-                        <a href="guide.html?tab=diagnosis">Diagnosis</a>
-                        <a href="guide.html?tab=treatment">Treatment</a>
-                    </div>
-                </li>
-                
-                <li class="dropdown-mobile">
-                    <a>Adenomyosis ▾</a>
-                    <div class="submenu">
-                        <a href="elevate.html?tab=symptoms">Definition</a>
-                        <a href="elevate.html?tab=causes">Causes</a>
-                        <a href="elevate.html?tab=diagnosis">Diagnosis</a>
-                        <a href="elevate.html?tab=treatment">Treatment</a>
-                    </div>
-                </li>
-
-                <li class="dropdown-mobile">
-                    <a>Journal ▾</a>
-                    <div class="submenu">
-                        <a href="journal.html?tab=2026">2026</a>
-                        <a href="journal.html?tab=2025">2025</a>
-                    </div>
-                </li>
-
-                <li class="dropdown-mobile">
-                    <a>Lifestyle ▾</a>
-                    <div class="submenu">
-                        <a href="lifestyle.html?tab=diet">Diet</a>
-                        <a href="lifestyle.html?tab=exercise">Exercise</a>
-                        <a href="lifestyle.html?tab=sleep">Sleep</a>
-                        <a href="lifestyle.html?tab=stress">Stress</a>
-                    </div>
-                </li>
-
-                <li><a href="FAQ.html">FAQ</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-
-            <div class="mobile-boxes">
-                <a href="session.html" class="mobile-box-link">Coaching</a>
-                <a href="book.html" class="mobile-box-link">My Story</a>
-                <a href="store.html" class="mobile-box-link">Store</a>
+<!-- Mobile Menu Overlay -->
+<div class="menu-overlay" id="menuOverlay">
+    <div class="menu-content">
+        <ul class="mobile-menu-list">
+            <li class="dropdown-mobile">
+                <a href="guide.html">Endometriosis ▾</a>
+                <div class="submenu">
+                    <a href="guide.html?tab=symptoms">Definition</a>
+                    <a href="guide.html?tab=causes">Causes</a>
+                    <a href="guide.html?tab=diagnosis">Diagnosis</a>
+                    <a href="guide.html?tab=treatment">Treatment</a>
+                </div>
+            </li>
+            
+        <li class="dropdown-mobile">
+            <a href="elevate.html">Adenomyosis ▾</a>
+            <div class="submenu">
+                <a href="elevate.html?tab=symptoms">Definition</a>
+                <a href="elevate.html?tab=causes">Causes</a>
+                <a href="elevate.html?tab=diagnosis">Diagnosis</a>
+                <a href="elevate.html?tab=treatment">Treatment</a>
             </div>
-        </div>
+        </li>
+
+        <li class="dropdown-mobile">
+            <a href="journal.html">Journal ▾</a>
+            <div class="submenu">
+                <a href="journal.html?tab=2026">2026</a>
+                <a href="journal.html?tab=2025">2025</a>
+            </div>
+        </li>
+
+        <li class="dropdown-mobile">
+            <a href="lifestyle.html">Lifestyle ▾</a>
+            <div class="submenu">
+                <a href="lifestyle.html?tab=diet">Diet</a>
+                <a href="lifestyle.html?tab=exercise">Exercise</a>
+                <a href="lifestyle.html?tab=sleep">Sleep</a>
+                <a href="lifestyle.html?tab=stress">Stress</a>
+            </div>
+        </li>
+        <li><a href="FAQ.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+
+    <div class="mobile-boxes">
+        <a href="session.html" class="mobile-box-link">Coaching</a>
+        <a href="book.html" class="mobile-box-link">My Story</a>
+        <a href="store.html" class="mobile-box-link">Store</a>
+    </div>
+</div></div>
+
+<!-- Mobile Search Bar -->
+<div class="mobile-search-container">
+    <input type="text" id="mobileSearch" class="mobile-search" placeholder="Search the site...">
+</div>
+
+<!-- NEW: Mobile Swipeable Image Carousel (centered, below title) -->
+<div class="mobile-swipe-carousel">
+    <div class="carousel-track">
+        <img src="images/index-m-swipe1-12.jpg" alt="Slide 1">
+        <img src="images/index-m-swipe2-1.jpg" alt="Slide 2">
+        <img src="images/index-m-swipe3-1.jpg" alt="Slide 3">
     </div>
 
-    <!-- Mobile Search Bar -->
-    <div class="mobile-search-container">
-        <input type="text" id="mobileSearch" class="mobile-search" placeholder="Search the site...">
-    </div>
-
-    <!-- Mobile Swipeable Image Carousel -->
-    <div class="mobile-swipe-carousel" style="--carousel-width: 100vw; --carousel-height: 420px;">
-        <div class="carousel-track" id="carouselTrack">
-            <img src="images/index-m-swipe1-12.jpg" alt="Slide 1">
-            <img src="images/index-m-swipe2-1.jpg" alt="Slide 2">
-            <img src="images/index-m-swipe3-1.jpg" alt="Slide 3">
-        </div>
-
-        <div class="carousel-dots" id="carouselDots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-    </div>
-
-    <!-- Your main content goes here -->
-    <!-- ... -->
-
-    <script>
-        // Hamburger Menu
-        const hamburger = document.getElementById('hamburger');
-        const menuOverlay = document.getElementById('menuOverlay');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-        });
-
-        // Close menu when clicking a main link (non-dropdown)
-        document.querySelectorAll('.mobile-menu-list > li > a:not(.dropdown-mobile a)').forEach(link => {
-            link.addEventListener('click', () => {
-                menuOverlay.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-
-        // Dropdown toggle on mobile
-        document.querySelectorAll('.dropdown-mobile > a').forEach(header => {
-            header.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                header.parentElement.classList.toggle('active');
-            });
-        });
-
-        // Carousel Functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const carousel = document.querySelector('.mobile-swipe-carousel');
-            const track = document.getElementById('carouselTrack');
-            const dots = document.querySelectorAll('#carouselDots .dot');
-            const slides = track.querySelectorAll('img');
-
-            let currentIndex = 0;
-            const totalSlides = slides.length;
-
-            // Set track width dynamically
-            track.style.width = `${totalSlides * 100}%`;
-
-            function updateCarousel() {
-                const offset = -(currentIndex * 100 / totalSlides);
-                track.style.transform = `translateX(${offset}%)`;
-
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === currentIndex);
-                });
-            }
-
-            // Dot navigation
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    currentIndex = index;
-                    updateCarousel();
-                });
-            });
-
-            // Touch swipe
-            let startX = 0;
-
-            carousel.addEventListener('touchstart', e => {
-                startX = e.touches[0].clientX;
-            }, { passive: true });
-
-            carousel.addEventListener('touchend', e => {
-                if (!startX) return;
-                const endX = e.changedTouches[0].clientX;
-                const diff = startX - endX;
-
-                if (Math.abs(diff) > 50) { // Minimum swipe distance
-                    if (diff > 0) {
-                        // Swiped left → next
-                        currentIndex = (currentIndex + 1) % totalSlides;
-                    } else {
-                        // Swiped right → previous
-                        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                    }
-                    updateCarousel();
-                }
-                startX = 0;
-            }, { passive: true });
-
-            // Initial setup
-            updateCarousel();
-        });
-    </script>
-</body>
-</html>
+<!-- Dots Indicator -->
+<div class="carousel-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+</div></div>
