@@ -9,18 +9,20 @@
         /* === ONLY THE CAROUSEL FIX — NOTHING ELSE TOUCHED === */
 
         .mobile-swipe-carousel {
-            width: 100%;
-            overflow: hidden;          /* prevents oversized images from breaking layout */
+            width: 100vw;              /* Full screen width */
+            overflow: hidden;          /* Hides any overflow */
         }
-
+        
         .carousel-track {
-            display: flex;             /* puts images side by side */
+            display: flex;             /* Lines up images side-by-side */
+            width: 300%;               /* 100% per image × 3 images */
         }
-
+        
         .carousel-track img {
-            width: 100%;               /* each image takes full screen width */
-            height: auto;              /* keeps original proportions — no stretching */
+            width: 100vw;              /* Each image = full mobile screen width */
+            height: auto;              /* Keeps perfect proportions — no stretching */
             display: block;
+            object-fit: cover;         /* Optional: crops edges neatly if image is very tall/wide */
         }
 
         /* Optional: makes dots look nice (you already had dots, this just positions them) */
