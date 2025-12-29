@@ -319,21 +319,24 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(170, 51, 106, 0.2);
             position: relative;
+            height: 25vh;                  /* New: Forces the carousel container to ~1/4 viewport height */
+            max-height: 300px;             /* Optional: Prevents it from getting too tall on large screens */
         }
-
+        
         .carousel-track {
             display: flex;
-            width: 300%; /* 3 images */
+            width: 300%;
             transition: transform 0.4s ease;
             scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch; /* Smooth on iOS */
+            -webkit-overflow-scrolling: touch;
+            height: 100%;                  /* New: Makes the track fill the shorter container */
         }
-
+        
         .carousel-track img {
             width: 100%;
-            height: auto;
+            height: 100%;                  /* Changed from 'auto' to '100%' */
             flex: 0 0 100%;
-            object-fit: cover;
+            object-fit: cover;             /* Keeps this – crops nicely top/bottom */
             scroll-snap-align: start;
         }
 
