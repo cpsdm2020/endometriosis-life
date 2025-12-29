@@ -1,150 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Site - Mobile</title>
+<!-- index-m.html -->
+<!-- Hamburger Icon -->
+<div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
 
-    <style>
-        /* === ONLY THE CAROUSEL FIX — NOTHING ELSE TOUCHED === */
-
-        .mobile-swipe-carousel {
-            width: 100vw;              /* Full screen width */
-            overflow: hidden;          /* Hides any overflow */
-        }
-        
-        .carousel-track {
-            display: flex;             /* Lines up images side-by-side */
-            width: 300%;               /* 100% per image × 3 images */
-        }
-        
-        .carousel-track img {
-            width: 100vw;              /* Each image = full mobile screen width */
-            height: auto;              /* Keeps perfect proportions — no stretching */
-            display: block;
-            object-fit: cover;         /* Optional: crops edges neatly if image is very tall/wide */
-        }
-
-        /* Optional: makes dots look nice (you already had dots, this just positions them) */
-        .carousel-dots {
-            text-align: center;
-            padding: 15px 0;
-        }
-        .dot {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: #ccc;
-            border-radius: 50%;
-            margin: 0 5px;
-        }
-        .dot.active {
-            background: #333;
-        }
-    </style>
-
-    <!-- If you already have other <style> blocks in your real file, keep them exactly as they are.
-         Just add the block above anywhere inside <head>. -->
-</head>
-<body>
-
-    <!-- Hamburger Icon -->
-    <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="menu-overlay" id="menuOverlay">
-        <div class="menu-content">
-            <ul class="mobile-menu-list">
-                <li class="dropdown-mobile">
-                    <a href="guide.html">Endometriosis ▾</a>
-                    <div class="submenu">
-                        <a href="guide.html?tab=symptoms">Definition</a>
-                        <a href="guide.html?tab=causes">Causes</a>
-                        <a href="guide.html?tab=diagnosis">Diagnosis</a>
-                        <a href="guide.html?tab=treatment">Treatment</a>
-                    </div>
-                </li>
-                
-                <li class="dropdown-mobile">
-                    <a href="elevate.html">Adenomyosis ▾</a>
-                    <div class="submenu">
-                        <a href="elevate.html?tab=symptoms">Definition</a>
-                        <a href="elevate.html?tab=causes">Causes</a>
-                        <a href="elevate.html?tab=diagnosis">Diagnosis</a>
-                        <a href="elevate.html?tab=treatment">Treatment</a>
-                    </div>
-                </li>
-
-                <li class="dropdown-mobile">
-                    <a href="journal.html">Journal ▾</a>
-                    <div class="submenu">
-                        <a href="journal.html?tab=2026">2026</a>
-                        <a href="journal.html?tab=2025">2025</a>
-                    </div>
-                </li>
-
-                <li class="dropdown-mobile">
-                    <a href="lifestyle.html">Lifestyle ▾</a>
-                    <div class="submenu">
-                        <a href="lifestyle.html?tab=diet">Diet</a>
-                        <a href="lifestyle.html?tab=exercise">Exercise</a>
-                        <a href="lifestyle.html?tab=sleep">Sleep</a>
-                        <a href="lifestyle.html?tab=stress">Stress</a>
-                    </div>
-                </li>
-                <li><a href="FAQ.html">FAQ</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-
-            <div class="mobile-boxes">
-                <a href="session.html" class="mobile-box-link">Coaching</a>
-                <a href="book.html" class="mobile-box-link">My Story</a>
-                <a href="store.html" class="mobile-box-link">Store</a>
+<!-- Mobile Menu Overlay -->
+<div class="menu-overlay" id="menuOverlay">
+    <div class="menu-content">
+        <ul class="mobile-menu-list">
+            <li class="dropdown-mobile">
+                <a href="guide.html">Endometriosis ▾</a>
+                <div class="submenu">
+                    <a href="guide.html?tab=symptoms">Definition</a>
+                    <a href="guide.html?tab=causes">Causes</a>
+                    <a href="guide.html?tab=diagnosis">Diagnosis</a>
+                    <a href="guide.html?tab=treatment">Treatment</a>
+                </div>
+            </li>
+            
+        <li class="dropdown-mobile">
+            <a href="elevate.html">Adenomyosis ▾</a>
+            <div class="submenu">
+                <a href="elevate.html?tab=symptoms">Definition</a>
+                <a href="elevate.html?tab=causes">Causes</a>
+                <a href="elevate.html?tab=diagnosis">Diagnosis</a>
+                <a href="elevate.html?tab=treatment">Treatment</a>
             </div>
-        </div>
+        </li>
+
+        <li class="dropdown-mobile">
+            <a href="journal.html">Journal ▾</a>
+            <div class="submenu">
+                <a href="journal.html?tab=2026">2026</a>
+                <a href="journal.html?tab=2025">2025</a>
+            </div>
+        </li>
+
+        <li class="dropdown-mobile">
+            <a href="lifestyle.html">Lifestyle ▾</a>
+            <div class="submenu">
+                <a href="lifestyle.html?tab=diet">Diet</a>
+                <a href="lifestyle.html?tab=exercise">Exercise</a>
+                <a href="lifestyle.html?tab=sleep">Sleep</a>
+                <a href="lifestyle.html?tab=stress">Stress</a>
+            </div>
+        </li>
+        <li><a href="FAQ.html">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+
+    <div class="mobile-boxes">
+        <a href="session.html" class="mobile-box-link">Coaching</a>
+        <a href="book.html" class="mobile-box-link">My Story</a>
+        <a href="store.html" class="mobile-box-link">Store</a>
+    </div>
+</div></div>
+
+<!-- Mobile Search Bar -->
+<div class="mobile-search-container">
+    <input type="text" id="mobileSearch" class="mobile-search" placeholder="Search the site...">
+</div>
+
+<!-- NEW: Mobile Swipeable Image Carousel (centered, below title) -->
+<div class="mobile-swipe-carousel">
+    <div class="carousel-track">
+        <img src="images/index-m-swipe1.jpg" alt="Slide 1">
+        <img src="images/index-m-swipe2.jpg" alt="Slide 2">
+        <img src="images/index-m-swipe3.jpg" alt="Slide 3">
     </div>
 
-    <!-- Mobile Search Bar -->
-    <div class="mobile-search-container">
-        <input type="text" id="mobileSearch" class="mobile-search" placeholder="Search the site...">
-    </div>
+<!-- Dots Indicator -->
+<div class="carousel-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+</div></div>
 
-    <!-- Mobile Swipeable Image Carousel -->
-    <div class="mobile-swipe-carousel">
-        <div class="carousel-track">
-            <img src="images/index-m-swipe1-1.jpg" alt="Slide 1">
-            <img src="images/index-m-swipe2-1.jpg" alt="Slide 2">
-            <img src="images/index-m-swipe3-1.jpg" alt="Slide 3">
-        </div>
-
-        <!-- Dots Indicator -->
-        <div class="carousel-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-    </div>
-
-    <!-- Keep your existing JavaScript (hamburger toggle, dropdowns, etc.) here if you have any -->
-    <!-- Example (add only if you need the hamburger to work): -->
-    <script>
-        // Very small script for hamburger (add only if you need it)
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('menuOverlay').classList.toggle('active');
-        });
-
-        // Dropdown toggle (add only if needed)
-        document.querySelectorAll('.dropdown-mobile > a').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                this.parentElement.classList.toggle('active');
-            });
-        });
-    </script>
-
-</body>
-</html>
